@@ -66,36 +66,27 @@ export default class implements Command {
           ],
         });
 
-      const parent = await handler.guild!.channels.create({
-        name: `${client.user!.username}'s Music`,
-        type: ChannelType.GuildCategory,
-      });
       const textChannel = await handler.guild!.channels.create({
         name: "song-request",
         type: ChannelType.GuildText,
         topic: `${client.getString(handler.language, "command.utils", "setup_topic")}`,
-        parent: parent.id,
       });
-      const queueMsg = `${client.getString(handler.language, "event.setup", "setup_queuemsg")}`;
+
+      const queueEmbed = new EmbedBuilder()
+        .setColor(client.color)
+        .setDescription(`${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`)
+        .setTitle(`${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "Geen" })}`);
 
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)
         .setAuthor({
           name: `${client.getString(handler.language, "event.setup", "setup_playembed_author")}`,
         })
-        .setImage(`https://cdn.discordapp.com/avatars/${client.user!.id}/${client.user!.avatar}.jpeg?size=300`);
+        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`);
 
       const channel_msg = await textChannel.send({
-        content: `${queueMsg}`,
-        embeds: [playEmbed],
-        components: [client.diSwitch],
-      });
-
-      const voiceChannel = await handler.guild!.channels.create({
-        name: `${client.user!.username}`,
-        type: ChannelType.GuildVoice,
-        parent: parent.id,
-        userLimit: 99,
+        embeds: [queueEmbed, playEmbed],
+        components: [client.diSwitch, client.diSwitch2],
       });
 
       const new_data = {
@@ -103,8 +94,6 @@ export default class implements Command {
         enable: true,
         channel: textChannel.id,
         playmsg: channel_msg.id,
-        voice: voiceChannel.id,
-        category: parent.id,
       };
 
       await client.db.setup.set(`${handler.guild!.id}`, new_data);
@@ -130,12 +119,6 @@ export default class implements Command {
       const fetchedTextChannel = SetupChannel.channel
         ? await handler.guild!.channels.fetch(SetupChannel.channel).catch(() => {})
         : undefined;
-      const fetchedVoiceChannel = SetupChannel.voice
-        ? await handler.guild!.channels.fetch(SetupChannel.voice).catch(() => {})
-        : undefined;
-      const fetchedCategory = SetupChannel.category
-        ? await handler.guild!.channels.fetch(SetupChannel.category).catch(() => {})
-        : undefined;
 
       const embed = new EmbedBuilder()
         .setDescription(
@@ -145,13 +128,11 @@ export default class implements Command {
         )
         .setColor(client.color);
 
-      if (fetchedCategory) await fetchedCategory.delete().catch(() => null);
-      if (fetchedVoiceChannel) await fetchedVoiceChannel.delete().catch(() => null);
       if (fetchedTextChannel) await fetchedTextChannel.delete().catch(() => null);
 
       await client.db.setup.delete(`${handler.guild!.id}`);
 
-      if (!fetchedCategory || !fetchedTextChannel || !fetchedVoiceChannel) {
+      if (!fetchedTextChannel) {
         return handler.editReply({
           embeds: [
             new EmbedBuilder()

@@ -78,7 +78,9 @@ export class Manager extends Client {
   UpdateMusic!: (player: RainlinkPlayer) => Promise<void | Message<true>>;
   UpdateQueueMsg!: (player: RainlinkPlayer) => Promise<void | Message<true>>;
   enSwitch!: ActionRowBuilder<ButtonBuilder>;
+  enSwitch2!: ActionRowBuilder<ButtonBuilder>;
   diSwitch!: ActionRowBuilder<ButtonBuilder>;
+  diSwitch2!: ActionRowBuilder<ButtonBuilder>;
   enSwitchMod!: ActionRowBuilder<ButtonBuilder>;
   topgg?: TopggService;
   icons: IconType;

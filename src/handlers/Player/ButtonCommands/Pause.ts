@@ -70,12 +70,12 @@ export class ButtonPause {
         ? playMsg.edit({
             // content: playMsg.content,
             // embeds: new EmbedBuilder(playMsg.embeds),
-            components: [this.client.enSwitch],
+            components: [this.client.enSwitch, this.client.enSwitch2],
           })
         : playMsg.edit({
             // content: playMsg.content,
             // embeds: playMsg.embeds,
-            components: [this.client.enSwitchMod],
+            components: [this.client.enSwitchMod, this.client.enSwitch2],
           });
 
       const embed = new EmbedBuilder()

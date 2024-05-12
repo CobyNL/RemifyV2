@@ -8,6 +8,11 @@ import { ButtonSkip } from "./ButtonCommands/Skip.js";
 import { ButtonStop } from "./ButtonCommands/Stop.js";
 import { ButtonLoop } from "./ButtonCommands/Loop.js";
 import { ButtonPause } from "./ButtonCommands/Pause.js";
+import { ButtonVolumeDown } from "./ButtonCommands/VolumeDown.js";
+import { ButtonVolumeUp } from "./ButtonCommands/VolumeUp.js";
+import { ButtonForward } from "./ButtonCommands/ButtonForward.js";
+import { ButtonRewind } from "./ButtonCommands/ButtonRewind.js";
+import { ButtonClear } from "./ButtonCommands/Clear.js";
 import { RateLimitManager } from "@sapphire/ratelimits";
 import { RainlinkTrack } from "../../rainlink/main.js";
 const rateLimitManager = new RateLimitManager(2000);
@@ -53,6 +58,7 @@ export class playerLoadContent {
     const language = guildModel;
 
     switch (customId) {
+      //Row 1
       case "sprevious":
         new ButtonPrevious(client, interaction, channel, language, player);
         break;
@@ -68,6 +74,38 @@ export class playerLoadContent {
       case "spause":
         new ButtonPause(client, interaction, channel, language, player);
         break;
+      //Row 2
+      case "svoldown":
+        new ButtonVolumeDown(client, interaction, channel, language, player);
+        break;
+      case "srewind":
+        new ButtonRewind(client, interaction, channel, language, player);
+        break;
+      case "sclear":
+        new ButtonClear(client, interaction, channel, language, player);
+        break;
+      case "sforward":
+        new ButtonForward(client, interaction, channel, language, player);
+        break;
+      case "svolup":
+        new ButtonVolumeUp(client, interaction, channel, language, player);
+        break;
+      //Row 3
+      // case "ssave":
+      //   new ButtonSave(client, interaction, channel, language, player);
+      //   break;
+      // case "sautoplay":
+      //   new ButtonAutoPlay(client, interaction, channel, language, player);
+      //   break;
+      // case "slyrics":
+      //   new ButtonLyrics(client, interaction, channel, language, player);
+      //   break;
+      // case "sshuffle":
+      //   new ButtonShuffle(client, interaction, channel, language, player);
+      //   break;
+      // case "sfilterreset":
+      //   new ButtonFilterReset(client, interaction, channel, language, player);
+      // break;
       default:
         break;
     }
@@ -168,13 +206,16 @@ export class playerLoadContent {
     const result = await player.search(song, { requester: message.author });
     const tracks = result.tracks;
 
+    const queueEmbed = new EmbedBuilder()
+      .setColor(client.color)
+      .setDescription(`${client.i18n.get(language, "event.setup", "setup_content_emptylist")}`)
+      .setTitle(
+        `${client.i18n.get(language, "event.setup", "setup_content", { songs: player.queue.size.toString() })}`
+      );
+
     if (!result.tracks.length) {
       msg?.edit({
-        content: `${client.getString(language, "event.setup", "setup_content")}\n${`${client.getString(
-          language,
-          "event.setup",
-          "setup_content_empty"
-        )}`}`,
+        embeds: [queueEmbed],
       });
       return;
     }

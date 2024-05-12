@@ -15,7 +15,9 @@ export class playerLoadSetup {
     this.client = client;
     this.icons = this.client.config.bot.SAFE_ICONS_MODE ? SafeModeIcons : NormalModeIcons;
     this.registerDisableSwitch();
+    this.registerDisableSwitch2();
     this.registerEnableSwitch();
+    this.RegisterEnableSwitch2();
     this.registerEnableSwitchMod();
   }
   registerEnableSwitch() {
@@ -25,6 +27,16 @@ export class playerLoadSetup {
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("spause").setEmoji(this.icons.play),
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sskip").setEmoji(this.icons.skip),
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sloop").setEmoji(this.icons.loop),
+    ]);
+  }
+
+  RegisterEnableSwitch2() {
+    this.client.enSwitch2 = new ActionRowBuilder<ButtonBuilder>().addComponents([
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svoldown").setEmoji(this.icons.voldown),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("srewind").setEmoji(this.icons.arrow_previous),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sclear").setEmoji(this.icons.delete),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sforward").setEmoji(this.icons.arrow_next),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svolup").setEmoji(this.icons.volup),
     ]);
   }
 
@@ -40,31 +52,21 @@ export class playerLoadSetup {
 
   registerDisableSwitch() {
     this.client.diSwitch = new ActionRowBuilder<ButtonBuilder>().addComponents([
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Secondary)
-        .setCustomId("sstop")
-        .setEmoji(this.icons.stop)
-        .setDisabled(true),
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Secondary)
-        .setCustomId("sprevious")
-        .setEmoji(this.icons.previous)
-        .setDisabled(true),
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Secondary)
-        .setCustomId("spause")
-        .setEmoji(this.icons.play)
-        .setDisabled(true),
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Secondary)
-        .setCustomId("sskip")
-        .setEmoji(this.icons.skip)
-        .setDisabled(true),
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Secondary)
-        .setCustomId("sloop")
-        .setEmoji(this.icons.loop)
-        .setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sstop").setEmoji(this.icons.stop).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sprevious").setEmoji(this.icons.previous).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("spause").setEmoji(this.icons.play).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sskip").setEmoji(this.icons.skip).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sloop").setEmoji(this.icons.loop).setDisabled(true),
+    ]);
+  }
+
+  registerDisableSwitch2() {
+    this.client.diSwitch2 = new ActionRowBuilder<ButtonBuilder>().addComponents([
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svoldown").setEmoji(this.icons.voldown).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("srewind").setEmoji(this.icons.arrow_previous).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sclear").setEmoji(this.icons.delete).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sforward").setEmoji(this.icons.arrow_next).setDisabled(true),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svolup").setEmoji(this.icons.volup).setDisabled(true),
     ]);
   }
 }

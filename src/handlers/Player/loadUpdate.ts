@@ -48,6 +48,7 @@ export class playerLoadUpdate {
 
       let cSong = player.queue.current;
       let qDuration = `${new FormatDuration().parse(TotalDuration + Number(player.queue.current?.duration))}`;
+      let songsInQueue = player.queue.size > 11 ? player.queue.size - 10 : "Geen";
 
       function getTitle(tracks: RainlinkTrack): string {
         if (client.config.lavalink.AVOID_SUSPEND) return tracks.title;
@@ -55,6 +56,20 @@ export class playerLoadUpdate {
           return `[${tracks.title}](${tracks.uri})`;
         }
       }
+
+      let embedqueue = new EmbedBuilder()
+        .setColor(client.color)
+        .setTitle(
+          `${client.i18n.get(language, "event.setup", "setup_content", { songs: player.queue.size.toString() })}`
+        )
+        .setDescription(
+          `${Str == "" ? `${client.i18n.get(language, "event.setup", "setup_content_emptylist")}` : "\n" + Str}`
+        )
+        .setFooter({
+          text: `${client.i18n.get(language, "event.setup", "setup_content_queue_footer", {
+            songs: songsInQueue.toString(),
+          })}`,
+        });
 
       let embed = new EmbedBuilder()
         .setAuthor({
@@ -64,34 +79,25 @@ export class playerLoadUpdate {
         .setDescription(
           `${client.getString(language, "event.setup", "setup_desc", {
             title: getTitle(cSong!),
+            url: cSong!.uri ?? "",
             duration: new FormatDuration().parse(cSong!.duration),
             request: `${cSong!.requester}`,
           })}`
         ) // [${cSong.title}](${cSong.uri}) \`[${formatDuration(cSong.duration)}]\` • ${cSong.requester}
         .setColor(client.color)
-        .setImage(
-          `${
-            cSong!.artworkUrl
-              ? cSong!.artworkUrl
-              : `https://cdn.discordapp.com/avatars/${client.user!.id}/${client.user!.avatar}.jpeg?size=300`
-          }`
-        )
+        .setImage(`${cSong!.artworkUrl ? cSong!.artworkUrl : `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`}`)
         .setFooter({
           text: `${client.getString(language, "event.setup", "setup_footer", {
-            volume: `${player.volume}`,
+            songs: player.queue.size.toString(),
+            volume: `${Math.floor(player.volume * 100)}`,
             duration: qDuration,
           })}`,
         }); //Volume • ${player.volume}% | Total Duration • ${qDuration}
 
-      const queueString = `${client.getString(language, "event.setup", "setup_content")}\n${
-        Str == "" ? " " : "\n" + Str
-      }`;
-
       return await playMsg
         .edit({
-          content: player.queue.current && player.queue.size == 0 ? " " : queueString,
-          embeds: [embed],
-          components: [client.enSwitchMod],
+          embeds: [embedqueue, embed],
+          components: [client.enSwitchMod, client.enSwitch2],
         })
         .catch((e) => {});
     };
@@ -118,20 +124,24 @@ export class playerLoadUpdate {
 
       const language = guildModel;
 
-      const queueMsg = `${client.getString(language, "event.setup", "setup_queuemsg")}`;
+      const queueEmbed = new EmbedBuilder()
+        .setColor(client.color)
+        .setDescription(`${client.i18n.get(language, "event.setup", "setup_content_emptylist")}`)
+        .setTitle(
+          `${client.i18n.get(language, "event.setup", "setup_content", { songs: player.queue.size.toString() })}`
+        );
 
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)
         .setAuthor({
           name: `${client.getString(language, "event.setup", "setup_playembed_author")}`,
         })
-        .setImage(`https://cdn.discordapp.com/avatars/${client.user!.id}/${client.user!.avatar}.jpeg?size=300`);
+        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`);
 
       return await playMsg
         .edit({
-          content: `${queueMsg}`,
-          embeds: [playEmbed],
-          components: [client.diSwitch],
+          embeds: [queueEmbed, playEmbed],
+          components: [client.diSwitch, client.diSwitch2],
         })
         .catch((e) => {});
     };

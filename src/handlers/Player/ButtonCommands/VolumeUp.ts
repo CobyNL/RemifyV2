@@ -55,7 +55,7 @@ export class ButtonVolumeUp {
       });
       return;
     } else {
-      this.player.setVolume(this.player.volume * 100 + 10);
+      this.player.setVolume(this.player.volume + 10);
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()

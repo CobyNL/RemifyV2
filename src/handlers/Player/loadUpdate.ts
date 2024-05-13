@@ -89,7 +89,7 @@ export class playerLoadUpdate {
         .setFooter({
           text: `${client.getString(language, "event.setup", "setup_footer", {
             songs: player.queue.size.toString(),
-            volume: `${Math.floor(player.volume * 100)}`,
+            volume: `${Math.floor(player.volume)}`,
             duration: qDuration,
           })}`,
         }); //Volume • ${player.volume}% | Total Duration • ${qDuration}

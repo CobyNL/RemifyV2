@@ -5,11 +5,11 @@
 # something: ${DATA}
 
 bot:
-  TOKEN: "${TOKEN}"
+  TOKEN: ["${TOKEN}"]
   EMBED_COLOR: "#2B2D31"
   OWNER_ID: "458643079965179904"
   ADMIN: ["742406009099649187"]
-  LANGUAGE: "en" # You can set it to en, vi...
+  LANGUAGE: "nl" # You can set it to en, vi...
   LIMIT_TRACK: 50 # The number of tracks you want to limit
   LIMIT_PLAYLIST: 20 # The number of playlist you want to limit
   SAFE_ICONS_MODE: true # If the new icon doesn't appear, try changing this to true

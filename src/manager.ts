@@ -102,7 +102,7 @@ export class Manager extends Client {
     this.owner = this.config.bot.OWNER_ID;
     this.color = (this.config.bot.EMBED_COLOR || "#2b2d31") as ColorResolvable;
     this.i18n = new I18n({
-      defaultLocale: this.config.bot.LANGUAGE || "en",
+      defaultLocale: this.config.bot.LANGUAGE || "nl",
       directory: resolve(join(__dirname, "languages")),
     });
     this.prefix = this.config.features.MESSAGE_CONTENT.commands.prefix || "d!";

@@ -1,0 +1,32 @@
+# Invalid Number
+number_invalid: "`⚠️` | Geef een geldig nummer op!"
+
+# Execute when invalid
+no_node: "`⚠️` | Er is geen Lavalink server gevonden. Probeer het opnieuw na **5 Minuten**!"
+
+# No song is currently playing!
+no_player: "`⚠️` | Er is momenteel geen nummer aan het spelen!"
+
+# Need to join voice & same voice to use command!
+no_in_voice: "`⚠️` | Je bent niet in een spraakkanaal!"
+no_same_voice: "`⚠️` | Je bent niet in hetzelfde spraakkanaal als ik!"
+
+# No permission!
+no_perms: "`⚠️` | Ik heb geen **%{perm}** toestemming om deze opdracht uit te voeren!"
+no_perms_channel: "`⚠️` | Ik heb geen **%{perm}** toestemming in <#%{channel}> om deze opdracht uit te voeren!"
+
+# Getting error!
+unexpected_error: "`⚠️` | Er is iets fout gegaan. Probeer het later opnieuw!"
+
+# Client owner!
+owner_only: "`⚠️` | Je bent niet mijn **Eigenaar**!"
+
+# No premium Event!
+no_premium_author: "Premium"
+no_premium_desc: "`⚠️` | U bent geen Premium gebruiker!"
+
+# Rate limit!
+ratelimit: "`⚠️` | U voert te snel acties uit. Wacht alstublieft voor **%{time} Seconden**!"
+
+# Missing args
+arg_error: "`⚠️` | Ongeldig argument. Gebruik alstublieft %{text}"

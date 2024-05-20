@@ -1,0 +1,20 @@
+### Generate command!
+gen_author: "Genereren Premium"
+gen_desc: "`🔑` | **Gegenereerd** `[%{codes_length}]`\n```%{codes}```\n`💰` | **Plan:** `%{plan}`\n`📅` | **Verlopen:** `%{expires}`"
+gen_footer: "Redeem Premium • %{prefix}redeem <code>"
+
+### Profile command!
+profile_author: "Premium Profiel"
+profile_desc: "`👤` | **Gebruiker:** `%{user}`\n`💰` | **Plan:** `%{plan}`\n`📅` | **Verlopen:** `%{expires}`"
+
+### Redeem command!
+redeem_title: "Redeem Premium"
+redeem_desc: "`💰` | **Plan:** `%{plan}`\n`📅` | **Verlopen:** `%{expires}`"
+redeem_already: "`⚠️` | Je bent al een **Premium Gebruiker**!"
+redeem_invalid: "`⚠️` | Ongeldige Premium code. Gebruik een geldige code!"
+
+### Remove command!
+remove_desc: "`✅` | Succesvol verwijderd %{user}'s Premium!"
+remove_already: "`⚠️` | %{user} al verwijderd!"
+remove_no_params: "`⚠️` | Vermeld een **gebruiker** of geef een **gebruikers ID** op!"
+remove_404: "`⚠️` | %{userid} is geen **Premium Gebruiker**!"

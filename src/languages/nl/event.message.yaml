@@ -1,0 +1,12 @@
+### Help command!
+intro1: "・**%{bot}** is een geavanceerde muziekbot met rijke functies!"
+intro2: "・Aangedreven door **Coby.H**"
+intro3: "・........ **.. - ....**"
+prefix: "・**Bot Prefix:** %{prefix}"
+ver: "・**Bot Versie:** `%{botver}`"
+djs: "・**Discord.js:** `%{djsver}`"
+lavalink: "・**Autofix:** `%{aver}`"
+help1: "・**Om te starten:** %{help}"
+help2: "・**Voor meer info:** %{botinfo}"
+wel: "👋 Welkom bij %{bot}"
+codename: "・**Codename:** `%{codename}`"

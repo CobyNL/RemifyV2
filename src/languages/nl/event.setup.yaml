@@ -1,0 +1,30 @@
+### Setup handler!
+setup_queuemsg: "**__Wachtrij lijst:__**\nJoin een spraakkanaal en zet nummers in wachtrij op naam of URL."
+setup_playembed_author: "Er is momenteel geen nummer aan het spelen"
+
+### Update handler!
+setup_author: "Begon te spelen..."
+setup_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+setup_desc: "**[%{title}](%{url})** `[%{duration}]` • %{request}"
+setup_footer: "%{songs} • Nummers in de wachtrij | Volume • %{volume}% | %{duration} • Totale Duur"
+
+setup_content: "**Queue⠀•⠀%{songs} Nummers**"
+setup_content_queue: "*`%{index} • %{title} • [%{duration}]`* • %{request}"
+setup_content_queue_footer: "Wachtrij • %{songs} nummers aanvolgend"
+setup_content_empty: "Word lid van een spraakkanaal en speel nummers met behulp van naam of URL hier!"
+setup_content_emptylist: "> `LEEG` ```❌ Geen nummers in de wachtrij```"
+setup_content_queuesongs: "Er is geen aanvolgend lied in de queue"
+
+### Status command!
+status_create: "**`📊` | Statuskanaal gemaakt!**"
+status_delete: "**`📊` | Verwijderde statuskanaal!**"
+status_enable: "`⚠️` | Statuskanaal bestaat al!"
+status_null: "`⚠️` | Statuskanaal niet gevonden!"
+
+# Play!
+play_track: "`💾` | Wachtrij gezet **%{title}** `%{duration}` • %{request}"
+play_playlist: "`💾` | Wachtrij gezet **%{title}** `%{duration}` • (**%{songs} Nummers**) • %{request}"
+play_result: "`💾` | Wachtrij gezet **%{title}** `%{duration}` • %{request}"
+play_arg: "`⚠️` | Geef een geldige nummer naam of URL op!"
+play_match: "`⚠️` | Nummer niet gevonden!"
+play_emoji: "`⚠️` | Je kunt geen nummers spelen met Emoji!"

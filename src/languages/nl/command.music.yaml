@@ -1,0 +1,99 @@
+### Autoplay command!
+autoplay_on: "`✅` | Autoplay is nu **Enabled**!"
+autoplay_off: "`❌` | Autoplay is nu **Disabled**!"
+autoplay_already: "`⚠️` | Autoplay is al **%{mode}**!"
+
+### ClearQueue command!
+clearqueue_msg: "`🗑️` | Queue is **Gewist**!"
+
+### Forward command!
+forward_msg: "`⏩` | Doorgespoeld naar `%{duration}`"
+forward_beyond: "`⚠️` | Nummer gaat eindigen. Je kunt niet verder!"
+
+### Join command!
+join_msg: "`🔊` | Joined %{channel}"
+join_voice: "`⚠️` | U moet in een spraakkanaal zijn om deze opdracht te gebruiken!"
+join_already: "`⚠️` | Ik ben al in %{channel}"
+
+### Stop command!
+stop_msg: "`⏹️` | Stopte de **Speler**!"
+
+### Loop command!
+loop_current: "`🔁` | Looping huidig **Nummer**!"
+loop_all: "`🔁` | Looping **Wachtrij**!"
+unloop_all: "`❌` | Loop is nu **Uitgeschakeld**!"
+loop_invalid: "`⚠️` | Ongeldige Loop modus. Gebruik %{mode}!"
+loop_already: "`⚠️` | Loop modus is al **%{mode}**!"
+
+### Lyrics command!
+lyrics_title: "📜 %{song}"
+lyrics_notfound: "`⚠️` | Lyrics niet gevonden!"
+lyrics_toolong: "`⚠️` | Lyrics zijn te lang om te worden weergegeven!"
+
+### Nowplaying command!
+np_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+np_title: "Nu aan het spelen"
+np_current_duration: "`⏰` | Huidige duur: `[%{current_duration} / %{total_duration}]`"
+
+### Pause command!
+pause_msg: "`⏸️` | Pauzeerde de **Speler**!"
+
+### Play command!
+play_track: "`💾` | In de wachtrij gezet **%{title}** `%{duration}` • %{request}"
+play_playlist: "`💾` | In de wachtrij gezet **%{title}** `%{duration}` • (**%{songs} Nummers**) • %{request}"
+play_result: "`💾` | In de wachtrij gezet **%{title}** `%{duration}` • %{request}"
+play_arg: "`⚠️` | Geef een geldige nummernaam of URL op!"
+play_match: "`⚠️` | Nummer niet gevonden!"
+play_emoji: "`⚠️` | Je kunt geen nummers spelen met Emoji!"
+
+### File command!
+file_notfound: "`⚠️` | Geef een geldig bestand op!"
+play_invalid_file: "`⚠️` | Ongeldig bestandstype. Gebruik **mp3** of **ogg**!"
+play_warning_file: "`⚠️` | Ik kon het bestandstype niet detecteren. Gebruik alstublieft **mp3** of **ogg**!"
+
+### Previous command!
+previous_msg: "`⏮️` | Overgeslagen naar vorige **Nummer**!"
+previous_notfound: "`⚠️` | Er is geen eerder nummer gevonden!"
+
+### Queue command!
+queue_author: "💾 %{guild}"
+queue_description: "`📀` | Nu aan het spelen:\n**%{title}** `[%{duration}]` • %{request}\n\n`💤` | De rest van de wachtrij:**%{rest}**"
+queue_footer: "Pagina • %{page}/%{pages} | Nummers • %{queue_lang} | Totale duur • %{duration}"
+queue_notnumber: "`⚠️` | Geef een geldig paginanummer op!"
+queue_page_notfound: "`⚠️` | Er zijn alleen **%{page} Paginas**!"
+
+### Replay command!
+replay_msg: "`🔄` | Het **Nummer** opnieuw afgespeeld!"
+
+### Resume command!
+resume_msg: "`▶️` | Hervatte de **Speler**!"
+
+### Rewind command!
+rewind_msg: "`⏪` | Teruggespoeld naar `%{duration}`"
+rewind_beyond: "`⚠️` | Nummer is net begonnen. U kunt niet verder terug terugspoelen!"
+
+### RemoveTrack command!
+removetrack_desc: "`🗑️` | VERWIJDERD **%{name}** `%{duration}` • %{request}"
+removetrack_already: "`⚠️` | Ik kan geen nummer verwijderen dat al speelt!"
+removetrack_notfound: "`⚠️` | Nummer niet gevonden!"
+
+### Seek command!
+seek_msg: "`➿` | Gezocht naar `%{duration}`"
+seek_beyond: "`⚠️` | Je kunt niet verder gaan dan de duur van het liedje!"
+seek_invalid: "`⚠️` | Ongeldig zoeken duur. Gebruik een geldige tijdstempel. Voorbeeld: **1:30**!"
+
+### Shuffle command!
+shuffle_msg: "🔀 Wachtrij geshuffled"
+
+### Skip command!
+skip_msg: "`⏭️` | Het **Nummer** overgeslagen!"
+skip_notfound: "`⚠️` | Er is geen nummer gevonden om over te slaan!"
+
+### Volume command!
+volume_msg: "`🔊` | Volume is ingesteld op **%{volume}%**"
+volume_invalid: "`⚠️` | Ongeldig volume. Gebruik een nummer tussen **1** en **100**!"
+
+### RemoveTrack command!
+insert_desc: "`➕` | Toegevoegd **%{name}** `%{duration}` • %{request}"
+insert_already: "`⚠️` | Ik kan geen lied toevoegen dat al speelt!"
+insert_notfound: "`⚠️` | Nummer niet gevonden!"

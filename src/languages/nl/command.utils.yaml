@@ -1,0 +1,30 @@
+### Language command!
+lang_set: "`📙` | Taal is ingesteld op **%{language}**!"
+lang_change: "`📙` | Taal is gewijzigd in **%{language}**!"
+lang_perm: "`⚠️` | U hebt geen toestemming om deze opdracht te gebruiken!"
+provide_lang: "`⚠️` | Ongeldige taal. Gebruik alstublieft %{languages}!"
+
+### Shutdown command!
+restart_msg: "`🔌` | **Afsluiten**..."
+
+### Prefix command!
+prefix_set: "`㊙️` | Voorvoegsel is ingesteld op **%{prefix}**"
+prefix_change: "`㊙️` | Voorvoegsel is gewijzigd in **%{prefix}**"
+prefix_arg: "`⚠️` | Geef een geldig voorvoegsel op!"
+prefix_length: "`⚠️` | Voorvoegsel kan niet langer zijn dan **10 Tekens**!"
+
+### SongNoti command!
+songnoti_set: "`🔔` | Nummer notificaties zijn ingesteld **%{toggle}**!"
+songnoti_already: "`⚠️` | Nummer notificaties zijn al **%{mode}**!"
+
+### 24/7 command!
+247_on: "`✅` | 24/7 Modus is nu **Ingeschakeld**!"
+247_off: "`❌` | 24/7 Modus is nu **Uitgeschakeld**!"
+247_already: "`⚠️` | 24/7 Modus is al **%{mode}**!"
+
+### Setup command!
+setup_msg: "**`⚙️` | Creëerde muzieksysteem** %{channel}\n```Opmerking: verwijder geen berichten die door mij zijn verzonden zodat het muzieksysteem goed werkt!```"
+setup_deleted: "**`⚙️` | Verwijderd muzieksysteem!**"
+setup_topic: "⏹ **Stop**\n⏮️ **Vorig**\n⏯ **Pauzeren/hervatten**\n⏭️ **Skip**\n🔁 **Loop/Unloop**"
+setup_enable: "`⚠️` | Muzieksysteem bestaat al!"
+setup_null: "`⚠️` | Muzieksysteem niet gevonden!"

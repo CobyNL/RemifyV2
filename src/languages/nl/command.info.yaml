@@ -1,0 +1,34 @@
+### Developer command!
+dev_title: "Coby.H"
+dev_desc: "Ik ben gewoon een incognito ontwikkelaar. En een officiële maker van Remify!"
+dev_foot: "Overweeg om lid te worden van mijn server of mijn bots uit te nodigen :)"
+
+### Invite command!
+inv_title: "✉️ %{username}"
+inv_desc: "Bedankt dat je me hebt uitgenodigd!"
+
+### Ping command!
+ping_title: "🏓 "
+ping_desc: "**Ping:** `%{ping}ms`\n**Reactietijd:** `%{response}ms`"
+
+### Uptime command!
+uptime_title: "🕒 "
+uptime_desc: "**Uptime:** `%{uptime}`"
+
+### Help command!
+ce_finder_name: "**Command:**"
+ce_finder_des: "**Beschrijving:**"
+ce_finder_usage: "**Gebruik:**"
+ce_finder_access: "**Bereikbaar via:**"
+ce_finder_aliases: "**Aliassen:**"
+ce_finder_slash: "**Slash:**"
+ce_finder_des_no: "Geen beschrijving"
+ce_finder_usage_no: "geen gebruik"
+ce_finder_aliases_prefix: " [Prefix alleen]"
+ce_finder_aliases_no: "Geen Aliassen"
+ce_finder_slash_enable: "Ingeschakeld"
+ce_finder_slash_disable: "Gehandicapt"
+ce_finder_invalid: "Ongeldig Command"
+ce_finder_example: "`⚠️` | Geef een geldig **Command Naam**!"
+ce_name: "Help Command"
+ce_total: "Totaal Commands: "

@@ -22,7 +22,7 @@ export default class {
       if (!channel.isTextBased) return;
       const msg = await (channel as TextChannel).messages.fetch(setup.playmsg).catch(() => undefined);
       if (!msg) return;
-      msg.edit({ components: [client.enSwitch] });
+      msg.edit({ components: [client.enSwitch, client.enSwitch2] });
     }
   }
 }

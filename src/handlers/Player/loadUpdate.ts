@@ -49,6 +49,21 @@ export class PlayerUpdateLoader {
       let cSong = player.queue.current;
       let qDuration = `${new FormatDuration().parse(TotalDuration + Number(player.queue.current?.duration))}`;
       let songsInQueue = player.queue.size > 11 ? player.queue.size - 10 : "Geen";
+      const source = player.queue.current?.source;
+      let sourceIcon = "";
+      if (source === "youtube") {
+        sourceIcon =
+          "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-music-icon.png";
+      } else if (source === "soundcloud") {
+        sourceIcon =
+          "https://png.pngtree.com/element_our/png/20180827/soundcloud-music-stream-social-media-icon-png_71808.jpg";
+      } else if (source === "spotify") {
+        sourceIcon = "https://www.logo.wine/a/logo/Spotify/Spotify-Icon-White-Dark-Background-Logo.wine.svg";
+      } else {
+        sourceIcon = client.user
+          ? client.user.displayAvatarURL()
+          : "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3AtczYwLWFrZTk4NzUtY2hpbS1sLWpvYjc4OC5wbmc.png";
+      }
 
       function getTitle(tracks: RainlinkTrack): string {
         if (client.config.lavalink.AVOID_SUSPEND) return tracks.title;
@@ -92,6 +107,7 @@ export class PlayerUpdateLoader {
             volume: `${Math.floor(player.volume)}`,
             duration: qDuration,
           })}`,
+          iconURL: `${sourceIcon}`,
         }); //Volume • ${player.volume}% | Total Duration • ${qDuration}
 
       return await playMsg

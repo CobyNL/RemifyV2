@@ -16,7 +16,11 @@ export default class {
     client.logger.info("TrackEnd", `Track ended in @ ${guild!.name} / ${player.guildId}`);
 
     /////////// Update Music Setup //////////
-    await client.UpdateMusic(player);
+
+    if (player.queue.length === 0 && !player.queue.current) {
+      await client.UpdateMusic(player);
+    }
+
     /////////// Update Music Setup ///////////
 
     client.emit("playerEnd", player);

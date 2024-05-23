@@ -1,7 +1,6 @@
 import { createLogger, transports, format, Logger } from "winston";
-const { timestamp, prettyPrint, printf } = format;
 import chalk from "chalk";
-import util from "node:util";
+import util from "util";
 import { Manager } from "../manager.js";
 import { EmbedBuilder, TextChannel } from "discord.js";
 
@@ -11,9 +10,25 @@ type InfoDataType = {
   timestamp?: string;
 };
 
+enum LogLevel {
+  ERROR = "error",
+  WARN = "warn",
+  INFO = "info",
+  DEBUG = "debug",
+  WEBSOCKET = "websocket",
+  LAVALINK = "lavalink",
+  LOADER = "loader",
+  SETUP = "setup",
+  DEPLOY = "deploy",
+  UNHANDLED = "unhandled",
+}
+
 export class LoggerService {
   private preLog: Logger;
   private padding = 28;
+  private discordLogQueue: { type: LogLevel; message: string; className: string }[] = [];
+  private discordLogInterval: NodeJS.Timeout | null = null;
+
   constructor(
     private client: Manager,
     private tag: number
@@ -31,163 +46,178 @@ export class LoggerService {
         debug: 8,
         unhandled: 9,
       },
-
       transports: [
         new transports.Console({
-          level: "unhandled",
+          level: LogLevel.UNHANDLED,
           format: this.consoleFormat,
         }),
-
         new transports.File({
-          level: "unhandled",
-          filename: "./logs/byteblaze.log",
+          level: LogLevel.UNHANDLED,
+          filename: "./logs/remify.log",
           format: this.fileFormat,
         }),
       ],
     });
+    this.discordLogInterval = setInterval(() => {
+      this.sendDiscordLogs();
+    }, 5000);
   }
 
   public info(className: string, msg: string) {
-    return this.preLog.log({
-      level: "info",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.INFO, className, msg);
   }
 
   public debug(className: string, msg: string) {
-    this.preLog.log({
-      level: "debug",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
-    return;
+    this.log(LogLevel.DEBUG, className, msg);
   }
 
   public warn(className: string, msg: string) {
-    this.preLog.log({
-      level: "warn",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
-    this.sendDiscord("warning", msg, className);
-    return;
+    this.log(LogLevel.WARN, className, msg);
   }
 
   public error(className: string, msg: unknown) {
-    this.preLog.log({
-      level: "error",
-      message: `${className.padEnd(this.padding)} | ${util.inspect(msg)}`,
-    });
-    this.sendDiscord("error", util.inspect(msg), className);
-    return;
+    this.log(LogLevel.ERROR, className, util.inspect(msg));
   }
 
   public lavalink(className: string, msg: string) {
-    return this.preLog.log({
-      level: "lavalink",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.LAVALINK, className, msg);
   }
 
   public loader(className: string, msg: string) {
-    return this.preLog.log({
-      level: "loader",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.LOADER, className, msg);
   }
 
   public setup(className: string, msg: string) {
-    return this.preLog.log({
-      level: "setup",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.SETUP, className, msg);
   }
 
   public websocket(className: string, msg: string) {
-    return this.preLog.log({
-      level: "websocket",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.WEBSOCKET, className, msg);
   }
 
   public deploy(className: string, msg: string) {
-    return this.preLog.log({
-      level: "deploy",
-      message: `${className.padEnd(this.padding)} | ${msg}`,
-    });
+    this.log(LogLevel.DEPLOY, className, msg);
   }
 
   public unhandled(className: string, msg: unknown) {
+    this.log(LogLevel.UNHANDLED, className, util.inspect(msg));
+  }
+
+  private log(level: LogLevel, className: string, msg: string) {
     this.preLog.log({
-      level: "unhandled",
-      message: `${className.padEnd(this.padding)} | ${util.inspect(msg)}`,
+      level,
+      message: `${className.padEnd(this.padding)} | ${msg}`,
     });
-    this.sendDiscord("unhandled", util.inspect(msg), className);
-    return;
+    this.queueDiscordLog(level, msg, className);
   }
 
   private filter(info: InfoDataType) {
     const pad = 9;
-
-    switch (info.level) {
-      case "info":
-        return chalk.hex("#00CFF0")(info.level.toUpperCase().padEnd(pad));
-      case "debug":
-        return chalk.hex("#F5A900")(info.level.toUpperCase().padEnd(pad));
-      case "warn":
-        return chalk.hex("#FBEC5D")(info.level.toUpperCase().padEnd(pad));
-      case "error":
-        return chalk.hex("#e12885")(info.level.toUpperCase().padEnd(pad));
-      case "lavalink":
-        return chalk.hex("#ffc61c")(info.level.toUpperCase().padEnd(pad));
-      case "loader":
-        return chalk.hex("#4402f7")(info.level.toUpperCase().padEnd(pad));
-      case "setup":
-        return chalk.hex("#f7f702")(info.level.toUpperCase().padEnd(pad));
-      case "websocket":
-        return chalk.hex("#00D100")(info.level.toUpperCase().padEnd(pad));
-      case "deploy":
-        return chalk.hex("#7289da")(info.level.toUpperCase().padEnd(pad));
-      case "unhandled":
-        return chalk.hex("#ff0000")(info.level.toUpperCase().padEnd(pad));
-    }
+    const colors: { [key in LogLevel]: string } = {
+      [LogLevel.INFO]: "#00CFF0",
+      [LogLevel.DEBUG]: "#F5A900",
+      [LogLevel.WARN]: "#FBEC5D",
+      [LogLevel.ERROR]: "#e12885",
+      [LogLevel.LAVALINK]: "#ffc61c",
+      [LogLevel.LOADER]: "#4402f7",
+      [LogLevel.SETUP]: "#f7f702",
+      [LogLevel.WEBSOCKET]: "#00D100",
+      [LogLevel.DEPLOY]: "#7289da",
+      [LogLevel.UNHANDLED]: "#ff0000",
+    };
+    return chalk.hex(colors[info.level as LogLevel])(info.level.toUpperCase().padEnd(pad));
   }
 
   private get consoleFormat() {
-    const colored = chalk.hex("#86cecb")("|");
-    const timeStamp = (info: InfoDataType) => chalk.hex("#00ddc0")(info.timestamp);
-    const botTag = chalk.hex("#2aabf3")(`bot_${this.tag}`);
-    const msg = (info: InfoDataType) => chalk.hex("#86cecb")(info.message);
+    const colored = chalk.hex("#555554")("|");
+    const timeStamp = (info: InfoDataType) =>
+      chalk.hex("#555554")(
+        `[${new Date(info.timestamp!).toLocaleDateString("en-GB")}] [${new Date(info.timestamp!).toLocaleTimeString("en-GB")}]`
+      );
+    const botTag = chalk.hex("#ffffff")(`bot_${this.tag}`);
+    const msg = (info: InfoDataType) => chalk.hex("#ffffff")(info.message);
     return format.combine(
-      timestamp(),
-      printf((info: InfoDataType) => {
+      format.timestamp(),
+      format.printf((info: InfoDataType) => {
         return `${timeStamp(info)} ${colored} ${botTag} ${colored} ${this.filter(info)} ${colored} ${msg(info)}`;
       })
     );
   }
 
   private get fileFormat() {
-    return format.combine(timestamp(), prettyPrint());
+    return format.combine(
+      format.timestamp(),
+      format.printf((info: InfoDataType) => {
+        return `[${new Date(info.timestamp!).toLocaleDateString("en-GB")}] [${new Date(info.timestamp!).toLocaleTimeString("en-GB")}] ${info.level.toUpperCase()} | ${info.message}`;
+      })
+    );
   }
 
-  private async sendDiscord(type: string, message: string, className: string) {
-    const channelId = this.client.config.features.LOG_CHANNEL;
-    if (!channelId || channelId.length == 0) return;
+  private queueDiscordLog(type: LogLevel, message: string, className: string) {
+    this.discordLogQueue.push({ type, message, className });
+  }
+
+  private async sendDiscordLogs() {
+    if (this.discordLogQueue.length === 0) return;
+
+    const logBatch = this.discordLogQueue;
+    this.discordLogQueue = [];
+
     try {
-      const channel = (await this.client.channels.fetch(channelId).catch(() => undefined)) as TextChannel;
-      if (!channel || !channel.isTextBased()) return;
-      let embed = null;
-      if (message.length > 4096) {
-        embed = new EmbedBuilder()
-          .setDescription("Logs too long to display! please check your host!")
-          .setTitle(`${type} from ${className}`)
-          .setColor(this.client.color);
-      } else {
-        embed = new EmbedBuilder()
-          .setDescription(message)
-          .setTitle(`${type} from ${className}`)
-          .setColor(this.client.color);
+      const channel = (await this.client.channels
+        .fetch(this.client.config.features.LOG_CHANNEL)
+        .catch(() => undefined)) as TextChannel;
+
+      if (!channel?.isTextBased()) return;
+
+      const logMessages: { [key in LogLevel]: string[] } = {
+        [LogLevel.ERROR]: [],
+        [LogLevel.WARN]: [],
+        [LogLevel.INFO]: [],
+        [LogLevel.DEBUG]: [],
+        [LogLevel.WEBSOCKET]: [],
+        [LogLevel.LAVALINK]: [],
+        [LogLevel.LOADER]: [],
+        [LogLevel.SETUP]: [],
+        [LogLevel.DEPLOY]: [],
+        [LogLevel.UNHANDLED]: [],
+      };
+
+      for (const { type, message, className } of logBatch) {
+        logMessages[type].push(`・${message} > [${className}]`);
       }
 
-      await channel.messages.channel.send({ embeds: [embed] });
-    } catch (err) {}
+      const embeds: EmbedBuilder[] = [];
+
+      for (const [type, messages] of Object.entries(logMessages)) {
+        if (messages.length > 0) {
+          const combinedMessage = messages.join("\n");
+          if (combinedMessage.length > 4096) {
+            const chunks = combinedMessage.match(/[\s\S]{1,4096}/g) || [];
+            for (const chunk of chunks) {
+              embeds.push(
+                new EmbedBuilder()
+                  .setTitle(`${type.charAt(0).toUpperCase() + type.slice(1)} Logs`)
+                  .setDescription(`\`\`\`\n${chunk}\n\`\`\``)
+                  .setColor(this.client.color)
+              );
+            }
+          } else {
+            embeds.push(
+              new EmbedBuilder()
+                .setTitle(`${type.charAt(0).toUpperCase() + type.slice(1)} Logs`)
+                .setDescription(`\`\`\`\n${combinedMessage}\n\`\`\``)
+                .setColor(this.client.color)
+            );
+          }
+        }
+      }
+
+      for (const embed of embeds) {
+        await channel.send({ embeds: [embed] });
+      }
+    } catch (err) {
+      console.error("Failed to send Discord logs:", err);
+    }
   }
 }

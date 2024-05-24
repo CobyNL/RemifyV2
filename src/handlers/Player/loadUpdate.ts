@@ -3,6 +3,12 @@ import { EmbedBuilder, TextChannel } from "discord.js";
 import { FormatDuration } from "../../utilities/FormatDuration.js";
 import { RainlinkPlayer, RainlinkTrack } from "../../rainlink/main.js";
 
+const youtubeIcon =
+  "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-music-icon.png";
+const soundcloudIcon =
+  "https://png.pngtree.com/element_our/png/20180827/soundcloud-music-stream-social-media-icon-png_71808.jpg";
+const spotifyIcon = "https://i.imgur.com/nC9RLL4.png";
+
 export class PlayerUpdateLoader {
   client: Manager;
   constructor(client: Manager) {
@@ -36,6 +42,7 @@ export class PlayerUpdateLoader {
             index: `${i + 1}`,
             title: song.title,
             duration: new FormatDuration().parse(song.duration),
+            source: getSourceEmoji(song.source),
             request: `${song.requester}`,
           })}`
       );
@@ -52,31 +59,33 @@ export class PlayerUpdateLoader {
       const source = player.queue.current?.source;
       let sourceIcon = "";
       if (source === "youtube") {
-        sourceIcon =
-          "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-music-icon.png";
+        sourceIcon = `${youtubeIcon}`;
       } else if (source === "soundcloud") {
-        sourceIcon =
-          "https://png.pngtree.com/element_our/png/20180827/soundcloud-music-stream-social-media-icon-png_71808.jpg";
+        sourceIcon = `${soundcloudIcon}`;
       } else if (source === "spotify") {
-        sourceIcon = "https://www.logo.wine/a/logo/Spotify/Spotify-Icon-White-Dark-Background-Logo.wine.svg";
+        sourceIcon = `${spotifyIcon}`;
       } else {
         sourceIcon = client.user
           ? client.user.displayAvatarURL()
-          : "https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3AtczYwLWFrZTk4NzUtY2hpbS1sLWpvYjc4OC5wbmc.png";
+          : "https://cdn.discordapp.com/avatars/1041773236603596861/63fa890b6e1aa51ff0334083dfeafa37.webp?size=80";
       }
 
-      function getTitle(tracks: RainlinkTrack): string {
-        if (client.config.lavalink.AVOID_SUSPEND) return tracks.title;
-        else {
-          return `[${tracks.title}](${tracks.uri})`;
+      function getSourceEmoji(source: string): string {
+        switch (source) {
+          case "youtube":
+            return `<:YoutubeMusic:1243364353877606472>`;
+          case "soundcloud":
+            return `<:Soundcloud:1032048037096341585>`;
+          case "spotify":
+            return `<:Spotify:988224333128298516>`;
+          default:
+            return "";
         }
       }
 
       let embedqueue = new EmbedBuilder()
         .setColor(client.color)
-        .setTitle(
-          `${client.i18n.get(language, "event.setup", "setup_content", { songs: player.queue.size.toString() })}`
-        )
+        .setTitle(`${client.i18n.get(language, "event.setup", "setup_content")}`)
         .setDescription(
           `${Str == "" ? `${client.i18n.get(language, "event.setup", "setup_content_emptylist")}` : "\n" + Str}`
         )
@@ -93,7 +102,7 @@ export class PlayerUpdateLoader {
         })
         .setDescription(
           `${client.getString(language, "event.setup", "setup_desc", {
-            title: getTitle(cSong!),
+            title: cSong!.title ?? "",
             url: cSong!.uri ?? "",
             duration: new FormatDuration().parse(cSong!.duration),
             request: `${cSong!.requester}`,
@@ -150,9 +159,23 @@ export class PlayerUpdateLoader {
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)
         .setAuthor({
-          name: `${client.getString(language, "event.setup", "setup_playembed_author")}`,
+          name: `${client.getString(language, "event.setup", "setup_playembed_author", {
+            author: "Remify",
+          })}`,
+          iconURL: `https://cdn.discordapp.com/avatars/1041773236603596861/63fa890b6e1aa51ff0334083dfeafa37.webp?size=80`,
         })
-        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`);
+        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
+        .setDescription(
+          `${client.getString(language, "event.setup", "setup_playembed_desc", {
+            clientId: client.user?.id ?? "987345021441298516",
+          })}`
+        )
+        .setFooter({
+          text: `${client.getString(language, "event.setup", "setup_playembed_footer", {
+            prefix: "/",
+            maker: "Coby.Hツ#6166",
+          })}`,
+        });
 
       return await playMsg
         .edit({

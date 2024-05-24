@@ -1,6 +1,6 @@
 import { createLogger, transports, format, Logger } from "winston";
 import chalk from "chalk";
-import util from "util";
+import util from "node:util";
 import { Manager } from "../manager.js";
 import { EmbedBuilder, TextChannel } from "discord.js";
 
@@ -154,6 +154,16 @@ export class LoggerService {
   }
 
   private queueDiscordLog(type: LogLevel, message: string, className: string) {
+    if (
+      !this.client.config.features.LOG_EVERYTHING &&
+      type !== LogLevel.ERROR &&
+      type !== LogLevel.WARN &&
+      type !== LogLevel.UNHANDLED &&
+      type !== LogLevel.DEBUG
+    ) {
+      return;
+    }
+
     this.discordLogQueue.push({ type, message, className });
   }
 
@@ -184,7 +194,17 @@ export class LoggerService {
       };
 
       for (const { type, message, className } of logBatch) {
-        logMessages[type].push(`・${message} > [${className}]`);
+        if (
+          !this.client.config.features.LOG_EVERYTHING &&
+          type !== LogLevel.ERROR &&
+          type !== LogLevel.WARN &&
+          type !== LogLevel.UNHANDLED &&
+          type !== LogLevel.DEBUG
+        ) {
+          continue;
+        }
+
+        logMessages[type].push(`[${className}][bot_${this.tag}] >\n・${message} `);
       }
 
       const embeds: EmbedBuilder[] = [];

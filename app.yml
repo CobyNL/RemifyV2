@@ -12,7 +12,7 @@ bot:
   LANGUAGE: "nl" # You can set it to en, vi...
   LIMIT_TRACK: 50 # The number of tracks you want to limit
   LIMIT_PLAYLIST: 20 # The number of playlist you want to limit
-  SAFE_ICONS_MODE: true # If the new icon doesn't appear, try changing this to true
+  SAFE_ICONS_MODE: false # If the new icon doesn't appear, try changing this to true
   DELETE_MSG_TIMEOUT: 3000
   DEBUG_MODE: false
 
@@ -34,7 +34,7 @@ lavalink:
   DEFAULT_VOLUME: 100 # Must not over 1000 or bot crash
 
   # Enable this to avoid your bot get suspended (Recommended to be enable)
-  AVOID_SUSPEND: true
+  AVOID_SUSPEND: false
 
   # You can add more Lavalink servers!
   NODES:
@@ -66,6 +66,8 @@ features:
   GUILD_LOG_CHANNEL: "1190180520542359552"
   # Log all unhandled, error, warnings on discord
   LOG_CHANNEL: "1190180520542359552"
+  # Log all the levels of the console
+  LOG_EVERYTHING: false # Log all the levels of the console except warn, error and unhandled
 
   DATABASE:
     # Note: If you enter an invalid driver, bot will use json driver as default

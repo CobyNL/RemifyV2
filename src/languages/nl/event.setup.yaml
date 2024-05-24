@@ -1,6 +1,8 @@
 ### Setup handler!
 setup_queuemsg: "**__Wachtrij lijst:__**\nJoin een spraakkanaal en zet nummers in wachtrij op naam of URL."
-setup_playembed_author: "Er is momenteel geen nummer aan het spelen"
+setup_playembed_author: "%{author}  •  Geen nummer dat momenteel speelt."
+setup_playembed_desc: "```fix\nJoin een spraakkanaal en geef een NAAM/LINK van een nummer in om af te spelen.\n```\n⠀<:add:1108453799749754890> [INVITE REMIFY](https://discord.com/api/oauth2/authorize?client_id=%{clientId}&permissions=2184310032&scope=bot%20applications.commands)⠀ ⠀⠀⠀•⠀⠀⠀ ⠀<:discord:1108126451502428334> [SUPPORT SERVER](https://discord.gg/...)"
+setup_playembed_footer: "Prefix is: %{prefix}  •  Bewerkt door %{maker}"
 
 ### Update handler!
 setup_author: "Begon te spelen..."
@@ -8,8 +10,8 @@ setup_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
 setup_desc: "**[%{title}](%{url})** `[%{duration}]` • %{request}"
 setup_footer: "%{songs} • Nummers in de wachtrij | Volume • %{volume}% | %{duration} • Totale Duur"
 
-setup_content: "**Queue⠀•⠀%{songs} Nummers**"
-setup_content_queue: "*`%{index} • %{title} • [%{duration}]`* • %{request}"
+setup_content: "**Queue⠀•⠀Remify Muziek**"
+setup_content_queue: "%{source} • *`%{index} • %{title} • [%{duration}]`* • [%{request}]"
 setup_content_queue_footer: "Wachtrij • %{songs} nummers aanvolgend"
 setup_content_empty: "Word lid van een spraakkanaal en speel nummers met behulp van naam of URL hier!"
 setup_content_emptylist: "> `LEEG` ```❌ Geen nummers in de wachtrij```"

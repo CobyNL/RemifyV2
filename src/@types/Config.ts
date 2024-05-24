@@ -28,6 +28,7 @@ export interface Features {
   PREMIUM_LOG_CHANNEL: string;
   GUILD_LOG_CHANNEL: string;
   LOG_CHANNEL: string;
+  LOG_EVERYTHING: boolean;
 }
 
 export interface AutofixLavalink {

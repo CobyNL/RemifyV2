@@ -55,6 +55,9 @@ export class LoggerService {
           level: LogLevel.UNHANDLED,
           filename: "./logs/remify.log",
           format: this.fileFormat,
+          maxsize: 10485760, // 10MB
+          maxFiles: 5,
+          tailable: true,
         }),
       ],
     });

@@ -16,8 +16,10 @@ export class PlayerSetupLoader {
     this.icons = this.client.config.bot.SAFE_ICONS_MODE ? SafeModeIcons : NormalModeIcons;
     this.registerDisableSwitch();
     this.registerDisableSwitch2();
+    this.RegisterDisableSwitch3();
     this.registerEnableSwitch();
     this.RegisterEnableSwitch2();
+    this.RegisterEnableSwitch3();
     this.registerEnableSwitchMod();
   }
   registerEnableSwitch() {
@@ -34,9 +36,19 @@ export class PlayerSetupLoader {
     this.client.enSwitch2 = new ActionRowBuilder<ButtonBuilder>().addComponents([
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svoldown").setEmoji(this.icons.voldown),
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("srewind").setEmoji(this.icons.arrow_previous),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sclear").setEmoji(this.icons.delete),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("smute").setEmoji(this.icons.mute),
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sforward").setEmoji(this.icons.arrow_next),
       new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svolup").setEmoji(this.icons.volup),
+    ]);
+  }
+
+  RegisterEnableSwitch3() {
+    this.client.enSwitch3 = new ActionRowBuilder<ButtonBuilder>().addComponents([
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sautoplay").setEmoji(this.icons.autoplay),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sdelete").setEmoji(this.icons.delete),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("ssave").setEmoji(this.icons.save),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sshuffle").setEmoji(this.icons.shuffle),
+      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sfilterreset").setEmoji(this.icons.filterreset),
     ]);
   }
 
@@ -94,8 +106,8 @@ export class PlayerSetupLoader {
         .setDisabled(true),
       new ButtonBuilder()
         .setStyle(ButtonStyle.Secondary)
-        .setCustomId("sclear")
-        .setEmoji(this.icons.delete)
+        .setCustomId("smute")
+        .setEmoji(this.icons.mute)
         .setDisabled(true),
       new ButtonBuilder()
         .setStyle(ButtonStyle.Secondary)
@@ -106,6 +118,36 @@ export class PlayerSetupLoader {
         .setStyle(ButtonStyle.Secondary)
         .setCustomId("svolup")
         .setEmoji(this.icons.volup)
+        .setDisabled(true),
+    ]);
+  }
+
+  RegisterDisableSwitch3() {
+    this.client.diSwitch3 = new ActionRowBuilder<ButtonBuilder>().addComponents([
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sautoplay")
+        .setEmoji(this.icons.autoplay)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sdelete")
+        .setEmoji(this.icons.delete)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("ssave")
+        .setEmoji(this.icons.save)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sshuffle")
+        .setEmoji(this.icons.shuffle)
+        .setDisabled(true),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sfilterreset")
+        .setEmoji(this.icons.filterreset)
         .setDisabled(true),
     ]);
   }

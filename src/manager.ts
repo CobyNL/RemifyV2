@@ -64,8 +64,10 @@ export class Manager extends Client {
   public UpdateQueueMsg!: (player: RainlinkPlayer) => Promise<void | Message<true>>;
   public enSwitch!: ActionRowBuilder<ButtonBuilder>;
   public enSwitch2!: ActionRowBuilder<ButtonBuilder>;
+  public enSwitch3!: ActionRowBuilder<ButtonBuilder>;
   public diSwitch!: ActionRowBuilder<ButtonBuilder>;
   public diSwitch2!: ActionRowBuilder<ButtonBuilder>;
+  public diSwitch3!: ActionRowBuilder<ButtonBuilder>;
   public enSwitchMod!: ActionRowBuilder<ButtonBuilder>;
   public topgg?: TopggService;
   public icons: IconType;

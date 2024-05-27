@@ -122,7 +122,7 @@ export class PlayerUpdateLoader {
       return await playMsg
         .edit({
           embeds: [embedqueue, embed],
-          components: [client.enSwitchMod, client.enSwitch2],
+          components: [client.enSwitchMod, client.enSwitch2, client.enSwitch3],
         })
         .catch((e) => {});
     };
@@ -180,7 +180,7 @@ export class PlayerUpdateLoader {
       return await playMsg
         .edit({
           embeds: [queueEmbed, playEmbed],
-          components: [client.diSwitch, client.diSwitch2],
+          components: [client.diSwitch, client.diSwitch2, client.diSwitch3],
         })
         .catch((e) => {});
     };

@@ -1,15 +1,23 @@
 export type IconType = {
+  //row 1
+  stop: string;
+  previous: string;
   play: string;
   pause: string;
-  loop: string;
-  shuffle: string;
-  stop: string;
   skip: string;
-  previous: string;
+  loop: string;
+  //row 2
   voldown: string;
-  volup: string;
-  arrow_next: string;
   arrow_previous: string;
-  queue: string;
+  mute: string;
+  arrow_next: string;
+  volup: string;
+  //row 3
+  autoplay: string;
   delete: string;
+  save: string;
+  shuffle: string;
+  filterreset: string;
+  // etc
+  queue: string;
 };

@@ -12,7 +12,12 @@ import { ButtonVolumeDown } from "./ButtonCommands/VolumeDown.js";
 import { ButtonVolumeUp } from "./ButtonCommands/VolumeUp.js";
 import { ButtonForward } from "./ButtonCommands/ButtonForward.js";
 import { ButtonRewind } from "./ButtonCommands/ButtonRewind.js";
-import { ButtonClear } from "./ButtonCommands/Clear.js";
+import { ButtonMute } from "./ButtonCommands/Mute.js";
+import { ButtonDelete } from "./ButtonCommands/Delete.js";
+import { ButtonShuffle } from "./ButtonCommands/Shuffle.js";
+import { ButtonSave } from "./ButtonCommands/Save.js";
+import { ButtonAutoplay } from "./ButtonCommands/AutoPlay.js";
+import { ButtonFilterReset } from "./ButtonCommands/FilterReset.js";
 import { RateLimitManager } from "@sapphire/ratelimits";
 import { RainlinkTrack } from "../../rainlink/main.js";
 const rateLimitManager = new RateLimitManager(2000);
@@ -81,8 +86,8 @@ export class PlayerContentLoader {
       case "srewind":
         new ButtonRewind(client, interaction, channel, language, player);
         break;
-      case "sclear":
-        new ButtonClear(client, interaction, channel, language, player);
+      case "smute":
+        new ButtonMute(client, interaction, channel, language, player);
         break;
       case "sforward":
         new ButtonForward(client, interaction, channel, language, player);
@@ -91,21 +96,21 @@ export class PlayerContentLoader {
         new ButtonVolumeUp(client, interaction, channel, language, player);
         break;
       //Row 3
-      // case "ssave":
-      //   new ButtonSave(client, interaction, channel, language, player);
-      //   break;
-      // case "sautoplay":
-      //   new ButtonAutoPlay(client, interaction, channel, language, player);
-      //   break;
-      // case "slyrics":
-      //   new ButtonLyrics(client, interaction, channel, language, player);
-      //   break;
-      // case "sshuffle":
-      //   new ButtonShuffle(client, interaction, channel, language, player);
-      //   break;
-      // case "sfilterreset":
-      //   new ButtonFilterReset(client, interaction, channel, language, player);
-      // break;
+      case "sautoplay":
+        new ButtonAutoplay(client, interaction, channel, language, player);
+        break;
+      case "sdelete":
+        new ButtonDelete(client, interaction, channel, language, player);
+        break;
+      case "ssave":
+        new ButtonSave(client, interaction, channel, language, player);
+        break;
+      case "sshuffle":
+        new ButtonShuffle(client, interaction, channel, language, player);
+        break;
+      case "sfilterreset":
+        new ButtonFilterReset(client, interaction, channel, language, player);
+        break;
       default:
         break;
     }

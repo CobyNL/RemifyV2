@@ -1,15 +1,23 @@
 export const NormalModeIcons = {
-  play: "<:play:1108133449606385765>",
-  pause: "<:pause:1108129162675372033>",
-  loop: "<:loop:1108132461977808906>",
-  shuffle: "<:shuffle:1108126492560478288>",
-  stop: "<:stop:1108130442785341561>",
-  skip: "<:skip:1108126498214383657>",
-  previous: "<:terug:1108126503042027520>",
-  voldown: "<:volumeup:1108126459991703572>",
-  volup: "<:volumeup:1108126459991703572>",
-  arrow_next: "<:spoel:1108126499434938378>",
-  arrow_previous: "<:spoelterug:1108127879092514928>",
+  //row 1
+  stop: "<:stop:1244466029246283817>",
+  previous: "<:previous:1244466032408526898>",
+  play: "<:play:1244466030361972787>",
+  pause: "<:pause:1244466031393767484>",
+  skip: "<:skip:1244466035361583125>",
+  loop: "<:loop:1244466033985716334>",
+  //row 2
+  voldown: "<:volumed:1244466774599139328>",
+  arrow_previous: "<:previous:1244466783289872444>",
+  mute: "<:mute:1244466777195544707>",
+  arrow_next: "<:forward:1244466776096641094>",
+  volup: "<:volumeu:1244466784837308476>",
+  //row 3
+  autoplay: "<:autoplay:1244467333846794292>",
+  delete: "<:queued:1244467333075046420>",
+  save: "<:save:1244467337633988639>",
+  shuffle: "<:shuffle:1244467335964655638>",
+  filterreset: "<:filterr:1244467335306416222>",
+  // etc
   queue: "<:1094320089358139402:1108126477427409018>",
-  delete: "<:deletequeue:1108238667220271216>",
 };

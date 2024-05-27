@@ -2,7 +2,7 @@ import { ButtonInteraction, EmbedBuilder, TextChannel, VoiceBasedChannel } from 
 import { Manager } from "../../../manager.js";
 import { RainlinkPlayer } from "../../../rainlink/main.js";
 
-export class ButtonClear {
+export class ButtonMute {
   client: Manager;
   interaction: ButtonInteraction;
   channel: VoiceBasedChannel | null;
@@ -55,15 +55,21 @@ export class ButtonClear {
       });
       return;
     } else {
-      this.player.queue.clear();
-      this.interaction.reply({
+      const newMuteState = !this.player.mute;
+      this.player.setMute(newMuteState);
+      await this.player.setVolume(newMuteState ? 0 : 100);
+
+      await this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "event.setup", "clear_queue")}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "player", "mute", {
+                state: newMuteState ? "enabled" : "disabled",
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
-      await this.client.UpdateQueueMsg(this.player);
     }
   }
 }

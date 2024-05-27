@@ -1,15 +1,23 @@
 export const SafeModeIcons = {
+  //row 1
+  stop: "⏹️",
+  previous: "⏪",
   play: "▶️",
   pause: "⏸️",
-  loop: "🔁",
-  shuffle: "🔀",
-  stop: "⏹️",
   skip: "⏩",
-  previous: "⏪",
+  loop: "🔁",
+  //row 2
   voldown: "🔉",
-  volup: "🔊",
-  arrow_next: "➡",
   arrow_previous: "⬅",
-  queue: "📋",
+  mute: "🔇",
+  arrow_next: "➡",
+  volup: "🔊",
+  //row 3
+  autoplay: "🔂",
   delete: "🗑",
+  save: "💾",
+  shuffle: "🔀",
+  filterreset: "🔃",
+  // etc
+  queue: "📋",
 };

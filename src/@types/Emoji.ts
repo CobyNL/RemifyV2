@@ -18,6 +18,9 @@ export type IconType = {
   save: string;
   shuffle: string;
   filterreset: string;
+  // Disabled&Enabled
+  disabled: string;
+  enabled: string;
   // etc
   queue: string;
 };

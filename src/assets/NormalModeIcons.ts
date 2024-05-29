@@ -18,6 +18,9 @@ export const NormalModeIcons = {
   save: "<:save:1244467337633988639>",
   shuffle: "<:shuffle:1244467335964655638>",
   filterreset: "<:filterr:1244467335306416222>",
+  //Disabled&Enabled
+  disabled: "<:off1:1244562559877779517><:off2:1244562560964100157>",
+  enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>",
   // etc
   queue: "<:1094320089358139402:1108126477427409018>",
 };

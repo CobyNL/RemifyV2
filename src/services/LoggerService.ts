@@ -158,7 +158,7 @@ export class LoggerService {
 
   private queueDiscordLog(type: LogLevel, message: string, className: string) {
     if (
-      !this.client.config.features.LOG_EVERYTHING &&
+      !this.client.config.utilities.LOG_EVERYTHING &&
       type !== LogLevel.ERROR &&
       type !== LogLevel.WARN &&
       type !== LogLevel.UNHANDLED &&
@@ -178,7 +178,7 @@ export class LoggerService {
 
     try {
       const channel = (await this.client.channels
-        .fetch(this.client.config.features.LOG_CHANNEL)
+        .fetch(this.client.config.utilities.LOG_CHANNEL)
         .catch(() => undefined)) as TextChannel;
 
       if (!channel?.isTextBased()) return;
@@ -198,7 +198,7 @@ export class LoggerService {
 
       for (const { type, message, className } of logBatch) {
         if (
-          !this.client.config.features.LOG_EVERYTHING &&
+          !this.client.config.utilities.LOG_EVERYTHING &&
           type !== LogLevel.ERROR &&
           type !== LogLevel.WARN &&
           type !== LogLevel.UNHANDLED &&

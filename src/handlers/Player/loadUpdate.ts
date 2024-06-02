@@ -57,7 +57,7 @@ export class PlayerUpdateLoader {
       const TotalDuration = player.queue.duration;
 
       let cSong = player.queue.current;
-      let qDuration = `${formatDuration().parse(TotalDuration + Number(player.queue.current?.duration))}`;
+      let qDuration = `${formatDuration(TotalDuration + Number(player.queue.current?.duration))}`;
       let songsInQueue = player.queue.size > 11 ? player.queue.size - 10 : "Geen";
       const source = player.queue.current?.source;
       let sourceIcon = "";

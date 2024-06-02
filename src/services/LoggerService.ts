@@ -48,12 +48,12 @@ export class LoggerService {
       },
       transports: [
         new transports.Console({
-          level: LogLevel.UNHANDLED,
+          level: "unhandled",
           format: this.consoleFormat,
         }),
         new transports.File({
-          level: LogLevel.UNHANDLED,
-          filename: "./logs/remify.log",
+          level: "unhandled",
+          filename: "./logs/byteblaze.log",
           format: this.fileFormat,
           maxsize: 10485760, // 10MB
           maxFiles: 5,

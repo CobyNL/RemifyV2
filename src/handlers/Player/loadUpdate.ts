@@ -1,7 +1,8 @@
 import { Manager } from "../../manager.js";
 import { EmbedBuilder, TextChannel } from "discord.js";
-import { FormatDuration } from "../../utilities/FormatDuration.js";
-import { RainlinkPlayer, RainlinkTrack } from "../../rainlink/main.js";
+import { formatDuration } from "../../utilities/FormatDuration.js";
+import { RainlinkPlayer } from "../../rainlink/main.js";
+import { getTitle } from "../../utilities/GetTitle.js";
 
 const youtubeIcon =
   "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/youtube-music-icon.png";
@@ -22,7 +23,9 @@ export class PlayerUpdateLoader {
       if (!data) return;
       if (data.enable === false) return;
 
-      let channel = (await client.channels.fetch(data.channel).catch(() => undefined)) as TextChannel;
+      let channel = (await client.channels
+        .fetch(data.channel)
+        .catch(() => undefined)) as TextChannel;
       if (!channel) return;
 
       let playMsg = await channel.messages.fetch(data.playmsg).catch(() => undefined);
@@ -38,23 +41,23 @@ export class PlayerUpdateLoader {
       const songStrings = [];
       const queuedSongs = player.queue.map(
         (song, i) =>
-          `${client.getString(language, "event.setup", "setup_content_queue", {
+          `${client.i18n.get(language, "event.setup", "setup_content_queue", {
             index: `${i + 1}`,
             title: song.title,
-            duration: new FormatDuration().parse(song.duration),
+            duration: formatDuration(song.duration),
             source: getSourceEmoji(song.source),
             request: `${song.requester}`,
           })}`
       );
 
-      await songStrings.push(...queuedSongs);
+      songStrings.push(...queuedSongs);
 
       const Str = songStrings.slice(0, 10).join("\n");
 
       const TotalDuration = player.queue.duration;
 
       let cSong = player.queue.current;
-      let qDuration = `${new FormatDuration().parse(TotalDuration + Number(player.queue.current?.duration))}`;
+      let qDuration = `${formatDuration().parse(TotalDuration + Number(player.queue.current?.duration))}`;
       let songsInQueue = player.queue.size > 11 ? player.queue.size - 10 : "Geen";
       const source = player.queue.current?.source;
       let sourceIcon = "";
@@ -97,21 +100,21 @@ export class PlayerUpdateLoader {
 
       let embed = new EmbedBuilder()
         .setAuthor({
-          name: `${client.getString(language, "event.setup", "setup_author")}`,
-          iconURL: `${client.getString(language, "event.setup", "setup_author_icon")}`,
+          name: `${client.i18n.get(language, "event.setup", "setup_author")}`,
+          iconURL: `${client.i18n.get(language, "event.setup", "setup_author_icon")}`,
         })
         .setDescription(
-          `${client.getString(language, "event.setup", "setup_desc", {
-            title: cSong!.title ?? "",
+          `${client.i18n.get(language, "event.setup", "setup_desc", {
+            title: getTitle(client, cSong!), //cSong!.title ?? "",
             url: cSong!.uri ?? "",
-            duration: new FormatDuration().parse(cSong!.duration),
+            duration: formatDuration(cSong!.duration),
             request: `${cSong!.requester}`,
           })}`
         ) // [${cSong.title}](${cSong.uri}) \`[${formatDuration(cSong.duration)}]\` • ${cSong.requester}
         .setColor(client.color)
         .setImage(`${cSong!.artworkUrl ? cSong!.artworkUrl : `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`}`)
         .setFooter({
-          text: `${client.getString(language, "event.setup", "setup_footer", {
+          text: `${client.i18n.get(language, "event.setup", "setup_footer", {
             songs: player.queue.size.toString(),
             volume: `${Math.floor(player.volume)}`,
             duration: qDuration,
@@ -119,12 +122,16 @@ export class PlayerUpdateLoader {
           iconURL: `${sourceIcon}`,
         }); //Volume • ${player.volume}% | Total Duration • ${qDuration}
 
+      const queueString = `${client.i18n.get(language, "event.setup", "setup_content")}\n${
+        Str == "" ? " " : "\n" + Str
+      }`;
+
       return await playMsg
         .edit({
           embeds: [embedqueue, embed],
           components: [client.enSwitchMod, client.enSwitch2, client.enSwitch3],
         })
-        .catch((e) => {});
+        .catch(() => {});
     };
 
     /**
@@ -136,7 +143,9 @@ export class PlayerUpdateLoader {
       if (!data) return;
       if (data.enable === false) return;
 
-      let channel = (await client.channels.fetch(data.channel).catch(() => undefined)) as TextChannel;
+      let channel = (await client.channels
+        .fetch(data.channel)
+        .catch(() => undefined)) as TextChannel;
       if (!channel) return;
 
       let playMsg = await channel.messages.fetch(data.playmsg).catch(() => undefined);
@@ -159,30 +168,32 @@ export class PlayerUpdateLoader {
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)
         .setAuthor({
-          name: `${client.getString(language, "event.setup", "setup_playembed_author", {
+          name: `${client.i18n.get(language, "event.setup", "setup_playembed_author", {
             author: "Remify",
           })}`,
           iconURL: `https://cdn.discordapp.com/avatars/1041773236603596861/63fa890b6e1aa51ff0334083dfeafa37.webp?size=80`,
         })
-        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
+        .setImage(
+          `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
         .setDescription(
-          `${client.getString(language, "event.setup", "setup_playembed_desc", {
+          `${client.i18n.get(language, "event.setup", "setup_playembed_desc", {
             clientId: client.user?.id ?? "987345021441298516",
           })}`
         )
         .setFooter({
-          text: `${client.getString(language, "event.setup", "setup_playembed_footer", {
+          text: `${client.i18n.get(language, "event.setup", "setup_playembed_footer", {
             prefix: "/",
             maker: "Coby.Hツ#6166",
           })}`,
-        });
+        }
+        );
 
       return await playMsg
         .edit({
           embeds: [queueEmbed, playEmbed],
           components: [client.diSwitch, client.diSwitch2, client.diSwitch3],
         })
-        .catch((e) => {});
+        .catch(() => {});
     };
   }
 }

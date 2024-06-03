@@ -1,6 +1,6 @@
 # ByteBlaze config file via .yml
 # Version 5.0.0
-# You can use ${} to pass an enviroment varible from .env file
+# You can use ${} to pass an environment variable from the .env file
 # Eg:
 # something: ${DATA}
 
@@ -11,7 +11,7 @@ bot:
   ADMIN: ["742406009099649187"]
   LANGUAGE: "nl" # You can set it to en, vi...
   LIMIT_TRACK: 50 # The number of tracks you want to limit
-  LIMIT_PLAYLIST: 20 # The number of playlist you want to limit
+  LIMIT_PLAYLIST: 20 # The number of playlists you want to limit
   SAFE_ICONS_MODE: false # If the new icon doesn't appear, try changing this to true
   DELETE_MSG_TIMEOUT: 3000
   DEBUG_MODE: false
@@ -24,10 +24,10 @@ lavalink:
     id: "${SPOTIFY_ID}"
     secret: "${SPOTIFY_SECRET}"
 
-    # Default search suggestion for auto complete, leave it empty will use default
+  # Default search suggestion for auto complete, leave it empty will use default
   AUTOCOMPLETE_SEARCH: ["yorushika", "yoasobi", "tuyu", "hinkik"]
 
-  # Enable this if you want to use realtime duation in nowplaying command
+  # Enable this if you want to use real-time duration in now playing command
   NP_REALTIME: false
 
   # The number of leave time you want
@@ -36,23 +36,23 @@ lavalink:
   # Must not over 1000 or bot crash
   DEFAULT_VOLUME: 100
 
-  # Enable this to avoid your bot get suspended (Recommended to be enable)
+  # Enable this to avoid your bot getting suspended (Recommended to be enabled)
   AVOID_SUSPEND: true
 
   # The number of tracks you want to limit
   LIMIT_TRACK: 50
 
-  # The number of playlist you want to limit
+  # The number of playlists you want to limit
   LIMIT_PLAYLIST: 20
 
   # You can add more Lavalink servers!
   NODES:
     - host: "${LAVA_HOST}"
       port: 2334 # Your host port here
-      name: "RemifyNode" #only a-z A-Z 0-9 and _
+      name: "RemifyNode" # only a-z A-Z 0-9 and _
       auth: "${LAVA_PASS}"
       secure: false
-      # In rainlink, it support lavalink v3, lavalink v4 and nodelink v2 as driver
+      # In RainLink, it supports lavalink v3, lavalink v4, and nodelink v2 as driver
       # If you put the wrong driver identify here or not put anything here,
       # it will fallback to lavalink v4 driver
       # Driver identify and support range:
@@ -67,30 +67,30 @@ utilities:
   # Enable debug tools for execute code from bot
   # use dokdo package, owner only, no prefix changes
   # You have to enable message_content to use
-  # use: sudo rdc help, for more command
+  # use: sudo rdc help, for more commands
   DEBUG_TOOLS: true
   # Log register premium activities
   PREMIUM_LOG_CHANNEL: "1190180520542359552"
-  # Log all the guild that bot joined or leaved
+  # Log all the guild that bot joined or left
   GUILD_LOG_CHANNEL: "1190180520542359552"
-  # Log all unhandled, error, warnings on discord
+  # Log all unhandled errors, and warnings on discord
   LOG_CHANNEL: "1190180520542359552"
-  # The timeout for deleting msg
+  # The timeout for deleting messages
   DELETE_MSG_TIMEOUT: 3000
-  # Auto resume when bot restarted suddenly
+  # Auto resume when the bot restarts suddenly
   AUTO_RESUME: false
   # Log all the levels of the console
-  LOG_EVERYTHING: false # Log all the levels of the console except warn, error and unhandled
+  LOG_EVERYTHING: false # Log all the levels of the console except warn, error, and unhandled
 
   DATABASE:
-    # Note: If you enter an invalid driver, bot will use json driver as default
+    # Note: If you enter an invalid driver, the bot will use the json driver as default
     driver: "json" # mongodb, mysql, json, postgres
-    # Config depends on driver, you can see sample config at src/database/driver
+    # Config depends on the driver, you can see sample config at src/database/driver
     config: { path: "./remify.database.json" }
-    # Cache cleaning for reduce memory
-    # This feature have the same API with this link below
+    # Cache cleaning for reducing memory
+    # This feature has the same API as this link below
     # https://github.com/node-cron/node-cron?tab=readme-ov-file#allowed-fields
-    # You can disable caching by using DISABLE string
+    # You can disable caching by using the DISABLE string
     cacheCleanSchedule: "0 */30 * * * *"
 
   MESSAGE_CONTENT:
@@ -110,33 +110,33 @@ utilities:
     whitelist: [] # Example: ["lavalink.dev"]
     auth: "youshallnotpass"
 
-# You can custom your emoji here!
+# You can customize your emoji here!
 emojis:
   PLAYER:
     # row 1
-    stop: "<:stop:1244466029246283817>",
-    previous: "<:previous:1244466032408526898>",
-    play: "<:play:1244466030361972787>",
-    pause: "<:pause:1244466031393767484>",
-    skip: "<:skip:1244466035361583125>",
-    loop: "<:loop:1244466033985716334>",
+    stop: "<:stop:1244466029246283817>"
+    previous: "<:previous:1244466032408526898>"
+    play: "<:play:1244466030361972787>"
+    pause: "<:pause:1244466031393767484>"
+    skip: "<:skip:1244466035361583125>"
+    loop: "<:loop:1244466033985716334>"
     # row 2
-    voldown: "<:volumed:1244466774599139328>",
-    arrow_previous: "<:previous:1244466783289872444>",
-    mute: "<:mute:1244466777195544707>",
-    arrow_next: "<:forward:1244466776096641094>",
-    volup: "<:volumeu:1244466784837308476>",
+    voldown: "<:volumed:1244466774599139328>"
+    arrow_previous: "<:previous:1244466783289872444>"
+    mute: "<:mute:1244466777195544707>"
+    arrow_next: "<:forward:1244466776096641094>"
+    volup: "<:volumeu:1244466784837308476>"
     # row 3
-    autoplay: "<:autoplay:1244467333846794292>",
-    delete: "<:queued:1244467333075046420>",
-    save: "<:save:1244467337633988639>",
-    shuffle: "<:shuffle:1244467335964655638>",
-    filterreset: "<:filterr:1244467335306416222>",
+    autoplay: "<:autoplay:1244467333846794292>"
+    delete: "<:queued:1244467333075046420>"
+    save: "<:save:1244467337633988639>"
+    shuffle: "<:shuffle:1244467335964655638>"
+    filterreset: "<:filterr:1244467335306416222>"
     # Disabled and enabled
-    disabled: "<:off1:1244562559877779517><:off2:1244562560964100157>",
-    enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>",
+    disabled: "<:off1:1244562559877779517><:off2:1244562560964100157>"
+    enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>"
     # Etc
-    queue: "<:1094320089358139402:1108126477427409018>",
+    queue: "<:1094320089358139402:1108126477427409018>"
   GLOBAL:
     arrow_next: "<:pjad_arrow_next:1161595178210041919>"
     arrow_previous: "<:pjad_arrow_back:1161595176737832970>"

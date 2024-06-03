@@ -15,6 +15,7 @@ voldown_msg: "`🔉` | Volume veranderd naar **%{volume}%**"
 volume_invalid: "`⚠️` | Ongeldig volume. Gebruik een nummer tussen **1** en **100**!"
 # Clear
 clear_msg: "`🗑️` | Wachtrij is **Gewist**!"
+clear_empty: "`⚠️` | Er is geen nummer gevonden om te wissen!"
 # Loop
 loop_current: "`🔁` | Loop huidig **Nummer**!"
 loop_all: "`🔁` | Looping **Queue**!"
@@ -26,3 +27,50 @@ previous_msg: "`⏮️` | Overgeslagen naar vorige **Nummer**!"
 previous_notfound: "`⚠️` | Er is geen eerder nummer gevonden!"
 # Shuffle
 shuffle_msg: "🔀 Shuffelde de wachtrij"
+### Autoplay command!
+autoplay_on: "`✅` | Autoplay is nu **Enabled**!"
+autoplay_off: "`❌` | Autoplay is nu **Disabled**!"
+autoplay_already: "`⚠️` | Autoplay is al **%{mode}**!"
+# Forward
+forward_msg: "`⏩` | Doorgespoeld met 10seconden naar `%{duration}`"
+forward_beyond: "`⚠️` | Nummer gaat eindigen. Je kunt niet verder!"
+# Rewind
+rewind_msg: "`⏪` | Terug gespoeld naar `%{duration}`"
+rewind_beyond: "`⚠️` | Nummer gaat beginnen. Je kunt niet terug!"
+# Filter
+filter_reset: "`🔊` | Filter is **Gereset**!"
+filter_empty: "`⚠️` | Er is geen filter gevonden om te resetten!"
+# Mute
+mute_msg: "`🔇` | **Speler** is nu `${state}`!"
+# VolumeUp
+volume_up: "`🔊` | Volume veranderd naar **%{volume}%**"
+volume_max: "`🔊` | Volume kan niet hoger dan **100**!"
+# VolumeDown
+volume_down: "`🔉` | Volume veranderd naar **%{volume}%**"
+volume_zero: "`🔇` | Volume kan niet lager dan **0**!"
+# Save
+save_track: "`💾` | Waar wil je het **nummer** opslaan?"
+save_to_playlist: "📃 Opslaan in de afspeellijst"
+save_to_playlist_placeholder: "Voer afspeellijstnaam in"
+save_to_dm: "📩 Opslaan in direct message"
+save_to_dm_placeholder: "Voer je bericht in"
+saved_to_playlist: "`✅` | Nummer opgeslagen in de **afspeellijst**!"
+saved_to_dm: "`✅` | Nummer opgeslagen in de **direct message**!"
+save_cancelled: "`❌` | Opslaan geannuleerd"
+track_saved: "<:vink:1108126446335037542> | Nummer succesvol opgeslagen!\n\n`[%{title}]`"
+track_saved_author: "Huidig nummer opgeslagen..."
+track_saved_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+track_saved_desc: "` Title `  [`%{title}`](%{url})"
+track_saved_footer: "Aangevraagd door: %{requester} ・ Volume: %{volume}%"
+track_saved_footer_icon: "%{requester}"
+# Fields for track saved
+track_saved_field_name1: "<:pause:1108129162675372033> Duur"
+track_saved_field_value1: "> ` %{duration} `"
+track_saved_field_name2: "<:pause:1108129162675372033> Maker"
+track_saved_field_value2: "> ` %{author} `"
+track_saved_field_name3: "<:pause:1108129162675372033> Wachtrij"
+track_saved_field_value3: "> ` %{queue} Song(s) `"
+track_saved_field_name4: "> Positie"
+track_saved_field_value4: "> ` %{position} / %{duration} `"
+track_saved_field_name5: "> Opnieuw afspelen"
+track_saved_field_value5: "> ` /play %{replay} `"

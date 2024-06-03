@@ -1,6 +1,7 @@
 import { ButtonInteraction, EmbedBuilder, TextChannel, VoiceBasedChannel } from "discord.js";
 import { Manager } from "../../../manager.js";
 import { RainlinkPlayer } from "../../../rainlink/main.js";
+import { formatDuration } from "../../../utilities/FormatDuration.js";
 
 export class ButtonForward {
   client: Manager;
@@ -55,14 +56,39 @@ export class ButtonForward {
       });
       return;
     } else {
-      this.player.seek(this.player.position + 10000); // Forward 10 seconds
-      this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "event.setup", "forward")}`)
-            .setColor(this.client.color),
-        ],
-      });
+
+      const song = this.player.queue.current;
+      const song_position = this.player.position;
+      const CurrentDuration = formatDuration(song_position + 10000);
+
+      if (song_position + 10000 < song!.duration!) {
+        this.player.send({
+          guildId: this.interaction.guild!.id,
+          playerOptions: {
+            position: song_position + 10000,
+          },
+        });
+
+        const forward2 = new EmbedBuilder()
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "forward_msg", {
+              duration: CurrentDuration,
+            })}`
+          )
+          .setColor(this.client.color);
+
+        await this.interaction.editReply({ content: " ", embeds: [forward2] });
+      } else {
+        return await this.interaction.editReply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "forward_beyond")}`
+              )
+              .setColor(this.client.color),
+          ],
+        });
+      }
     }
   }
 }

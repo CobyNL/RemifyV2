@@ -63,7 +63,7 @@ export class ButtonMute {
         embeds: [
           new EmbedBuilder()
             .setDescription(
-              `${this.client.i18n.get(this.language, "player", "mute", {
+              `${this.client.i18n.get(this.language, "button.music", "mute", {
                 state: newMuteState ? "enabled" : "disabled",
               })}`
             )

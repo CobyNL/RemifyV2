@@ -55,18 +55,30 @@ export class ButtonVolumeUp {
       });
       return;
     } else {
-      this.player.setVolume(this.player.volume + 10);
-      this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(
-              `${this.client.i18n.get(this.language, "button.music", "volume_up_msg", {
-                volume: this.player.volume.toString(),
-              })}`
-            )
-            .setColor(this.client.color),
-        ],
-      });
+      let newVolume = this.player.volume + 10;
+      if (newVolume > 100) {
+        newVolume = 100;
+        await this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(`${this.client.i18n.get(this.language, "button.music", "volume_max")}`)
+              .setColor(this.client.color),
+          ],
+        });
+      } else {
+        await this.player.setVolume(newVolume);
+        await this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "volume_up", {
+                  volume: newVolume.toString(),
+                })}`
+              )
+              .setColor(this.client.color),
+          ],
+        });
+      }
       await this.client.UpdateQueueMsg(this.player);
     }
   }

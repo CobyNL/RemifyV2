@@ -1,4 +1,12 @@
-import { ButtonInteraction, EmbedBuilder, TextChannel, VoiceBasedChannel } from "discord.js";
+import {
+  ActionRowBuilder,
+  ButtonInteraction,
+  EmbedBuilder,
+  ModalBuilder,
+  TextChannel,
+  TextInputBuilder, TextInputStyle, User,
+  VoiceBasedChannel,
+} from "discord.js";
 import { Manager } from "../../../manager.js";
 import { RainlinkPlayer } from "../../../rainlink/main.js";
 
@@ -61,41 +69,143 @@ export class ButtonSave {
         await this.interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "player", "no_current_track")}`)
+              .setDescription(`${this.client.i18n.get(this.language, "button.music", "no_current_track")}`)
               .setColor(this.client.color),
           ],
         });
         return;
       }
 
-      await this.client.db.playlist.push(`${this.interaction.user.id}.tracks`, {
-        title: currentTrack.title,
-        uri: currentTrack.uri,
-        length: currentTrack.duration,
-        thumbnail: currentTrack.artworkUrl,
-        author: currentTrack.author,
-        requester: currentTrack.requester,
+// Create a modal for the user to choose where to save the track
+      const modal = new ModalBuilder()
+        .setCustomId('save_track')
+        .setTitle(this.client.i18n.get(this.language, "button.music", "save_track"));
+
+      const saveToPlaylistInput = new TextInputBuilder()
+        .setCustomId('save_to_playlist')
+        .setLabel(this.client.i18n.get(this.language, "button.music", "save_to_playlist"))
+        .setStyle(TextInputStyle.Short)
+        .setPlaceholder(this.client.i18n.get(this.language, "button.music", "save_to_playlist_placeholder"))
+        .setRequired(false);
+
+      const saveToDirectMessageInput = new TextInputBuilder()
+        .setCustomId('save_to_dm')
+        .setLabel(this.client.i18n.get(this.language, "button.music", "save_to_dm"))
+        .setStyle(TextInputStyle.Short)
+        .setPlaceholder(this.client.i18n.get(this.language, "button.music", "save_to_dm_placeholder"))
+        .setRequired(false);
+
+      const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(saveToPlaylistInput);
+      const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(saveToDirectMessageInput);
+
+      modal.addComponents(firstActionRow, secondActionRow);
+
+      await this.interaction.showModal(modal);
+
+      const submitted = await this.interaction.awaitModalSubmit({
+        filter: (interaction) => interaction.user.id === this.interaction.user.id,
+        time: 60000,
       });
 
-      await this.interaction.user.send({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(
-              `${this.client.i18n.get(this.language, "player", "track_saved", {
-                title: currentTrack.title,
-              })}`
-            )
-            .setColor(this.client.color),
-        ],
-      });
+      if (submitted) {
+        const saveToPlaylist = submitted.fields.getTextInputValue('save_to_playlist');
+        const saveToDirectMessage = submitted.fields.getTextInputValue('save_to_dm');
 
-      await this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "player", "saved")}`)
-            .setColor(this.client.color),
-        ],
-      });
+        const embed = new EmbedBuilder()
+          .setAuthor({
+            name: this.client.i18n.get(this.language, "button.music", "track_saved_author"),
+            iconURL: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+          })
+          .setDescription(this.client.i18n.get(this.language, "button.music", "track_saved_desc", {
+            title: currentTrack.title,
+            url: currentTrack.uri
+          }))
+          .setColor(this.client.color)
+          .addFields(
+            {
+              name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name1"),
+              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value1", { duration: currentTrack.duration.toString() }),
+              inline: true
+            },
+            {
+              name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name2"),
+              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value2", { author: currentTrack.author }),
+              inline: true
+            },
+            {
+              name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name3"),
+              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value3", { queue: this.player.queue.length.toString() }),
+              inline: true
+            },
+            {
+              name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name4"),
+              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value4", {
+                position: this.player.position.toString(),
+                duration: currentTrack.duration.toString()
+              }),
+              inline: true
+            },
+            {
+              name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name5"),
+              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value5", { replay: currentTrack.title }),
+              inline: true
+            }
+          )
+          .setFooter({
+            text: this.client.i18n.get(this.language, "button.music", "track_saved_footer", { requester: currentTrack.requester.toString(), volume: this.player.volume.toString() }),
+            iconURL: (currentTrack.requester as User).avatarURL()
+          });
+
+        if (saveToPlaylist) {
+          await this.client.db.playlist.push(`${this.interaction.user.id}.tracks`, {
+            title: currentTrack.title,
+            uri: currentTrack.uri,
+            length: currentTrack.duration,
+            thumbnail: currentTrack.artworkUrl,
+            author: currentTrack.author,
+            requester: currentTrack.requester,
+          });
+
+          await submitted.reply({
+            embeds: [embed]
+          });
+        }
+
+        if (saveToDirectMessage) {
+          await this.interaction.user.send({
+            embeds: [embed]
+          });
+
+          await submitted.reply({
+            embeds: [
+              new EmbedBuilder()
+                .setDescription(`${this.client.i18n.get(this.language, "button.music", "saved_to_dm")}`)
+                .setColor(this.client.color),
+            ],
+          });
+        }
+
+        if (!saveToPlaylist && !saveToDirectMessage) {
+          await submitted.reply({
+            embeds: [
+              new EmbedBuilder()
+                .setDescription(`${this.client.i18n.get(this.language, "button.music", "save_cancelled")}`)
+                .setColor(this.client.color),
+            ],
+          });
+        }
+      } else {
+        await this.interaction.editReply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(`${this.client.i18n.get(this.language, "button.music", "save_cancelled")}`)
+              .setColor(this.client.color),
+          ],
+          components: [],
+        });
+      }
+
+
     }
   }
 }

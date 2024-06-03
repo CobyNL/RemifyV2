@@ -56,13 +56,22 @@ export class ButtonFilterReset {
       });
       return;
     } else {
-      await this.player.filter.clear();
+      if (this.player.filter) {
+        await this.player.filter.clear();
 
-      const filterResetEmbed = new EmbedBuilder()
-        .setDescription(`${this.client.i18n.get(this.language, "player", "filter_reset")}`)
-        .setColor(this.client.color);
+        const filterResetEmbed = new EmbedBuilder()
+          .setDescription(`${this.client.i18n.get(this.language, "button.music", "filter_reset")}`)
+          .setColor(this.client.color);
 
-      await this.interaction.reply({ embeds: [filterResetEmbed] });
+        await this.interaction.reply({ embeds: [filterResetEmbed] });
+      } else {
+        const filterAlreadyResetEmbed = new EmbedBuilder()
+          .setDescription(`${this.client.i18n.get(this.language, "button.music", "filter_empty")}`)
+          .setColor(this.client.color);
+
+        await this.interaction.reply({ embeds: [filterAlreadyResetEmbed] });
+      }
+
     }
   }
 }

@@ -1,6 +1,7 @@
 import { ButtonInteraction, EmbedBuilder, TextChannel, VoiceBasedChannel } from "discord.js";
 import { Manager } from "../../../manager.js";
 import { RainlinkPlayer } from "../../../rainlink/main.js";
+import { formatDuration } from "../../../utilities/FormatDuration.js";
 
 export class ButtonRewind {
   client: Manager;
@@ -55,14 +56,39 @@ export class ButtonRewind {
       });
       return;
     } else {
-      this.player.seek(this.player.position - 10000); // Rewind 10 seconds
-      this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "player", "rewind")}`)
-            .setColor(this.client.color),
-        ],
-      });
+
+      const song = this.player.queue.current;
+      const song_position = this.player.position;
+      const CurrentDuration = formatDuration(song_position - 10000);
+
+      if (song_position - 10000 > 0) {
+        this.player.send({
+          guildId: this.interaction.guild!.id,
+          playerOptions: {
+            position: song_position - 10000,
+          },
+        });
+
+        const rewind2 = new EmbedBuilder()
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "rewind_msg", {
+              duration: CurrentDuration,
+            })}`
+          )
+          .setColor(this.client.color);
+
+        await this.interaction.editReply({ content: " ", embeds: [rewind2] });
+      } else {
+        return await this.interaction.editReply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "rewind_beyond")}`
+              )
+              .setColor(this.client.color),
+          ],
+        });
+      }
     }
   }
 }

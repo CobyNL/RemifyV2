@@ -55,15 +55,26 @@ export class ButtonDelete {
       });
       return;
     } else {
-      this.player.queue.clear();
-      this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "event.setup", "clear_queue")}`)
-            .setColor(this.client.color),
-        ],
-      });
-      await this.client.UpdateQueueMsg(this.player);
+      if (this.player.queue.length > 0) {
+        this.player.queue.clear();
+        this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(`${this.client.i18n.get(this.language, "button.music", "clear_msg")}`)
+              .setColor(this.client.color),
+          ],
+        });
+        await this.client.UpdateQueueMsg(this.player);
+      } else {
+        this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(`${this.client.i18n.get(this.language, "button.music", "clear_empty")}`)
+              .setColor(this.client.color),
+          ],
+        });
+      }
+
     }
   }
 }

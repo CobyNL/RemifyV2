@@ -16,7 +16,7 @@ bot:
   DELETE_MSG_TIMEOUT: 3000
   DEBUG_MODE: false
 
-lavalink:
+player:
   SPOTIFY:
     # Your Spotify ID and Secret, you can get it from here: https://developer.spotify.com
     # If you don't have or don't want, you can disable it

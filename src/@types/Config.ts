@@ -94,6 +94,14 @@ export interface PlayerEmojis {
   volup: string;
   queue: string;
   delete: string;
+  save: string;
+  autoplay: string;
+  mute: string;
+  filterreset: string;
+  arrow_next: string;
+  arrow_previous: string;
+  disabled: string;
+  enabled: string;
 }
 
 export interface GlobalEmojis {

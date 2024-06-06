@@ -1,0 +1,32 @@
+### Setup handler!
+setup_queuemsg: "**__Lista de reproducción:__**\nÚnete a un canal de voz y agrega canciones a la lista de reproducción por nombre o URL."
+setup_playembed_author: "%{author}  •  No hay canciones reproduciéndose actualmente."
+setup_playembed_desc: "```fix\nÚnete a un canal de voz y proporciona el NOMBRE/LINK de una canción para reproducirla.\n```\n⠀<:add:1108453799749754890> [INVITAR A REMIFY](https://discord.com/api/oauth2/authorize?client_id=%{clientId}&permissions=8&scope=bot+applications.commands)⠀ ⠀⠀⠀•⠀⠀⠀ ⠀<:discord:1108126451502428334> [SERVIDOR DE SOPORTE](https://discord.gg/...)"
+setup_playembed_footer: "El prefijo es: %{prefix}  •  Editado por %{maker}"
+
+### Update handler!
+setup_author: "Comenzó a reproducirse..."
+setup_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+setup_desc: "**[%{title}](%{url})** `[%{duration}]` • %{request}"
+setup_footer: "%{songs} • Canciones en la lista de reproducción | Volumen • %{volume}% | %{duration} • Duración Total"
+
+setup_content: "**Cola⠀•⠀Música de Remify**"
+setup_content_queue: "%{source} • *`%{index} • %{title} • [%{duration}]`* • [%{request}]"
+setup_content_queue_footer: "Cola • %{songs} canciones en cola"
+setup_content_empty: "¡Únete a un canal de voz y reproduce canciones usando su nombre o URL aquí!"
+setup_content_emptylist: "> `VACÍO` ```❌ No hay canciones en la lista de reproducción```"
+setup_content_queuesongs: "No hay canciones en cola"
+
+### Status command!
+status_create: "**`📊` | ¡Canal de estado creado!**"
+status_delete: "**`📊` | ¡Canal de estado eliminado!**"
+status_enable: "`⚠️` | ¡El canal de estado ya existe!"
+status_null: "`⚠️` | ¡Canal de estado no encontrado!"
+
+# Play!
+play_track: "`💾` | Canción añadida a la lista de reproducción **%{title}** `%{duration}` • %{request}"
+play_playlist: "`💾` | Lista de reproducción añadida a la lista de reproducción **%{title}** `%{duration}` • (**%{songs} Canciones**) • %{request}"
+play_result: "`💾` | Canción añadida a la lista de reproducción **%{title}** `%{duration}` • %{request}"
+play_arg: "`⚠️` | Por favor, proporciona un nombre de canción o URL válidos!"
+play_match: "`⚠️` | ¡Canción no encontrada!"
+play_emoji: "`⚠️` | ¡No puedes reproducir canciones con Emoji!"

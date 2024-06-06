@@ -1,0 +1,30 @@
+### Language command!
+lang_set: "`📙` | El idioma se ha establecido en **%{language}**!"
+lang_change: "`📙` | El idioma se ha cambiado a **%{language}**!"
+lang_perm: "`⚠️` | ¡No tienes permiso para usar este comando!"
+provide_lang: "`⚠️` | Idioma inválido. Por favor, usa %{languages}!"
+
+### Shutdown command!
+restart_msg: "`🔌` | **Apagando**..."
+
+### Prefix command!
+prefix_set: "`㊙️` | El prefijo se ha establecido en **%{prefix}**"
+prefix_change: "`㊙️` | El prefijo se ha cambiado a **%{prefix}**"
+prefix_arg: "`⚠️` | ¡Proporciona un prefijo válido!"
+prefix_length: "`⚠️` | ¡El prefijo no puede tener más de **10 caracteres**!"
+
+### SongNoti command!
+songnoti_set: "`🔔` | Las notificaciones de canciones están **%{toggle}**!"
+songnoti_already: "`⚠️` | Las notificaciones de canciones ya están **%{mode}**!"
+
+### 24/7 command!
+247_on: "`✅` | El modo 24/7 está ahora **Activado**!"
+247_off: "`❌` | El modo 24/7 está ahora **Desactivado**!"
+247_already: "`⚠️` | El modo 24/7 ya está **%{mode}**!"
+
+### Setup command!
+setup_msg: "**`⚙️` | Sistema de música creado en** %{channel}\n```Nota: No elimines los mensajes que envío para que el sistema de música funcione correctamente!```"
+setup_deleted: "**`⚙️` | Sistema de música eliminado!**"
+setup_topic: "⏹ **Detener**\n⏮️ **Anterior**\n⏯ **Pausar/Reanudar**\n⏭️ **Saltar**\n🔁 **Repetir/Deshacer repetición**"
+setup_enable: "`⚠️` | ¡El sistema de música ya está habilitado!"
+setup_null: "`⚠️` | ¡Sistema de música no encontrado!"

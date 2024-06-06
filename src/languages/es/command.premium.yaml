@@ -1,0 +1,20 @@
+### Generate command!
+gen_author: "Generar Premium"
+gen_desc: "`🔑` | **Generado** `[%{codes_length}]`\n```%{codes}```\n`💰` | **Plan:** `%{plan}`\n`📅` | **Expira:** `%{expires}`"
+gen_footer: "Canjear Premium • %{prefix}redeem <code>"
+
+### Profile command!
+profile_author: "Perfil Premium"
+profile_desc: "`👤` | **Usuario:** `%{user}`\n`💰` | **Plan:** `%{plan}`\n`📅` | **Expira:** `%{expires}`"
+
+### Redeem command!
+redeem_title: "Canjear Premium"
+redeem_desc: "`💰` | **Plan:** `%{plan}`\n`📅` | **Expira:** `%{expires}`"
+redeem_already: "`⚠️` | Ya eres un **Usuario Premium**!"
+redeem_invalid: "`⚠️` | Código Premium inválido. Usa un código válido!"
+
+### Remove command!
+remove_desc: "`✅` | Se ha eliminado con éxito el Premium de %{user}!"
+remove_already: "`⚠️` | %{user} ya ha sido eliminado!"
+remove_no_params: "`⚠️` | Menciona un **usuario** o proporciona un **ID de usuario**!"
+remove_404: "`⚠️` | %{userid} no es un **Usuario Premium**!"

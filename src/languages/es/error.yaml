@@ -1,0 +1,32 @@
+# Invalid Number
+number_invalid: "`⚠️` | Número inválido. Por favor, proporciona un número válido."
+
+# Execute when invalid
+no_node: "`⚠️` | No se encontró ningún servidor de Lavalink. Inténtalo de nuevo en **5 minutos**."
+
+# No song is currently playing!
+no_player: "`⚠️` | No se está reproduciendo ninguna canción en este momento."
+
+# Need to join voice & same voice to use command!
+no_in_voice: "`⚠️` | Debes unirte a un canal de voz primero."
+no_same_voice: "`⚠️` | Debes estar en el mismo canal de voz que yo para usar este comando."
+
+# No permission!
+no_perms: "`⚠️` | No tengo permisos de **%{perm}** para ejecutar este comando."
+no_perms_channel: "`⚠️` | No tengo permisos de **%{perm}** en <#%{channel}> para ejecutar este comando."
+
+# Getting error!
+unexpected_error: "`⚠️` | Se produjo un error inesperado. Por favor, inténtalo de nuevo más tarde."
+
+# Client owner!
+owner_only: "`⚠️` | No eres el **propietario** de este cliente."
+
+# No premium Event!
+no_premium_author: "Premium"
+no_premium_desc: "`⚠️` | ¡No eres un usuario Premium!"
+
+# Rate limit!
+ratelimit: "`⚠️` | Estás realizando acciones demasiado rápido. Por favor, espera **%{time} segundos**."
+
+# Missing args
+arg_error: "`⚠️` | Argumento inválido. Por favor, usa %{text}."

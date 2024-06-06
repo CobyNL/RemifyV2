@@ -1,0 +1,95 @@
+### Create command!
+create_created: "`💿` | Creado **%{playlist}** • `%{id}`"
+create_toolong: "`⚠️` | El nombre de la lista de reproducción no puede tener más de **16 caracteres**!"
+des_toolong: "`⚠️` | La descripción de la lista de reproducción no puede tener más de **1000 caracteres**!"
+create_limit_playlist: "`⚠️` | No puedes crear más de **%{limit} listas de reproducción**!"
+
+### Add command!
+add_track: "`🔍` | Buscado **%{title}** `%{duration}` • %{user}"
+add_playlist: "`🔍` | Buscado **%{title}** `%{duration}` • (**%{track} canciones**) • %{user}"
+add_search: "`🔍` | Buscado **%{title}** `%{duration}` • %{user}"
+add_added: "`➕` | Añadido **%{count} canciones** a `%{playlist}`"
+add_match: "`⚠️` | Proporcione un nombre de canción o URL válido!"
+add_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+add_limit_track: "`⚠️` | No puedes añadir más de **%{limit} canciones**!"
+
+### Delete command!
+delete_confirm: "`❓` | ¿Quieres borrar `%{playlist_id}`?"
+delete_deleted: "`❌` | Borrado `%{name}`"
+delete_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+delete_no: "`⚠️` | **Eliminación** cancelada!"
+delete_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+
+### Detail command!
+detail_private: "`🔒` | La lista de reproducción es **privada**!"
+detail_embed_title: "%{name}"
+detail_embed_footer: "Página • %{page}/%{pages} | Canciones • %{songs} | Duración total • %{duration}"
+detail_track: "%{num}. **%{title}** `[%{duration}]` • Autor: **%{author}**"
+detail_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+detail_notnumber: "`⚠️` | Proporcione un número de página válido!"
+detail_page_notfound: "`⚠️` | Solo hay **%{page} páginas**!"
+
+### Import command!
+import_private: "`🔒` | La lista de reproducción es **privada**!"
+import_imported: "`💿` | Importado **%{name}** • `[%{duration}]` • (**%{tracks} canciones**) • %{user}"
+import_voice: "`⚠️` | Necesitas estar en un canal de voz para usar este comando!"
+import_empty: "`⚠️` | La lista de reproducción está **vacía**!"
+
+### All command!
+view_embed_title: "%{user}"
+view_embed_footer: "Página • %{page}/%{pages} | Listas de reproducción • %{songs}"
+view_embed_playlist: "%{num}. `%{name}` • (**%{tracks} canciones**) • Creado: `[%{create} hace]`"
+view_notnumber: "`⚠️` | Proporcione un número de página válido!"
+view_page_notfound: "`⚠️` | Solo hay **%{page} páginas**!"
+
+### Remove command!
+remove_removed: "`➖` | Eliminado **%{position} número** canción de `%{name}`"
+remove_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+remove_song_notfound: "`⚠️` | Canción no encontrada!"
+remove_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+
+### SaveQueue command!
+savequeue_saved: "`✅` | Guardado **%{tracks} canciones** en `%{name}`"
+savequeue_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+savequeue_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+savequeue_no_new_saved: "`⚠️` | La canción ya existe en `%{name}`"
+savequeue_no_tracks: "`⚠️` | No hay ninguna canción sonando actualmente!"
+
+### Info Command!
+info_id: "`🆔` | ID:"
+info_total: "`🎵` | Total de canciones:"
+info_created: "`📅` | Creado:"
+info_private: "`👀` | Visibilidad:"
+info_owner: "`👑` | Dueño:"
+info_des: "`💬` | Descripción:"
+no_des: "No se proporciona descripción!"
+public: "Público"
+private: "Privado"
+invalid: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+
+### Editor command!
+edit_playlist_id_label: "¡Introduce tu **nuevo ID de lista de reproducción**! `[a-z, A-Z, 0-9]`"
+edit_playlist_name_label: "¡Introduce tu **nuevo nombre de lista de reproducción**!"
+edit_playlist_des_label: "¡Introduce tu **nueva descripción de lista de reproducción**!"
+edit_playlist_private_label: "¡Introduce tu **nueva visibilidad de lista de reproducción**! `[público/privado]`"
+edit_success: "`✅` | Información de **%{playlistId}** editada con éxito!"
+edit_arg: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+edit_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+edit_playlist_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+edit_invalid_id: "`⚠️` | Introduzca un ID de lista de reproducción válido y no existente!"
+edit_invalid_mode: "`⚠️` | Modo de visibilidad inválido. Usa **público** o **privado**!"
+
+### Editor interaction!
+ineraction_edit_playlist_id_label: "Nuevo ID de lista de reproducción"
+ineraction_edit_playlist_name_label: "Nuevo nombre de lista de reproducción"
+ineraction_edit_playlist_des_label: "Nueva descripción de lista de reproducción"
+ineraction_edit_playlist_private_label: "Nueva visibilidad de lista de reproducción"
+ineraction_edit_playlist_id_placeholder: "Introduce tu nuevo ID de lista de reproducción! [a-z, A-Z, 0-9]"
+ineraction_edit_playlist_name_placeholder: "Introduce tu nuevo nombre de lista de reproducción!"
+ineraction_edit_playlist_des_placeholder: "Introduce tu nueva descripción de lista de reproducción!"
+ineraction_edit_playlist_private_placeholder: "Introduce tu nueva visibilidad de lista de reproducción! [público/privado]"
+ineraction_edit_success: "`✅` | Información de **%{playlistId}** editada con éxito!"
+ineraction_edit_playlist_error: "`⚠️` | Algo salió mal. Inténtalo de nuevo!"
+ineraction_edit_notfound: "`⚠️` | Proporcione un ID de lista de reproducción válido!"
+ineraction_edit_playlist_owner: "`⚠️` | No eres el **dueño de la lista de reproducción**!"
+ineraction_edit_invalid_id: "`⚠️` | Introduzca un ID de lista de reproducción válido y no existente!"

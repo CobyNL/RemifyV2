@@ -1,0 +1,77 @@
+queue_author: "%{icon_save} %{guild}"
+queue_description: "%{icon_cd} | Reproduciendo ahora:\n`%{track}` `%{duration}` • %{requester}\n\n%{icon_sleep} | El resto de la cola:`%{list_song}`"
+queue_footer: "Página • %{page}/%{pages} | Canciones • %{queue_lang} | Duración total • %{total_duration}"
+# Pause
+pause_msg: "%{icon_pause} | `Reproductor` en pausa!"
+resume_msg: "%{icon_resume} | `Reproductor` reanudado!"
+# Skip
+skip_msg: "%{icon_skip} | `Canción` omitida!"
+skip_notfound: "%{icon_warning} | No se encontró ninguna canción para omitir!"
+# Stop
+stop_msg: "%{icon_stop} | `Reproductor` detenido!"
+# Volume
+volup_msg: "%{icon_volume_up} | Volumen cambiado a `%{volume}%`"
+voldown_msg: "%{icon_volume_down} | Volumen cambiado a `%{volume}%`"
+volume_invalid: "%{icon_warning} | Volumen inválido. Usa un número entre `1` y `100`!"
+# Clear
+clear_msg: "%{icon_clear} | Cola `Borrada`!"
+clear_empty: "%{icon_warning} | No se encontró ninguna canción para borrar!"
+# Loop
+loop_current: "%{icon_loop} | Repitiendo `Canción` actual!"
+loop_all: "%{icon_loop} | Repitiendo la `Cola`!"
+unloop_all: "%{icon_unloop} | Repetición `Desactivada`!"
+loop_invalid: "%{icon_warning} | Modo de repetición inválido. Por favor usa %{mode}!"
+loop_already: "%{icon_warning} | El modo de repetición ya es `%{mode}`!"
+# Previous
+previous_msg: "%{icon_previous} | Saltando a la `Canción` anterior!"
+previous_notfound: "%{icon_warning} | No se encontró ninguna canción anterior!"
+# Shuffle
+shuffle_msg: "%{icon_shuffle} | Cola mezclada"
+### Autoplay command!
+autoplay_on: "%{icon_check} | Autoplay `Activado`!"
+autoplay_off: "%{icon_uncheck} | Autoplay `Desactivado`!"
+autoplay_already: "%{icon_warning} | Autoplay ya está `%{mode}`!"
+# Forward
+forward_msg: "%{icon_forward} | Avanzado 10 segundos a `%{duration}`"
+forward_beyond: "%{icon_warning} | La canción terminará pronto. No puedes avanzar más!"
+# Rewind
+rewind_msg: "%{icon_rewind} | Rebobinado a `%{duration}`"
+rewind_beyond: "%{icon_warning} | La canción empezará pronto. No puedes retroceder más!"
+# Filter
+filter_reset: "%{icon_filterreset} | Filtro `Restablecido`!"
+filter_empty: "%{icon_warning} | No se encontró ningún filtro para restablecer!"
+# Mute
+mute_msg: "%{icon_mute} | `Reproductor` está ahora `${state}`!"
+# VolumeUp
+volume_up: "%{icon_volume_up} | Volumen cambiado a `%{volume}%`"
+volume_max: "%{icon_warning} | El volumen no puede superar `100`!"
+# VolumeDown
+volume_down: "%{icon_volume_down} | Volumen cambiado a `%{volume}%`"
+volume_zero: "%{icon_warning} | El volumen no puede ser menor que `0`!"
+# Save
+no_current_track: "%{icon_warning} | No se encontró ninguna canción para guardar!"
+save_track: "%{icon_save} | ¿Dónde quieres guardar la `canción`?"
+save_to_playlist: "%{icon_playlist} Guardar en la lista de reproducción"
+save_to_playlist_placeholder: "Introduce el nombre de la lista de reproducción"
+save_to_dm: "%{icon_dm} Guardar en mensaje directo"
+save_to_dm_placeholder: "Introduce tu mensaje"
+saved_to_playlist: "%{icon_check} | Canción guardada en la `lista de reproducción`!"
+saved_to_dm: "%{icon_check} | Canción guardada en el `mensaje directo`!"
+save_cancelled: "%{icon_uncheck} | Guardado cancelado"
+track_saved: "%{icon_vink} | Canción guardada con éxito!\n\n`[%{title}]`"
+track_saved_author: "Canción actual guardada..."
+track_saved_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+track_saved_desc: "` Título `  [`%{title}`](%{url})"
+track_saved_footer: "Solicitado por: %{requester} ・ Volumen: %{volume}%"
+track_saved_footer_icon: "%{requester}"
+# Fields for track saved
+track_saved_field_name1: "<:pause:1108129162675372033> Duración"
+track_saved_field_value1: "> ` %{duration} `"
+track_saved_field_name2: "<:pause:1108129162675372033> Autor"
+track_saved_field_value2: "> ` %{author} `"
+track_saved_field_name3: "<:pause:1108129162675372033> Cola"
+track_saved_field_value3: "> ` %{queue} Canción(es) `"
+track_saved_field_name4: "> Posición"
+track_saved_field_value4: "> ` %{position} / %{duration} `"
+track_saved_field_name5: "> Reproducir de nuevo"
+track_saved_field_value5: "> ` /play %{replay} `"

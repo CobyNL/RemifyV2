@@ -1,0 +1,34 @@
+### Comando de Desarrollador!
+dev_title: "Coby.H"
+dev_desc: "Solo soy un desarrollador incognito. ¡Y un creador oficial de Remify!"
+dev_foot: "Considera unirte a mi servidor o invitar a mis bots :)"
+
+### Comando de Invitación!
+inv_title: "✉️ %{username}"
+inv_desc: "¡Gracias por invitarme!"
+
+### Comando Ping!
+ping_title: "🏓 "
+ping_desc: "**Ping:** `%{ping}ms`\n**Tiempo de respuesta:** `%{response}ms`"
+
+### Comando de Tiempo de Actividad!
+uptime_title: "🕒 "
+uptime_desc: "**Tiempo de actividad:** `%{uptime}`"
+
+### Comando de Ayuda!
+ce_finder_name: "**Comando:**"
+ce_finder_des: "**Descripción:**"
+ce_finder_usage: "**Uso:**"
+ce_finder_access: "**Accesible a través de:**"
+ce_finder_aliases: "**Alias:**"
+ce_finder_slash: "**Barra:**"
+ce_finder_des_no: "Sin descripción"
+ce_finder_usage_no: "sin uso"
+ce_finder_aliases_prefix: " [Solo prefijo]"
+ce_finder_aliases_no: "Sin alias"
+ce_finder_slash_enable: "Habilitado"
+ce_finder_slash_disable: "Deshabilitado"
+ce_finder_invalid: "Comando Inválido"
+ce_finder_example: "`⚠️` | ¡Proporciona un nombre de **Comando válido**!"
+ce_name: "Comando de Ayuda"
+ce_total: "Total de Comandos: "

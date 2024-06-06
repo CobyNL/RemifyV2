@@ -1,0 +1,24 @@
+### Playing event!
+track_title: "Comenzó a reproducir"
+track_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+author_title: "`✒️` | Autor:"
+request_title: "`👤` | Solicitante:"
+volume_title: "`🔊` | Volumen:"
+queue_title: "`💾` | Longitud de la cola:"
+duration_title: "`🕒` | Duración de la canción:"
+total_duration_title: "`🕰️` | Duración total de la cola:"
+download_title: "`⬇️` | Descarga:"
+
+### Same voice!
+join_voice: "`⚠️` | ¡No estás en el mismo canal de voz que yo!"
+
+### QueueEnd event!
+queue_end_desc: "`🔚` | ¡La canción ha **finalizado**!"
+
+### Song error!
+error_desc: "`⚠️` | La canción ha tenido un error. ¡Se ha saltado la canción!"
+
+### Auto function!
+player_end: "`🛑` | He salido de <#%{leave}> porque no hay nadie en el canal de voz!"
+leave_pause: "`⏸️` | La canción está pausada porque me quedé solo en el canal de voz!"
+leave_resume: "`▶️` | La canción se reanudó porque alguien se unió al canal de voz!"

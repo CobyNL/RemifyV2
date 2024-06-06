@@ -1,0 +1,99 @@
+### Comando Autoplay!
+autoplay_on: "`✅` | Autoplay está ahora **Habilitado**!"
+autoplay_off: "`❌` | Autoplay está ahora **Deshabilitado**!"
+autoplay_already: "`⚠️` | Autoplay ya está **%{mode}**!"
+
+### Comando ClearQueue!
+clearqueue_msg: "`🗑️` | La cola está **Borrada**!"
+
+### Comando Forward!
+forward_msg: "`⏩` | Avanzado a `%{duration}`"
+forward_beyond: "`⚠️` | La canción está a punto de terminar. ¡No puedes avanzar más!"
+
+### Comando Join!
+join_msg: "`🔊` | Unido a %{channel}"
+join_voice: "`⚠️` | ¡Debes estar en un canal de voz para usar este comando!"
+join_already: "`⚠️` | Ya estoy en %{channel}"
+
+### Comando Stop!
+stop_msg: "`⏹️` | El **Reproductor** se ha detenido!"
+
+### Comando Loop!
+loop_current: "`🔁` | Repitiendo la **Canción** actual!"
+loop_all: "`🔁` | Repitiendo la **Cola**!"
+unloop_all: "`❌` | La repetición está ahora **Deshabilitada**!"
+loop_invalid: "`⚠️` | Modo de repetición inválido. Usa %{mode}!"
+loop_already: "`⚠️` | El modo de repetición ya está **%{mode}**!"
+
+### Comando Lyrics!
+lyrics_title: "📜 %{song}"
+lyrics_notfound: "`⚠️` | ¡Letras no encontradas!"
+lyrics_toolong: "`⚠️` | ¡Las letras son demasiado largas para mostrarlas!"
+
+### Comando Nowplaying!
+np_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+np_title: "Reproduciendo ahora"
+np_current_duration: "`⏰` | Duración actual: `[%{current_duration} / %{total_duration}]`"
+
+### Comando Pause!
+pause_msg: "`⏸️` | El **Reproductor** está en pausa!"
+
+### Comando Play!
+play_track: "`💾` | Añadido a la cola **%{title}** `%{duration}` • %{request}"
+play_playlist: "`💾` | Añadido a la cola **%{title}** `%{duration}` • (**%{songs} Canciones**) • %{request}"
+play_result: "`💾` | Añadido a la cola **%{title}** `%{duration}` • %{request}"
+play_arg: "`⚠️` | ¡Proporciona un nombre de canción o URL válido!"
+play_match: "`⚠️` | ¡Canción no encontrada!"
+play_emoji: "`⚠️` | ¡No puedes reproducir canciones con Emoji!"
+
+### Comando File!
+file_notfound: "`⚠️` | ¡Proporciona un archivo válido!"
+play_invalid_file: "`⚠️` | Tipo de archivo inválido. Usa **mp3** o **ogg**!"
+play_warning_file: "`⚠️` | No pude detectar el tipo de archivo. Usa por favor **mp3** o **ogg**!"
+
+### Comando Previous!
+previous_msg: "`⏮️` | Saltado a la **Canción** anterior!"
+previous_notfound: "`⚠️` | ¡No se encontró ninguna canción anterior!"
+
+### Comando Queue!
+queue_author: "💾 %{guild}"
+queue_description: "`📀` | Reproduciendo ahora:\n**%{title}** `[%{duration}]` • %{request}\n\n`💤` | El resto de la cola:**%{rest}**"
+queue_footer: "Página • %{page}/%{pages} | Canciones • %{queue_lang} | Duración total • %{duration}"
+queue_notnumber: "`⚠️` | ¡Proporciona un número de página válido!"
+queue_page_notfound: "`⚠️` | ¡Solo hay **%{page} Páginas**!"
+
+### Comando Replay!
+replay_msg: "`🔄` | La **Canción** se ha reproducido de nuevo!"
+
+### Comando Resume!
+resume_msg: "`▶️` | El **Reproductor** se ha reanudado!"
+
+### Comando Rewind!
+rewind_msg: "`⏪` | Rebobinado a `%{duration}`"
+rewind_beyond: "`⚠️` | La canción acaba de empezar. ¡No puedes rebobinar más!"
+
+### Comando RemoveTrack!
+removetrack_desc: "`🗑️` | ELIMINADO **%{name}** `%{duration}` • %{request}"
+removetrack_already: "`⚠️` | ¡No puedo eliminar una canción que ya está reproduciendo!"
+removetrack_notfound: "`⚠️` | ¡Canción no encontrada!"
+
+### Comando Seek!
+seek_msg: "`➿` | Buscado a `%{duration}`"
+seek_beyond: "`⚠️` | ¡No puedes ir más allá de la duración de la canción!"
+seek_invalid: "`⚠️` | Duración de búsqueda inválida. Usa un timestamp válido. Ejemplo: **1:30**!"
+
+### Comando Shuffle!
+shuffle_msg: "🔀 Cola mezclada"
+
+### Comando Skip!
+skip_msg: "`⏭️` | ¡La **Canción** se ha omitido!"
+skip_notfound: "`⚠️` | ¡No se encontró ninguna canción para omitir!"
+
+### Comando Volume!
+volume_msg: "`🔊` | El volumen está ajustado a **%{volume}%**"
+volume_invalid: "`⚠️` | Volumen inválido. Usa un número entre **1** y **100**!"
+
+### Comando InsertTrack!
+insert_desc: "`➕` | Añadido **%{name}** `%{duration}` • %{request}"
+insert_already: "`⚠️` | ¡No puedo añadir una canción que ya está reproduciendo!"
+insert_notfound: "`⚠️` | ¡Canción no encontrada!"

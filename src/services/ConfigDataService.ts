@@ -122,7 +122,7 @@ export class ConfigDataService {
         DELETE_MSG_TIMEOUT: 2000,
         DATABASE: {
           driver: "json",
-          config: { path: "./cylane.database.json" },
+          config: { path: "./remify.database.json" },
           cacheCleanSchedule: "0 */30 * * * *",
         },
         MESSAGE_CONTENT: {
@@ -167,6 +167,8 @@ export class ConfigDataService {
           filterreset: "🔃",
           disabled: "<:off1:1244562559877779517><:off2:1244562560964100157>",
           enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>",
+          warning: "<:warning:1248219584939692092>",
+          vink: "<:vink:1248232808074317894>",
           arrow_previous: "⬅",
           arrow_next: "➡",
         },

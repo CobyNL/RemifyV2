@@ -15,7 +15,7 @@ export class JSONConnectDriver {
 
   connect() {
     const sampleConfig = {
-      path: "./cylane.database.json",
+      path: "./remify.database.json",
     };
 
     new keyChecker(this.client, this.dbConfig.config, sampleConfig, "json");

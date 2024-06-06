@@ -57,15 +57,33 @@ export class ButtonPrevious {
       });
       return;
     } else {
-      this.player.previous();
-
-      this.player.data.set("endMode", "previous");
-
-      const embed = new EmbedBuilder()
-        .setDescription(`${this.client.i18n.get(this.language, "button.music", "previous_msg")}`)
-        .setColor(this.client.color);
-
-      this.interaction.reply({ embeds: [embed] });
+      if (this.player.queue.previous.length == 0) {
+        this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "previous_notfound", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
+              )
+              .setColor(this.client.color),
+          ],
+        });
+        return;
+      } else {
+        this.player.previous();
+        this.interaction.reply({
+          embeds: [
+            new EmbedBuilder()
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "previous_msg", {
+                  icon_previous: this.client.config.emojis.PLAYER.previous,
+                })}`
+              )
+              .setColor(this.client.color),
+          ],
+        });
+      }
     }
   }
 }

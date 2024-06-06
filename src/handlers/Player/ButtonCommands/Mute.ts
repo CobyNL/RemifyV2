@@ -63,8 +63,9 @@ export class ButtonMute {
         embeds: [
           new EmbedBuilder()
             .setDescription(
-              `${this.client.i18n.get(this.language, "button.music", "mute", {
+              `${this.client.i18n.get(this.language, "button.music", "mute_msg", {
                 state: newMuteState ? "enabled" : "disabled",
+                icon_mute: this.client.config.emojis.PLAYER.mute,
               })}`
             )
             .setColor(this.client.color),

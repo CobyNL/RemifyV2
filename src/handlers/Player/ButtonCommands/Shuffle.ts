@@ -59,7 +59,11 @@ export class ButtonShuffle {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(this.client.i18n.get(this.language, "button.music", "shuffle_msg"))
+            .setDescription(
+              this.client.i18n.get(this.language, "button.music", "shuffle_msg", {
+                icon_shuffle: this.client.config.emojis.PLAYER.shuffle,
+              })
+            )
             .setColor(this.client.color),
         ],
       });

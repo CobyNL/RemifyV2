@@ -4,7 +4,9 @@ import {
   EmbedBuilder,
   ModalBuilder,
   TextChannel,
-  TextInputBuilder, TextInputStyle, User,
+  TextInputBuilder,
+  TextInputStyle,
+  User,
   VoiceBasedChannel,
 } from "discord.js";
 import { Manager } from "../../../manager.js";
@@ -69,34 +71,56 @@ export class ButtonSave {
         await this.interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "button.music", "no_current_track")}`)
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "no_current_track", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(this.client.color),
           ],
         });
         return;
       }
 
-// Create a modal for the user to choose where to save the track
-      const modal = new ModalBuilder()
-        .setCustomId('save_track')
-        .setTitle(this.client.i18n.get(this.language, "button.music", "save_track"));
+      // Create a modal for the user to choose where to save the track
+      const modal = new ModalBuilder().setCustomId("save_track").setTitle(
+        this.client.i18n.get(this.language, "button.music", "save_track", {
+          icon_save: this.client.config.emojis.PLAYER.save,
+        })
+      );
 
       const saveToPlaylistInput = new TextInputBuilder()
-        .setCustomId('save_to_playlist')
-        .setLabel(this.client.i18n.get(this.language, "button.music", "save_to_playlist"))
+        .setCustomId("save_to_playlist")
+        .setLabel(
+          this.client.i18n.get(this.language, "button.music", "save_to_playlist", {
+            icon_playlist: this.client.config.emojis.PLAYER.save,
+          })
+        )
         .setStyle(TextInputStyle.Short)
-        .setPlaceholder(this.client.i18n.get(this.language, "button.music", "save_to_playlist_placeholder"))
+        .setPlaceholder(
+          this.client.i18n.get(this.language, "button.music", "save_to_playlist_placeholder")
+        )
         .setRequired(false);
 
       const saveToDirectMessageInput = new TextInputBuilder()
-        .setCustomId('save_to_dm')
-        .setLabel(this.client.i18n.get(this.language, "button.music", "save_to_dm"))
+        .setCustomId("save_to_dm")
+        .setLabel(
+          this.client.i18n.get(this.language, "button.music", "save_to_dm", {
+            icon_dm: this.client.config.emojis.PLAYER.save,
+          })
+        )
         .setStyle(TextInputStyle.Short)
-        .setPlaceholder(this.client.i18n.get(this.language, "button.music", "save_to_dm_placeholder"))
+        .setPlaceholder(
+          this.client.i18n.get(this.language, "button.music", "save_to_dm_placeholder")
+        )
         .setRequired(false);
 
-      const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(saveToPlaylistInput);
-      const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(saveToDirectMessageInput);
+      const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(
+        saveToPlaylistInput
+      );
+      const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(
+        saveToDirectMessageInput
+      );
 
       modal.addComponents(firstActionRow, secondActionRow);
 
@@ -108,52 +132,82 @@ export class ButtonSave {
       });
 
       if (submitted) {
-        const saveToPlaylist = submitted.fields.getTextInputValue('save_to_playlist');
-        const saveToDirectMessage = submitted.fields.getTextInputValue('save_to_dm');
+        const saveToPlaylist = submitted.fields.getTextInputValue("save_to_playlist");
+        const saveToDirectMessage = submitted.fields.getTextInputValue("save_to_dm");
 
         const embed = new EmbedBuilder()
           .setAuthor({
             name: this.client.i18n.get(this.language, "button.music", "track_saved_author"),
-            iconURL: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+            iconURL: "https://cdn.discordapp.com/emojis/741605543046807626.gif",
           })
-          .setDescription(this.client.i18n.get(this.language, "button.music", "track_saved_desc", {
-            title: currentTrack.title,
-            url: currentTrack.uri
-          }))
+          .setDescription(
+            this.client.i18n.get(this.language, "button.music", "track_saved_desc", {
+              title: currentTrack.title,
+              url: currentTrack.uri,
+            })
+          )
           .setColor(this.client.color)
           .addFields(
             {
               name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name1"),
-              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value1", { duration: currentTrack.duration.toString() }),
-              inline: true
+              value: this.client.i18n.get(
+                this.language,
+                "button.music",
+                "track_saved_field_value1",
+                { duration: currentTrack.duration.toString() }
+              ),
+              inline: true,
             },
             {
               name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name2"),
-              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value2", { author: currentTrack.author }),
-              inline: true
+              value: this.client.i18n.get(
+                this.language,
+                "button.music",
+                "track_saved_field_value2",
+                { author: currentTrack.author }
+              ),
+              inline: true,
             },
             {
               name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name3"),
-              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value3", { queue: this.player.queue.length.toString() }),
-              inline: true
+              value: this.client.i18n.get(
+                this.language,
+                "button.music",
+                "track_saved_field_value3",
+                { queue: this.player.queue.length.toString() }
+              ),
+              inline: true,
             },
             {
               name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name4"),
-              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value4", {
-                position: this.player.position.toString(),
-                duration: currentTrack.duration.toString()
-              }),
-              inline: true
+              value: this.client.i18n.get(
+                this.language,
+                "button.music",
+                "track_saved_field_value4",
+                {
+                  position: this.player.position.toString(),
+                  duration: currentTrack.duration.toString(),
+                }
+              ),
+              inline: true,
             },
             {
               name: this.client.i18n.get(this.language, "button.music", "track_saved_field_name5"),
-              value: this.client.i18n.get(this.language, "button.music", "track_saved_field_value5", { replay: currentTrack.title }),
-              inline: true
+              value: this.client.i18n.get(
+                this.language,
+                "button.music",
+                "track_saved_field_value5",
+                { replay: currentTrack.title }
+              ),
+              inline: true,
             }
           )
           .setFooter({
-            text: this.client.i18n.get(this.language, "button.music", "track_saved_footer", { requester: currentTrack.requester.toString(), volume: this.player.volume.toString() }),
-            iconURL: (currentTrack.requester as User).avatarURL()
+            text: this.client.i18n.get(this.language, "button.music", "track_saved_footer", {
+              requester: currentTrack.requester.toString(),
+              volume: this.player.volume.toString(),
+            }),
+            iconURL: (currentTrack.requester as User).avatarURL(),
           });
 
         if (saveToPlaylist) {
@@ -167,19 +221,23 @@ export class ButtonSave {
           });
 
           await submitted.reply({
-            embeds: [embed]
+            embeds: [embed],
           });
         }
 
         if (saveToDirectMessage) {
           await this.interaction.user.send({
-            embeds: [embed]
+            embeds: [embed],
           });
 
           await submitted.reply({
             embeds: [
               new EmbedBuilder()
-                .setDescription(`${this.client.i18n.get(this.language, "button.music", "saved_to_dm")}`)
+                .setDescription(
+                  `${this.client.i18n.get(this.language, "button.music", "saved_to_dm", {
+                    icon_check: this.client.config.emojis.PLAYER.vink,
+                  })}`
+                )
                 .setColor(this.client.color),
             ],
           });
@@ -189,7 +247,11 @@ export class ButtonSave {
           await submitted.reply({
             embeds: [
               new EmbedBuilder()
-                .setDescription(`${this.client.i18n.get(this.language, "button.music", "save_cancelled")}`)
+                .setDescription(
+                  `${this.client.i18n.get(this.language, "button.music", "save_cancelled", {
+                    icon_uncheck: this.client.config.emojis.PLAYER.warning,
+                  })}`
+                )
                 .setColor(this.client.color),
             ],
           });
@@ -198,14 +260,16 @@ export class ButtonSave {
         await this.interaction.editReply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "button.music", "save_cancelled")}`)
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "save_cancelled", {
+                  icon_uncheck: this.client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(this.client.color),
           ],
           components: [],
         });
       }
-
-
     }
   }
 }

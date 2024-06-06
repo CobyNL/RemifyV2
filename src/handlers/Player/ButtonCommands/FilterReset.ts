@@ -60,18 +60,25 @@ export class ButtonFilterReset {
         await this.player.filter.clear();
 
         const filterResetEmbed = new EmbedBuilder()
-          .setDescription(`${this.client.i18n.get(this.language, "button.music", "filter_reset")}`)
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "filter_reset", {
+              icon_filterreset: this.client.config.emojis.PLAYER.filterreset,
+            })}`
+          )
           .setColor(this.client.color);
 
         await this.interaction.reply({ embeds: [filterResetEmbed] });
       } else {
         const filterAlreadyResetEmbed = new EmbedBuilder()
-          .setDescription(`${this.client.i18n.get(this.language, "button.music", "filter_empty")}`)
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "filter_empty", {
+              icon_warning: this.client.config.emojis.PLAYER.warning,
+            })}`
+          )
           .setColor(this.client.color);
 
         await this.interaction.reply({ embeds: [filterAlreadyResetEmbed] });
       }
-
     }
   }
 }

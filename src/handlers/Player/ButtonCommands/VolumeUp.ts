@@ -61,7 +61,11 @@ export class ButtonVolumeUp {
         await this.interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "button.music", "volume_max")}`)
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "volume_max", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(this.client.color),
           ],
         });
@@ -73,6 +77,7 @@ export class ButtonVolumeUp {
               .setDescription(
                 `${this.client.i18n.get(this.language, "button.music", "volume_up", {
                   volume: newVolume.toString(),
+                  icon_volume_up: this.client.config.emojis.PLAYER.volup,
                 })}`
               )
               .setColor(this.client.color),

@@ -60,7 +60,11 @@ export class ButtonDelete {
         this.interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "button.music", "clear_msg")}`)
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "clear_msg", {
+                  icon_clear: this.client.config.emojis.PLAYER.delete,
+                })}`
+              )
               .setColor(this.client.color),
           ],
         });
@@ -69,12 +73,15 @@ export class ButtonDelete {
         this.interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${this.client.i18n.get(this.language, "button.music", "clear_empty")}`)
+              .setDescription(
+                `${this.client.i18n.get(this.language, "button.music", "clear_empty", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(this.client.color),
           ],
         });
       }
-
     }
   }
 }

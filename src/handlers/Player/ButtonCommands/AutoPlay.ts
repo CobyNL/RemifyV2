@@ -63,7 +63,11 @@ export class ButtonAutoplay {
         this.player.queue.clear();
 
         const off = new EmbedBuilder()
-          .setDescription(`${this.client.i18n.get(this.language, "button.music", "autoplay_off")}`)
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "autoplay_off", {
+              icon_uncheck: this.client.config.emojis.PLAYER.warning,
+            })}`
+          )
           .setColor(this.client.color);
 
         await this.interaction.reply({ content: " ", embeds: [off] });
@@ -78,7 +82,11 @@ export class ButtonAutoplay {
         this.player.data.set("title", this.player.queue.current?.title);
 
         const on = new EmbedBuilder()
-          .setDescription(`${this.client.i18n.get(this.language, "button.music", "autoplay_on")}`)
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "autoplay_on", {
+              icon_check: this.client.config.emojis.PLAYER.vink,
+            })}`
+          )
           .setColor(this.client.color);
 
         await this.interaction.reply({ content: " ", embeds: [on] });

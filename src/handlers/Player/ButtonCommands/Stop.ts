@@ -61,7 +61,11 @@ export class ButtonStop {
       await this.client.UpdateMusic(this.player);
 
       const embed = new EmbedBuilder()
-        .setDescription(`${this.client.i18n.get(this.language, "button.music", "stop_msg")}`)
+        .setDescription(
+          `${this.client.i18n.get(this.language, "button.music", "stop_msg", {
+            icon_stop: this.client.config.emojis.PLAYER.stop,
+          })}`
+        )
         .setColor(this.client.color);
 
       this.interaction.reply({ embeds: [embed] });

@@ -70,23 +70,31 @@ export class ButtonPause {
 
       newPlayer.paused
         ? playMsg
-          .edit({
-            // content: playMsg.content,
-            // embeds: new EmbedBuilder(playMsg.embeds),
-            components: [this.client.enSwitch, this.client.enSwitch2, this.client.enSwitch3],
-          })
-          .catch(() => null)
+            .edit({
+              // content: playMsg.content,
+              // embeds: new EmbedBuilder(playMsg.embeds),
+              components: [this.client.enSwitch, this.client.enSwitch2, this.client.enSwitch3],
+            })
+            .catch(() => null)
         : playMsg
-          .edit({
-            // content: playMsg.content,
-            // embeds: playMsg.embeds,
-            components: [this.client.enSwitchMod, this.client.enSwitch2, this.client.enSwitch3],
-          })
-          .catch(() => null);
+            .edit({
+              // content: playMsg.content,
+              // embeds: playMsg.embeds,
+              components: [this.client.enSwitchMod, this.client.enSwitch2, this.client.enSwitch3],
+            })
+            .catch(() => null);
 
       const embed = new EmbedBuilder()
         .setDescription(
-          `${this.client.i18n.get(this.language, "button.music", newPlayer.paused ? "pause_msg" : "resume_msg")}`
+          `${this.client.i18n.get(
+            this.language,
+            "button.music",
+            newPlayer.paused ? "pause_msg" : "resume_msg",
+            {
+              icon_pause: this.client.config.emojis.PLAYER.pause,
+              icon_resume: this.client.config.emojis.PLAYER.play,
+            }
+          )}`
         )
         .setColor(this.client.color);
 

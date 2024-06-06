@@ -25,6 +25,7 @@ export class ButtonRewind {
   }
 
   async execute() {
+    await this.interaction.deferReply();
     if (!this.channel) {
       this.interaction.reply({
         embeds: [
@@ -56,7 +57,6 @@ export class ButtonRewind {
       });
       return;
     } else {
-
       const song = this.player.queue.current;
       const song_position = this.player.position;
       const CurrentDuration = formatDuration(song_position - 10000);
@@ -73,6 +73,7 @@ export class ButtonRewind {
           .setDescription(
             `${this.client.i18n.get(this.language, "button.music", "rewind_msg", {
               duration: CurrentDuration,
+              icon_rewind: this.client.config.emojis.PLAYER.arrow_previous,
             })}`
           )
           .setColor(this.client.color);
@@ -83,7 +84,9 @@ export class ButtonRewind {
           embeds: [
             new EmbedBuilder()
               .setDescription(
-                `${this.client.i18n.get(this.language, "button.music", "rewind_beyond")}`
+                `${this.client.i18n.get(this.language, "button.music", "rewind_beyond", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
               )
               .setColor(this.client.color),
           ],

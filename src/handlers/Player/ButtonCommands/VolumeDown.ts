@@ -62,7 +62,9 @@ export class ButtonVolumeDown {
           embeds: [
             new EmbedBuilder()
               .setDescription(
-                `${this.client.i18n.get(this.language, "button.music", "volume_zero")}`
+                `${this.client.i18n.get(this.language, "button.music", "volume_zero", {
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
+                })}`
               )
               .setColor(this.client.color),
           ],
@@ -75,6 +77,7 @@ export class ButtonVolumeDown {
               .setDescription(
                 `${this.client.i18n.get(this.language, "button.music", "volume_down", {
                   volume: this.player.volume.toString(),
+                  icon_volume_down: this.client.config.emojis.PLAYER.voldown,
                 })}`
               )
               .setColor(this.client.color),

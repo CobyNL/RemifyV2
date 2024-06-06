@@ -55,22 +55,29 @@ export class ButtonSkip {
       });
       return;
     } else {
-    }
+      if (this.player.queue.size == 0 && this.player.data.get("autoplay") !== true) {
+        const embed = new EmbedBuilder()
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "skip_notfound", {
+              icon_warning: this.client.config.emojis.PLAYER.warning,
+            })}`
+          )
+          .setColor(this.client.color);
 
-    if (this.player.queue.size == 0 && this.player.data.get("autoplay") !== true) {
-      const embed = new EmbedBuilder()
-        .setDescription(`${this.client.i18n.get(this.language, "button.music", "skip_notfound")}`)
-        .setColor(this.client.color);
+        this.interaction.reply({ embeds: [embed] });
+      } else {
+        await this.player.skip();
 
-      this.interaction.reply({ embeds: [embed] });
-    } else {
-      await this.player.skip();
+        const embed = new EmbedBuilder()
+          .setDescription(
+            `${this.client.i18n.get(this.language, "button.music", "skip_msg", {
+              icon_skip: this.client.config.emojis.PLAYER.skip,
+            })}`
+          )
+          .setColor(this.client.color);
 
-      const embed = new EmbedBuilder()
-        .setDescription(`${this.client.i18n.get(this.language, "button.music", "skip_msg")}`)
-        .setColor(this.client.color);
-
-      this.interaction.reply({ embeds: [embed] });
+        this.interaction.reply({ embeds: [embed] });
+      }
     }
   }
 }

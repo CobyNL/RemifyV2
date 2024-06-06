@@ -102,6 +102,8 @@ export interface PlayerEmojis {
   arrow_previous: string;
   disabled: string;
   enabled: string;
+  warning: string;
+  vink: string;
 }
 
 export interface GlobalEmojis {

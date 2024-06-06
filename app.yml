@@ -137,6 +137,8 @@ emojis:
     enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>"
     # Etc
     queue: "<:1094320089358139402:1108126477427409018>"
+    warning: "<:warning:1248219584939692092>"
+    vink: "<:vink:1248232808074317894>"
   GLOBAL:
     arrow_next: "<:pjad_arrow_next:1161595178210041919>"
     arrow_previous: "<:pjad_arrow_back:1161595176737832970>"

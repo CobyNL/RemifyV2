@@ -227,8 +227,8 @@ export class PlayerContentLoader {
     if (!result.tracks.length) {
       msg
         ?.edit({
-        embeds: [queueEmbed],
-      })
+          embeds: [queueEmbed],
+        })
         .catch(() => null);
       return;
     }

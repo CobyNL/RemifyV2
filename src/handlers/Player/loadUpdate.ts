@@ -112,7 +112,9 @@ export class PlayerUpdateLoader {
           })}`
         ) // [${cSong.title}](${cSong.uri}) \`[${formatDuration(cSong.duration)}]\` • ${cSong.requester}
         .setColor(client.color)
-        .setImage(`${cSong!.artworkUrl ? cSong!.artworkUrl : `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`}`)
+        .setImage(
+          `${cSong!.artworkUrl ? cSong!.artworkUrl : `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`}`
+        )
         .setFooter({
           text: `${client.i18n.get(language, "event.setup", "setup_footer", {
             songs: player.queue.size.toString(),
@@ -173,8 +175,7 @@ export class PlayerUpdateLoader {
           })}`,
           iconURL: `https://cdn.discordapp.com/avatars/1041773236603596861/63fa890b6e1aa51ff0334083dfeafa37.webp?size=80`,
         })
-        .setImage(
-          `https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
+        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
         .setDescription(
           `${client.i18n.get(language, "event.setup", "setup_playembed_desc", {
             clientId: client.user?.id ?? "987345021441298516",
@@ -185,8 +186,7 @@ export class PlayerUpdateLoader {
             prefix: "/",
             maker: "Coby.Hツ#6166",
           })}`,
-        }
-        );
+        });
 
       return await playMsg
         .edit({

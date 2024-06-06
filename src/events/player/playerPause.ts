@@ -26,7 +26,9 @@ export default class {
         .fetch(setup.playmsg)
         .catch(() => undefined);
       if (!msg) return;
-      msg.edit({ components: [client.enSwitch, client.enSwitch2] }).catch(() => null);
+      msg
+        .edit({ components: [client.enSwitch, client.enSwitch2, client.enSwitch3] })
+        .catch(() => null);
     }
   }
 }

@@ -48,21 +48,51 @@ export class PlayerSetupLoader {
 
   RegisterEnableSwitch2() {
     this.client.enSwitch2 = new ActionRowBuilder<ButtonBuilder>().addComponents([
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svoldown").setEmoji(this.icons.voldown),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("srewind").setEmoji(this.icons.arrow_previous),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("smute").setEmoji(this.icons.mute),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sforward").setEmoji(this.icons.arrow_next),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("svolup").setEmoji(this.icons.volup),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("svoldown")
+        .setEmoji(this.icons.voldown),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("srewind")
+        .setEmoji(this.icons.arrow_previous),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("smute")
+        .setEmoji(this.icons.mute),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sforward")
+        .setEmoji(this.icons.arrow_next),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("svolup")
+        .setEmoji(this.icons.volup),
     ]);
   }
 
   RegisterEnableSwitch3() {
     this.client.enSwitch3 = new ActionRowBuilder<ButtonBuilder>().addComponents([
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sautoplay").setEmoji(this.icons.autoplay),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sdelete").setEmoji(this.icons.delete),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("ssave").setEmoji(this.icons.save),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sshuffle").setEmoji(this.icons.shuffle),
-      new ButtonBuilder().setStyle(ButtonStyle.Secondary).setCustomId("sfilterreset").setEmoji(this.icons.filterreset),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sautoplay")
+        .setEmoji(this.icons.autoplay),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sdelete")
+        .setEmoji(this.icons.delete),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("ssave")
+        .setEmoji(this.icons.save),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sshuffle")
+        .setEmoji(this.icons.shuffle),
+      new ButtonBuilder()
+        .setStyle(ButtonStyle.Secondary)
+        .setCustomId("sfilterreset")
+        .setEmoji(this.icons.filterreset),
     ]);
   }
 

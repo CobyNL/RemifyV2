@@ -68,21 +68,20 @@ export default class implements Command {
           ],
         });
 
-      const parent = await handler.guild!.channels.create({
-        name: `${client.user!.username}'s Music`,
-        type: ChannelType.GuildCategory,
-      });
       const textChannel = await handler.guild!.channels.create({
         name: "song-request",
         type: ChannelType.GuildText,
         topic: `${client.i18n.get(handler.language, "command.utils", "setup_topic")}`,
       });
-      const queueMsg = `${client.i18n.get(handler.language, "event.setup", "setup_queuemsg")}`;
 
       const queueEmbed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`)
-        .setTitle(`${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "Geen" })}`);
+        .setDescription(
+          `${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`
+        )
+        .setTitle(
+          `${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "Geen" })}`
+        );
 
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)

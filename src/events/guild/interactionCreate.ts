@@ -115,6 +115,7 @@ export default class {
     ) {
       const selfErrorString = `${client.i18n.get(language, "error", "no_perms", {
         perm: permissionResult.result,
+        icon_warning: client.config.emojis.PLAYER.warning
       })}`;
       const embed = new EmbedBuilder()
         .setDescription(
@@ -123,6 +124,7 @@ export default class {
             : `${client.i18n.get(language, "error", "no_perms_channel", {
                 perm: permissionResult.result,
                 channel: permissionResult.channel,
+                icon_warning: client.config.emojis.PLAYER.warning
               })}`
         )
         .setColor(client.color);

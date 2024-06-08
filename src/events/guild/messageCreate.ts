@@ -138,6 +138,7 @@ export default class {
     async function respondError(permissionResult: CheckPermissionResultInterface) {
       const selfErrorString = `${client.i18n.get(language, "error", "no_perms", {
         perm: permissionResult.result,
+        icon_warning: client.config.emojis.PLAYER.warning
       })}`;
       const embed = new EmbedBuilder()
         .setDescription(
@@ -146,6 +147,7 @@ export default class {
             : `${client.i18n.get(language, "error", "no_perms_channel", {
                 perm: permissionResult.result,
                 channel: permissionResult.channel,
+                icon_warning: client.config.emojis.PLAYER.warning
               })}`
         )
         .setColor(client.color);
@@ -185,7 +187,9 @@ export default class {
       return message.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(language, "error", "no_node")}`)
+            .setDescription(`${client.i18n.get(language, "error", "no_node", {
+              icon_warning: client.config.emojis.PLAYER.warning
+            })}`)
             .setColor(client.color),
         ],
       });
@@ -202,7 +206,9 @@ export default class {
         return message.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(language, "error", "no_player")}`)
+              .setDescription(`${client.i18n.get(language, "error", "no_player", {
+                icon_warning: client.config.emojis.PLAYER.warning
+              })}`)
               .setColor(client.color),
           ],
         });
@@ -214,7 +220,9 @@ export default class {
         return message.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(language, "error", "no_voice")}`)
+              .setDescription(`${client.i18n.get(language, "error", "no_voice", {
+                icon_warning: client.config.emojis.PLAYER.warning
+              })}`)
               .setColor(client.color),
           ],
         });

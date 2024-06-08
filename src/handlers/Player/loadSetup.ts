@@ -1,6 +1,12 @@
 import { PlayerEmojis } from "./../../@types/Config.js";
 import { Manager } from "../../manager.js";
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  StringSelectMenuBuilder,
+  StringSelectMenuOptionBuilder,
+} from "discord.js";
 
 /**
  *
@@ -20,6 +26,8 @@ export class PlayerSetupLoader {
     this.RegisterEnableSwitch2();
     this.RegisterEnableSwitch3();
     this.registerEnableSwitchMod();
+    this.RegisterFilterSwitchEnabled();
+    this.RegisterFilterSwitchDisabled();
   }
   registerEnableSwitch() {
     this.client.enSwitch = new ActionRowBuilder<ButtonBuilder>().addComponents([
@@ -209,5 +217,26 @@ export class PlayerSetupLoader {
         .setEmoji(this.icons.filterreset)
         .setDisabled(true),
     ]);
+  }
+
+  RegisterFilterSwitchEnabled() {
+    this.client.filterSwitchEnabled = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
+      [
+        new StringSelectMenuBuilder()
+          .setCustomId("sfilter")
+          .setPlaceholder("Filter")
+          .addOptions(this.client.selectMenuOptions),
+      ]
+    );
+  }
+  RegisterFilterSwitchDisabled() {
+    this.client.filterSwitchDisabled =
+      new ActionRowBuilder<StringSelectMenuBuilder>().addComponents([
+        new StringSelectMenuBuilder()
+          .setCustomId("sfilter")
+          .setPlaceholder("Filter")
+          .addOptions(this.client.selectMenuOptions)
+          .setDisabled(true),
+      ]);
   }
 }

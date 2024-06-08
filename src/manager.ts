@@ -10,6 +10,7 @@ import {
   ButtonInteraction,
   StringSelectMenuOptionBuilder,
   StringSelectMenuInteraction,
+  StringSelectMenuBuilder,
 } from "discord.js";
 import { DatabaseService } from "./database/index.js";
 import { resolve } from "path";
@@ -72,6 +73,8 @@ export class Manager extends Client {
   public diSwitch2!: ActionRowBuilder<ButtonBuilder>;
   public diSwitch3!: ActionRowBuilder<ButtonBuilder>;
   public enSwitchMod!: ActionRowBuilder<ButtonBuilder>;
+  public filterSwitchEnabled!: ActionRowBuilder<StringSelectMenuBuilder>;
+  public filterSwitchDisabled!: ActionRowBuilder<StringSelectMenuBuilder>;
   public topgg?: TopggService;
   public icons: Emojis;
   public cluster?: ClusterClient<Client>;

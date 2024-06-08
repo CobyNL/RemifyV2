@@ -27,7 +27,14 @@ export default class {
         .catch(() => undefined);
       if (!msg) return;
       msg
-        .edit({ components: [client.enSwitch, client.enSwitch2, client.enSwitch3] })
+        .edit({
+          components: [
+            client.filterSwitchEnabled,
+            client.enSwitch,
+            client.enSwitch2,
+            client.enSwitch3,
+          ],
+        })
         .catch(() => null);
     }
   }

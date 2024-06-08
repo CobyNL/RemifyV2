@@ -17,6 +17,9 @@ import { ButtonShuffle } from "./ButtonCommands/Shuffle.js";
 import { ButtonSave } from "./ButtonCommands/Save.js";
 import { ButtonAutoplay } from "./ButtonCommands/AutoPlay.js";
 import { ButtonFilterReset } from "./ButtonCommands/FilterReset.js";
+// Select Commands
+import { FilterSelect } from "./SelectCommands/SelectFilter.js";
+
 import { RateLimitManager } from "@sapphire/ratelimits";
 import { convertTime } from "../../utilities/ConvertTime.js";
 import { getTitle } from "../../utilities/GetTitle.js";
@@ -44,7 +47,7 @@ export class PlayerContentLoader {
 
   async interaction(client: Manager, interaction: GlobalInteraction): Promise<void> {
     if (!interaction.guild || interaction.user.bot) return;
-    if (!interaction.isButton()) return;
+    if (!interaction.isButton() && !interaction.isStringSelectMenu()) return;
     const { customId, member } = interaction;
     let voiceMember = await interaction.guild.members
       .fetch((member as GuildMember)!.id)
@@ -65,53 +68,88 @@ export class PlayerContentLoader {
     const language = guildModel;
 
     switch (customId) {
+      case "sfilter":
+        if (interaction.isStringSelectMenu()) {
+          new FilterSelect(client, interaction, channel, language, player);
+        }
+        break;
       //Row 1
       case "sprevious":
-        new ButtonPrevious(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonPrevious(client, interaction, channel, language, player);
+        }
         break;
       case "sskip":
-        new ButtonSkip(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonSkip(client, interaction, channel, language, player);
+        }
         break;
       case "sstop":
-        new ButtonStop(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonStop(client, interaction, channel, language, player);
+        }
         break;
       case "sloop":
-        new ButtonLoop(client, interaction, language, player);
+        if (interaction.isButton()) {
+          new ButtonLoop(client, interaction, language, player);
+        }
         break;
       case "spause":
-        new ButtonPause(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonPause(client, interaction, channel, language, player);
+        }
         break;
       //Row 2
       case "svoldown":
-        new ButtonVolumeDown(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonVolumeDown(client, interaction, channel, language, player);
+        }
         break;
       case "srewind":
-        new ButtonRewind(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonRewind(client, interaction, channel, language, player);
+        }
         break;
       case "smute":
-        new ButtonMute(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonMute(client, interaction, channel, language, player);
+        }
         break;
       case "sforward":
-        new ButtonForward(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonForward(client, interaction, channel, language, player);
+        }
         break;
       case "svolup":
-        new ButtonVolumeUp(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonVolumeUp(client, interaction, channel, language, player);
+        }
         break;
       //Row 3
       case "sautoplay":
-        new ButtonAutoplay(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonAutoplay(client, interaction, channel, language, player);
+        }
         break;
       case "sdelete":
-        new ButtonDelete(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonDelete(client, interaction, channel, language, player);
+        }
         break;
       case "ssave":
-        new ButtonSave(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonSave(client, interaction, channel, language, player);
+        }
         break;
       case "sshuffle":
-        new ButtonShuffle(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonShuffle(client, interaction, channel, language, player);
+        }
         break;
       case "sfilterreset":
-        new ButtonFilterReset(client, interaction, channel, language, player);
+        if (interaction.isButton()) {
+          new ButtonFilterReset(client, interaction, channel, language, player);
+        }
         break;
       default:
         break;

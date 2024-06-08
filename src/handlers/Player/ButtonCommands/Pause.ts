@@ -73,14 +73,24 @@ export class ButtonPause {
             .edit({
               // content: playMsg.content,
               // embeds: new EmbedBuilder(playMsg.embeds),
-              components: [this.client.enSwitch, this.client.enSwitch2, this.client.enSwitch3],
+              components: [
+                this.client.filterSwitchEnabled,
+                this.client.enSwitch,
+                this.client.enSwitch2,
+                this.client.enSwitch3,
+              ],
             })
             .catch(() => null)
         : playMsg
             .edit({
               // content: playMsg.content,
               // embeds: playMsg.embeds,
-              components: [this.client.enSwitchMod, this.client.enSwitch2, this.client.enSwitch3],
+              components: [
+                this.client.filterSwitchEnabled,
+                this.client.enSwitchMod,
+                this.client.enSwitch2,
+                this.client.enSwitch3,
+              ],
             })
             .catch(() => null);
 

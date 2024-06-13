@@ -235,7 +235,7 @@ export class ButtonSave {
               new EmbedBuilder()
                 .setDescription(
                   `${this.client.i18n.get(this.language, "button.music", "saved_to_dm", {
-                    icon_check: this.client.config.emojis.PLAYER.vink,
+                    icon_on: this.client.config.emojis.PLAYER.vink,
                   })}`
                 )
                 .setColor(this.client.color),
@@ -249,7 +249,7 @@ export class ButtonSave {
               new EmbedBuilder()
                 .setDescription(
                   `${this.client.i18n.get(this.language, "button.music", "save_cancelled", {
-                    icon_uncheck: this.client.config.emojis.PLAYER.warning,
+                    icon_warning: this.client.config.emojis.PLAYER.warning,
                   })}`
                 )
                 .setColor(this.client.color),
@@ -262,7 +262,7 @@ export class ButtonSave {
             new EmbedBuilder()
               .setDescription(
                 `${this.client.i18n.get(this.language, "button.music", "save_cancelled", {
-                  icon_uncheck: this.client.config.emojis.PLAYER.warning,
+                  icon_warning: this.client.config.emojis.PLAYER.warning,
                 })}`
               )
               .setColor(this.client.color),

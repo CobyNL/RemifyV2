@@ -19,8 +19,12 @@ export const SafeModeIcons = {
   shuffle: "🔀",
   filterreset: "🔃",
   //Disabled&Enabled
-  disabled: "<:off1:1244562559877779517><:off2:1244562560964100157>",
-  enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>",
+  disabled: "🔴",
+  enabled: "🟢",
   // etc
   queue: "📋",
+  warning: "⚠️",
+  vink: "✔️",
+  song: "🎵",
+  home: "🏠"
 };

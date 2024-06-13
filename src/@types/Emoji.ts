@@ -23,4 +23,8 @@ export type IconType = {
   enabled: string;
   // etc
   queue: string;
+  warning: string;
+  vink: string;
+  song: string;
+  home: string;
 };

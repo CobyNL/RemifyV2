@@ -104,6 +104,8 @@ export interface PlayerEmojis {
   enabled: string;
   warning: string;
   vink: string;
+  song: string;
+  home: string;
 }
 
 export interface GlobalEmojis {

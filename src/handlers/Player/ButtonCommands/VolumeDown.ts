@@ -56,13 +56,13 @@ export class ButtonVolumeDown {
       return;
     } else {
       let newVolume = this.player.volume - 10;
-      if (newVolume < 0) {
-        newVolume = 0;
+      if (newVolume < 0.1) {
+        newVolume = 0.1;
         await this.interaction.reply({
           embeds: [
             new EmbedBuilder()
               .setDescription(
-                `${this.client.i18n.get(this.language, "button.music", "volume_zero", {
+                `${this.client.i18n.get(this.language, "button.music", "volume_min", {
                   icon_warning: this.client.config.emojis.PLAYER.warning,
                 })}`
               )
@@ -75,9 +75,9 @@ export class ButtonVolumeDown {
           embeds: [
             new EmbedBuilder()
               .setDescription(
-                `${this.client.i18n.get(this.language, "button.music", "volume_down", {
+                `${this.client.i18n.get(this.language, "button.music", "voldown_msg", {
                   volume: this.player.volume.toString(),
-                  icon_volume_down: this.client.config.emojis.PLAYER.voldown,
+                  icon_voldown: this.client.config.emojis.PLAYER.voldown,
                 })}`
               )
               .setColor(this.client.color),

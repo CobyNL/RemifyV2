@@ -1,35 +1,65 @@
-queue_author: "💾 %{guild}"
-queue_description: "`📀` | 현재 재생 중:\n**%{track}** `[%{duration}]` • %{requester}\n\n`💤` | 대기열에 추가된 항목 **%{list_song}**"
+queue_author: "%{icon_server} | %{guild}"
+queue_description: "%{icon_song} | 현재 재생 중:\n**%{track}** `[%{duration}]` • %{requester}\n\n`💤` | 대기열에 추가된 항목 **%{list_song}**"
 queue_footer: "페이지 • %{page}/%{pages} | 노래 • %{queue_lang} | 총 재생 시간 • %{total_duration}"
-#Pause
-pause_msg: "`⏸️` | 노래를 일시정지했어요!"
-resume_msg: "`▶️` | 노래를 다시 재생할게요!"
-#Skip
-skip_msg: "`⏭️` | 다음 노래를 재생할게요!"
-skip_notfound: "`⚠️` | 건너 뛸 다음 곡이 없어요!"
-#Stop
-stop_msg: "`⏹️` | 노래를 정지했어요!"
-#Volume
-volup_msg: "`🔊` | 볼륨을 설정했어요! **%{volume}%**"
-voldown_msg: "`🔉` | 볼륨을 설정했어요! **%{volume}%**"
-volume_max: "`⚠️` | 플레이어 볼륨이 이미 최대 볼륨이에요!"
-volume_min: "`⚠️` | 플레이어 볼륨이 이미 최하 볼륨이에요!"
-#Clear
-clear_msg: "`🗑️` | 대기열을 정리했어요!"
-#Loop
-loop_current: "`🔁` | 한 곡 반복 모드를 설정했어요!"
-loop_all: "`🔁` | 전체 반복 모드를 설정했어요!"
-unloop_all: "`❌` | 반복 모드를 해제했어요!"
-loop_invalid: "`⚠️` | 잘못된 반복 모드입니다. %{mode} 을 사용해 주세요!"
-loop_already: "`⚠️` | 이미 반복 모드가 **%{mode}** 로 설정되어 있어요!"
-#Previous
-previous_msg: "`⏮️` | 이전 노래를 재생할게요!"
-previous_notfound: "`⚠️` | 이전 곡을 찾을 수 없어요!"
-#Shuffle
-shuffle_msg: "🔀 대기열에 등록된 노래를 무작위로 재생할게요!"
-# Reset command!
-reset_on: "`❌` | 모든 필터의 설정이 재설정되었어요!"
-reset_already: "`⚠️` | 필터가 이미 재설정되었어요!"
-# All filter command!
-filter_on: "`✅` | %{name} 필터를 설정했어요!"
-filter_already: "`⚠️` | %{name} 필터가 이미 **활성화되어 있어요!**"
+# Pause
+pause_msg: "%{icon_pause} | 노래를 일시정지했어요!"
+resume_msg: "%{icon_resume} | 노래를 다시 재생할게요!"
+# Skip
+skip_msg: "%{icon_skip} | 다음 노래를 재생할게요!"
+skip_notfound: "%{icon_warning} | 건너 뛸 다음 곡이 없어요!"
+# Stop
+stop_msg: "%{icon_stop} | 노래를 정지했어요!"
+# Volume
+volup_msg: "%{icon_volup} | 볼륨을 설정했어요! **%{volume}%**"
+voldown_msg: "%{icon_voldown} | 볼륨을 설정했어요! **%{volume}%**"
+volume_invalid: "%{icon_warning} | 유효하지 않은 볼륨입니다. **1**에서 **100** 사이의 숫자를 입력하세요!"
+volume_max: "%{icon_warning} | 플레이어 볼륨이 이미 최대 볼륨이에요!"
+volume_min: "%{icon_warning} | 플레이어 볼륨이 이미 최하 볼륨이에요!"
+# Clear
+clear_msg: "%{icon_clear} | 대기열을 정리했어요!"
+# Loop
+loop_current: "%{icon_loop} | 한 곡 반복 모드를 설정했어요!"
+loop_all: "%{icon_loop} | 전체 반복 모드를 설정했어요!"
+unloop_all: "%{icon_warning} | 반복 모드를 해제했어요!"
+loop_invalid: "%{icon_warning} | 잘못된 반복 모드입니다. %{mode} 을 사용해 주세요!"
+loop_already: "%{icon_warning} | 이미 반복 모드가 **%{mode}** 로 설정되어 있어요!"
+# Previous
+previous_msg: "%{icon_previous} | 이전 노래를 재생할게요!"
+previous_notfound: "%{icon_warning} | 이전 곡을 찾을 수 없어요!"
+# Shuffle
+shuffle_msg: "%{icon_shuffle} | 대기열에 등록된 노래를 무작위로 재생할게요!"
+### All filter command!
+filter_on: "%{icon_on} | %{name} 필터를 설정했어요!"
+filter_already: "%{icon_warning} | %{name} 필터가 이미 **활성화되어 있어요!**"
+### Reset command!
+reset_on: "%{icon_filterr} | 모든 필터의 설정이 재설정되었어요!"
+reset_already: "%{icon_warning} | 필터가 이미 재설정되었어요!"
+# Mute
+mute_msg: "%{icon_mute} | **플레이어**가 `${state}` 상태로 변경되었습니다!"
+# Save
+no_current_track: "%{icon_warning} | 현재 **곡**이 재생 중이지 않습니다!"
+save_track: "`💾` | **곡**을 어디에 저장하시겠습니까?"
+save_to_playlist: "📃 재생 목록에 저장"
+save_to_playlist_placeholder: "재생 목록 이름 입력"
+save_to_dm: "📩 직접 메시지에 저장"
+save_to_dm_placeholder: "메시지 입력"
+saved_to_playlist: "%{icon_on} | **재생 목록**에 곡이 저장되었습니다!"
+saved_to_dm: "%{icon_on} | **직접 메시지**에 곡이 저장되었습니다!"
+save_cancelled: "%{icon_warning} | 저장이 취소되었습니다!"
+track_saved: "%{icon_on} | 곡이 성공적으로 저장되었습니다!\n\n`[%{title}]`"
+track_saved_author: "현재 곡이 저장되었습니다..."
+track_saved_author_icon: "https://cdn.discordapp.com/emojis/741605543046807626.gif"
+track_saved_desc: "` 제목 `  [`%{title}`](%{url})"
+track_saved_footer: "요청자: %{requester} ・ 볼륨: %{volume}%"
+track_saved_footer_icon: "%{requester}"
+# Fields for track saved
+track_saved_field_name1: "<:pause:1108129162675372033> 재생 시간"
+track_saved_field_value1: "> ` %{duration} `"
+track_saved_field_name2: "<:pause:1108129162675372033> 제작자"
+track_saved_field_value2: "> ` %{author} `"
+track_saved_field_name3: "<:pause:1108129162675372033> 대기열"
+track_saved_field_value3: "> ` %{queue} 곡 `"
+track_saved_field_name4: "> 위치"
+track_saved_field_value4: "> ` %{position} / %{duration} `"
+track_saved_field_name5: "> 재생"
+track_saved_field_value5: "> ` /play %{replay} `"

@@ -65,7 +65,7 @@ export class ButtonAutoplay {
         const off = new EmbedBuilder()
           .setDescription(
             `${this.client.i18n.get(this.language, "button.music", "autoplay_off", {
-              icon_uncheck: this.client.config.emojis.PLAYER.warning,
+              icon_stop: this.client.config.emojis.PLAYER.warning,
             })}`
           )
           .setColor(this.client.color);
@@ -84,7 +84,7 @@ export class ButtonAutoplay {
         const on = new EmbedBuilder()
           .setDescription(
             `${this.client.i18n.get(this.language, "button.music", "autoplay_on", {
-              icon_check: this.client.config.emojis.PLAYER.vink,
+              icon_on: this.client.config.emojis.PLAYER.vink,
             })}`
           )
           .setColor(this.client.color);

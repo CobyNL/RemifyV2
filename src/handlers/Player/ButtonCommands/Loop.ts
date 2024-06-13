@@ -86,7 +86,7 @@ export class ButtonLoop {
         const unloopall = new EmbedBuilder()
           .setDescription(
             `${this.client.i18n.get(this.language, "button.music", "unloop_all", {
-              icon_unloop: this.client.config.emojis.PLAYER.warning,
+              icon_warning: this.client.config.emojis.PLAYER.warning,
             })}`
           )
           .setColor(this.client.color);

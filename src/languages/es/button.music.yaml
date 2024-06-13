@@ -1,53 +1,43 @@
-queue_author: "%{icon_save} %{guild}"
-queue_description: "%{icon_cd} | Reproduciendo ahora:\n`%{track}` `%{duration}` • %{requester}\n\n%{icon_sleep} | El resto de la cola:`%{list_song}`"
+queue_author: "%{icon_server} | %{guild}"
+queue_description: "%{icon_song} | Ahora reproduciendo:\n**%{track}** `[%{duration}]` • %{requester}\n\n`💤` | Cola restante:**%{list_song}**"
 queue_footer: "Página • %{page}/%{pages} | Canciones • %{queue_lang} | Duración total • %{total_duration}"
 # Pause
-pause_msg: "%{icon_pause} | `Reproductor` en pausa!"
-resume_msg: "%{icon_resume} | `Reproductor` reanudado!"
+pause_msg: "%{icon_pause} | Se ha pausado el **Reproductor**!"
+resume_msg: "%{icon_resume} | Se ha reanudado el **Reproductor**!"
 # Skip
-skip_msg: "%{icon_skip} | `Canción` omitida!"
-skip_notfound: "%{icon_warning} | No se encontró ninguna canción para omitir!"
+skip_msg: "%{icon_skip} | Se ha saltado la **Canción**!"
+skip_notfound: "%{icon_warning} | ¡No se encontró ninguna canción para saltar!"
 # Stop
-stop_msg: "%{icon_stop} | `Reproductor` detenido!"
+stop_msg: "%{icon_stop} | Se ha detenido el **Reproductor**!"
 # Volume
-volup_msg: "%{icon_volume_up} | Volumen cambiado a `%{volume}%`"
-voldown_msg: "%{icon_volume_down} | Volumen cambiado a `%{volume}%`"
-volume_invalid: "%{icon_warning} | Volumen inválido. Usa un número entre `1` y `100`!"
+volup_msg: "%{icon_volup} | Se ha cambiado el volumen a **%{volume}%**"
+voldown_msg: "%{icon_voldown} | Se ha cambiado el volumen a **%{volume}%**"
+volume_invalid: "%{icon_warning} | Volumen inválido. ¡Por favor, use un número entre **1** y **100**!"
+volume_max: "%{icon_warning} | ¡El reproductor ya está al máximo volumen!"
+volume_min: "%{icon_warning} | ¡El reproductor ya está al mínimo volumen!"
 # Clear
-clear_msg: "%{icon_clear} | Cola `Borrada`!"
-clear_empty: "%{icon_warning} | No se encontró ninguna canción para borrar!"
+clear_msg: "%{icon_clear} | Se ha **Borrado** la cola!"
 # Loop
-loop_current: "%{icon_loop} | Repitiendo `Canción` actual!"
-loop_all: "%{icon_loop} | Repitiendo la `Cola`!"
-unloop_all: "%{icon_unloop} | Repetición `Desactivada`!"
-loop_invalid: "%{icon_warning} | Modo de repetición inválido. Por favor usa %{mode}!"
-loop_already: "%{icon_warning} | El modo de repetición ya es `%{mode}`!"
+loop_current: "%{icon_loop} | Repitiendo la **Canción** actual!"
+loop_all: "%{icon_loop} | Repitiendo la **Cola**!"
+unloop_all: "%{icon_warning} | La repetición ahora está **Desactivada**!"
+loop_invalid: "%{icon_warning} | Modo de repetición inválido. ¡Por favor, use %{mode}!"
+loop_already: "%{icon_warning} | ¡El modo de repetición ya es **%{mode}**!"
 # Previous
-previous_msg: "%{icon_previous} | Saltando a la `Canción` anterior!"
-previous_notfound: "%{icon_warning} | No se encontró ninguna canción anterior!"
+previous_msg: "%{icon_previous} | Saltado a la **Canción** anterior!"
+previous_notfound: "%{icon_warning} | ¡No se encontró ninguna canción anterior!"
 # Shuffle
-shuffle_msg: "%{icon_shuffle} | Cola mezclada"
-### Autoplay command!
-autoplay_on: "%{icon_check} | Autoplay `Activado`!"
-autoplay_off: "%{icon_uncheck} | Autoplay `Desactivado`!"
-autoplay_already: "%{icon_warning} | Autoplay ya está `%{mode}`!"
-# Forward
-forward_msg: "%{icon_forward} | Avanzado 10 segundos a `%{duration}`"
-forward_beyond: "%{icon_warning} | La canción terminará pronto. No puedes avanzar más!"
-# Rewind
-rewind_msg: "%{icon_rewind} | Rebobinado a `%{duration}`"
-rewind_beyond: "%{icon_warning} | La canción empezará pronto. No puedes retroceder más!"
-# Filter
-filter_reset: "%{icon_filterreset} | Filtro `Restablecido`!"
-filter_empty: "%{icon_warning} | No se encontró ningún filtro para restablecer!"
+shuffle_msg: "%{icon_shuffle} | Se ha mezclado la Cola"
+
+### ¡Todos los comandos de filtro!
+filter_on: "%{icon_on} | El filtro %{name} ahora está **activado**!"
+filter_already: "%{icon_warning} | ¡El filtro %{name} ya está **activado**!"
+
+### ¡Comando de reseteo!
+reset_on: "%{icon_filterr} | El filtro ha sido **Restablecido**!"
+reset_already: "%{icon_warning} | ¡El filtro ya ha sido **Restablecido**!"
 # Mute
-mute_msg: "%{icon_mute} | `Reproductor` está ahora `${state}`!"
-# VolumeUp
-volume_up: "%{icon_volume_up} | Volumen cambiado a `%{volume}%`"
-volume_max: "%{icon_warning} | El volumen no puede superar `100`!"
-# VolumeDown
-volume_down: "%{icon_volume_down} | Volumen cambiado a `%{volume}%`"
-volume_zero: "%{icon_warning} | El volumen no puede ser menor que `0`!"
+mute_msg: "%{icon_mute} | El **Reproductor** ahora está `${state}`!"
 # Save
 no_current_track: "%{icon_warning} | No se encontró ninguna canción para guardar!"
 save_track: "%{icon_save} | ¿Dónde quieres guardar la `canción`?"

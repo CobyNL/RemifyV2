@@ -75,9 +75,9 @@ export class ButtonVolumeUp {
           embeds: [
             new EmbedBuilder()
               .setDescription(
-                `${this.client.i18n.get(this.language, "button.music", "volume_up", {
+                `${this.client.i18n.get(this.language, "button.music", "volup_msg", {
                   volume: newVolume.toString(),
-                  icon_volume_up: this.client.config.emojis.PLAYER.volup,
+                  icon_volup: this.client.config.emojis.PLAYER.volup,
                 })}`
               )
               .setColor(this.client.color),

@@ -20,13 +20,16 @@ export default class implements PlayerButton {
 
     const reply_msg = `${client.i18n.get(language, "button.music", "voldown_msg", {
       volume: `${player.volume - 10}`,
+      icon_voldown: client.config.emojis.PLAYER.voldown
     })}`;
 
     if (player.volume <= 0.1) {
       new ReplyInteractionService(
         client,
         message,
-        `${client.i18n.get(language, "button.music", "volume_min")}`
+        `${client.i18n.get(language, "button.music", "volume_min", {
+          icon_warning: client.config.emojis.PLAYER.warning
+        })}`
       );
       return;
     }

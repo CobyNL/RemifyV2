@@ -54,7 +54,9 @@ export default class implements PlayerButton {
         .setThumbnail(thumbnail)
         .setColor(client.color)
         .setAuthor({
-          name: `${client.i18n.get(language, "button.music", "shuffle_msg")}`,
+          name: `${client.i18n.get(language, "button.music", "shuffle_msg", {
+            icon_shuffle: client.config.emojis.PLAYER.shuffle
+          })}`,
         })
         .setDescription(
           `${client.i18n.get(language, "button.music", "queue_description", {
@@ -62,6 +64,7 @@ export default class implements PlayerButton {
             duration: formatDuration(song?.duration),
             requester: `${song!.requester}`,
             list_song: str == "" ? "  Nothing" : "\n" + str,
+            icon_song: client.config.emojis.PLAYER.song
           })}`
         )
         .setFooter({

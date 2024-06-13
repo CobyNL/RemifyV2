@@ -177,7 +177,7 @@ export default class {
       if (player.data.get("filter-mode") == filterMode) {
         const embed = new EmbedBuilder()
           .setDescription(
-            `${client.i18n.get(language, "button.music", "filter_already", { name: filterMode })}`
+            `${client.i18n.get(language, "button.music", "filter_already", { name: filterMode, icon_warning: client.config.emojis.PLAYER.warning })}`
           )
           .setColor(client.color);
         const msg = await message
@@ -195,7 +195,9 @@ export default class {
 
       if (filterMode == "clear" && !player.data.get("filter-mode")) {
         const embed = new EmbedBuilder()
-          .setDescription(`${client.i18n.get(language, "button.music", "reset_already")}`)
+          .setDescription(`${client.i18n.get(language, "button.music", "reset_already", {
+            icon_warning: client.config.emojis.PLAYER.warning
+          })}`)
           .setColor(client.color);
         const msg = await message
           .reply({
@@ -218,8 +220,10 @@ export default class {
       const embed = new EmbedBuilder()
         .setDescription(
           filterMode == "clear"
-            ? `${client.i18n.get(language, "button.music", "reset_on")}`
-            : `${client.i18n.get(language, "button.music", "filter_on", { name: filterMode })}`
+            ? `${client.i18n.get(language, "button.music", "reset_on", {
+              icon_filterr: client.config.emojis.PLAYER.filterreset
+            })}`
+            : `${client.i18n.get(language, "button.music", "filter_on", { name: filterMode, icon_on: client.config.emojis.PLAYER.vink })}`
         )
         .setColor(client.color);
 

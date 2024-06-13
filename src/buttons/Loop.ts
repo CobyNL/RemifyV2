@@ -33,7 +33,9 @@ export default class implements PlayerButton {
         new ReplyInteractionService(
           client,
           message,
-          `${client.i18n.get(language, "button.music", "loop_current")}`
+          `${client.i18n.get(language, "button.music", "loop_current", {
+            icon_loop: client.config.emojis.PLAYER.loop
+          })}`
         );
 
         client.wsl.get(message.guild!.id)?.send({
@@ -52,7 +54,9 @@ export default class implements PlayerButton {
         new ReplyInteractionService(
           client,
           message,
-          `${client.i18n.get(language, "button.music", "loop_all")}`
+          `${client.i18n.get(language, "button.music", "loop_all", {
+            icon_loop: client.config.emojis.PLAYER.loop
+          })}`
         );
 
         client.wsl.get(message.guild!.id)?.send({
@@ -71,7 +75,9 @@ export default class implements PlayerButton {
         new ReplyInteractionService(
           client,
           message,
-          `${client.i18n.get(language, "button.music", "unloop_all")}`
+          `${client.i18n.get(language, "button.music", "unloop_all", {
+            icon_warning: client.config.emojis.PLAYER.warning
+          })}`
         );
 
         client.wsl.get(message.guild!.id)?.send({

@@ -1,4 +1,4 @@
-import { ButtonInteraction, CacheType, InteractionCollector, Message } from "discord.js";
+import { ButtonInteraction, CacheType, Client, InteractionCollector, Message } from "discord.js";
 import { PlayerButton } from "../@types/Button.js";
 import { Manager } from "../manager.js";
 import {
@@ -41,7 +41,10 @@ export default class implements PlayerButton {
     new ReplyInteractionService(
       client,
       message,
-      `${client.i18n.get(language, "button.music", newPlayer.paused ? "pause_msg" : "resume_msg")}`
+      `${client.i18n.get(language, "button.music", newPlayer.paused ? "pause_msg" : "resume_msg", {
+        icon_pause: client.config.emojis.PLAYER.pause,
+        icon_resume: client.config.emojis.PLAYER.play
+      })}`
     );
   }
 }

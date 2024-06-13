@@ -23,7 +23,9 @@ export default class implements PlayerButton {
     new ReplyInteractionService(
       client,
       message,
-      `${client.i18n.get(language, "button.music", "stop_msg")}`
+      `${client.i18n.get(language, "button.music", "stop_msg", {
+        icon_stop: client.config.emojis.PLAYER.stop
+      })}`
     );
   }
 }

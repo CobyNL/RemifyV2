@@ -61,8 +61,8 @@ export class ButtonFilterReset {
 
         const filterResetEmbed = new EmbedBuilder()
           .setDescription(
-            `${this.client.i18n.get(this.language, "button.music", "filter_reset", {
-              icon_filterreset: this.client.config.emojis.PLAYER.filterreset,
+            `${this.client.i18n.get(this.language, "button.music", "reset_on", {
+              icon_filterr: this.client.config.emojis.PLAYER.filterreset,
             })}`
           )
           .setColor(this.client.color);
@@ -71,7 +71,7 @@ export class ButtonFilterReset {
       } else {
         const filterAlreadyResetEmbed = new EmbedBuilder()
           .setDescription(
-            `${this.client.i18n.get(this.language, "button.music", "filter_empty", {
+            `${this.client.i18n.get(this.language, "button.music", "reset_already", {
               icon_warning: this.client.config.emojis.PLAYER.warning,
             })}`
           )

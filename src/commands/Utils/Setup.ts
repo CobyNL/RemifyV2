@@ -70,30 +70,42 @@ export default class implements Command {
         });
 
       const textChannel = await handler.guild!.channels.create({
-        name: "song-request",
+        name: "🎶・song-request",
         type: ChannelType.GuildText,
         topic: `${client.i18n.get(handler.language, "command.utils", "setup_topic")}`,
       });
 
       const queueEmbed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(
-          `${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`
-        )
+        .setDescription(`${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`)
         .setTitle(
-          `${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "Geen" })}`
+          `${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "0" })}`
         );
 
       const playEmbed = new EmbedBuilder()
         .setColor(client.color)
         .setAuthor({
-          name: `${client.i18n.get(handler.language, "event.setup", "setup_playembed_author")}`,
+          name: `${client.i18n.get(handler.language, "event.setup", "setup_playembed_author", {
+            author: "Remify",
+          })}`,
+          iconURL: `https://cdn.discordapp.com/avatars/987345021441298516/63fa890b6e1aa51ff0334083dfeafa37.webp?size=128`,
         })
-        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`);
+        .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
+        .setDescription(
+          `${client.i18n.get(handler.language, "event.setup", "setup_playembed_desc", {
+            clientId: client.user?.id ?? "987345021441298516",
+          })}`
+        )
+        .setFooter({
+          text: `${client.i18n.get(handler.language, "event.setup", "setup_playembed_footer", {
+            prefix: "/",
+            maker: "Coby.Hツ#6166",
+          })}`,
+        });
 
       const channel_msg = await textChannel.send({
         embeds: [queueEmbed, playEmbed],
-        components: [client.diSwitch, client.diSwitch2],
+        components: [client.filterSwitchDisabled, client.diSwitch, client.diSwitch2, client.diSwitch3],
       });
 
       const new_data = {

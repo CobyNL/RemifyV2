@@ -46,7 +46,7 @@ filter_already: "%{icon_warning} | %{name} filter is al **enabled**!"
 reset_on: "%{icon_filterr} | Filter is **Gereset**!"
 reset_already: "%{icon_warning} | Filter is al **Gereset**!"
 # Mute
-mute_msg: "%{icon_mute} | Speler is nu *${state}**!"
+mute_msg: "%{icon_mute} | Speler is nu **${state}**!"
 # Save
 no_current_track: "%{icon_warning} | Er is geen **nummer** aan het spelen!"
 save_track: "`💾` | Waar wil je het **nummer** opslaan?"

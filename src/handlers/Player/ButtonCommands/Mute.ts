@@ -63,22 +63,24 @@ export class ButtonMute {
     } else {
       const newMuteState = !this.player.mute;
       this.player.setMute(newMuteState);
-      await this.player.setVolume(newMuteState ? 0 : 100);
 
-      const stateString = newMuteState ? "enabled" : "disabled";
+      const volume = newMuteState
+        ? this.player.mute
+          ? this.player.volume
+          : 100
+        : this.client.config.player.DEFAULT_VOLUME || 50;
+
+      await this.player.setVolume(volume);
+
+      const stateString = this.player.mute ? "Muted" : "Unmuted";
       const muteEmoji = this.client.config.emojis.PLAYER.mute;
-
-      const description = `${this.client.i18n.get(this.language, "button.music", "mute_msg", {
+      const description = this.client.i18n.get(this.language, "button.music", "mute_msg", {
         state: stateString,
         icon_mute: muteEmoji,
-      })}`;
+      });
 
       await this.interaction.reply({
-        embeds: [
-          new EmbedBuilder()
-            .setDescription(description)
-            .setColor(this.client.color),
-        ],
+        embeds: [new EmbedBuilder().setDescription(description).setColor(this.client.color)],
       });
     }
   }

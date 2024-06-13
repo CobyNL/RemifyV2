@@ -132,6 +132,7 @@ dist
 app.yml
 cylane.database.json
 byteblaze.database.json
+remify.database.json
 .cylane/
 
 .env
@@ -143,4 +144,3 @@ temp/
 pnpm-lock.yaml
 
 test.*************
-remify.database.json

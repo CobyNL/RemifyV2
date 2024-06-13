@@ -65,15 +65,18 @@ export class ButtonMute {
       this.player.setMute(newMuteState);
       await this.player.setVolume(newMuteState ? 0 : 100);
 
+      const stateString = newMuteState ? "enabled" : "disabled";
+      const muteEmoji = this.client.config.emojis.PLAYER.mute;
+
+      const description = `${this.client.i18n.get(this.language, "button.music", "mute_msg", {
+        state: stateString,
+        icon_mute: muteEmoji,
+      })}`;
+
       await this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(
-              `${this.client.i18n.get(this.language, "button.music", "mute_msg", {
-                state: newMuteState ? "enabled" : "disabled",
-                icon_mute: this.client.config.emojis.PLAYER.mute,
-              })}`
-            )
+            .setDescription(description)
             .setColor(this.client.color),
         ],
       });

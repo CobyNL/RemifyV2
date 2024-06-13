@@ -40,23 +40,39 @@ export class SongRequesterCleanSetup {
 
     const language = guildModel;
 
-    const queueMsg = `${this.client.i18n.get(language, "setup", "setup_queuemsg")}`;
+    const queueEmbed = new EmbedBuilder()
+      .setColor(this.client.color)
+      .setDescription(`${this.client.i18n.get(language, "event.setup", "setup_content_emptylist")}`)
+      .setTitle(
+        `${this.client.i18n.get(language, "event.setup", "setup_content", { songs: "0" })}`
+      );
 
     const playEmbed = new EmbedBuilder()
       .setColor(this.client.color)
       .setAuthor({
-        name: `${this.client.i18n.get(language, "setup", "setup_playembed_author")}`,
+        name: `${this.client.i18n.get(language, "event.setup", "setup_playembed_author", {
+          author: "Remify",
+        })}`,
+        iconURL: `https://cdn.discordapp.com/avatars/987345021441298516/63fa890b6e1aa51ff0334083dfeafa37.webp?size=128`,
       })
-      .setImage(
-        `https://cdn.discordapp.com/avatars/${this.client.user!.id}/${this.client.user!.avatar}.jpeg?size=300`
-      );
+      .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
+      .setDescription(
+        `${this.client.i18n.get(language, "event.setup", "setup_playembed_desc", {
+          clientId: this.client.user?.id ?? "987345021441298516",
+        })}`
+      )
+      .setFooter({
+        text: `${this.client.i18n.get(language, "event.setup", "setup_playembed_footer", {
+          prefix: "/",
+          maker: "Coby.Hツ#6166",
+        })}`,
+      });
 
     return await playMsg
       .edit({
-        content: `${queueMsg}`,
-        embeds: [playEmbed],
-        components: [this.client.diSwitch],
+        embeds: [queueEmbed, playEmbed],
+        components: [this.client.filterSwitchDisabled, this.client.diSwitch, this.client.diSwitch2, this.client.diSwitch3],
       })
-      .catch((e) => {});
+      .catch(() => {});
   }
 }

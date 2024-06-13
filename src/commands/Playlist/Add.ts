@@ -237,8 +237,12 @@ export default class implements Command {
 
     if (client.lavalinkUsing.length == 0) {
       choice.push({
-        name: `${client.i18n.get(language, "error", "no_node")}`,
-        value: `${client.i18n.get(language, "error", "no_node")}`,
+        name: `${client.i18n.get(language, "error", "no_node", {
+          icon_warning: client.config.emojis.PLAYER.warning
+        })}`,
+        value: `${client.i18n.get(language, "error", "no_node", {
+          icon_warning: client.config.emojis.PLAYER.warning
+        })}`,
       });
       return;
     }

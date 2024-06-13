@@ -210,7 +210,9 @@ export class PlayerContentLoader {
       return message.channel.send({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(language, "error", "no_in_voice")}`)
+            .setDescription(`${client.i18n.get(language, "error", "no_in_voice", {
+              icon_warning: client.config.emojis.PLAYER.warning
+            })}`)
             .setColor(client.color),
         ],
       });
@@ -244,7 +246,9 @@ export class PlayerContentLoader {
         msg?.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(language, "error", "no_same_voice")}`)
+              .setDescription(`${client.i18n.get(language, "error", "no_same_voice", {
+                icon_warning: client.config.emojis.PLAYER.warning
+              })}`)
               .setColor(client.color),
           ],
         });

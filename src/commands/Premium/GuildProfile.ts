@@ -26,10 +26,14 @@ export default class implements Command {
     if (!PremiumPlan) {
       const embed = new EmbedBuilder()
         .setAuthor({
-          name: `${client.i18n.get(handler.language, "error", "no_premium_author")}`,
+          name: `${client.i18n.get(handler.language, "error", "no_premium_author", {
+            icon_warning: client.config.emojis.PLAYER.warning
+          })}`,
           iconURL: client.user!.displayAvatarURL(),
         })
-        .setDescription(`${client.i18n.get(handler.language, "error", "no_guild_premium_desc")}`)
+        .setDescription(`${client.i18n.get(handler.language, "error", "no_guild_premium_desc", {
+          icon_warning: client.config.emojis.PLAYER.warning
+        })}`)
         .setColor(client.color)
         .setTimestamp();
       return handler.editReply({

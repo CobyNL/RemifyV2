@@ -46,6 +46,7 @@ export default class implements Command {
             .setDescription(
               `${client.i18n.get(handler.language, "error", "arg_error", {
                 text: "**create** or **delete**!",
+                icon_warning: client.config.emojis.PLAYER.warning
               })}`
             )
             .setColor(client.color),

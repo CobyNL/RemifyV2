@@ -135,8 +135,6 @@ byteblaze.database.json
 remify.database.json
 .cylane/
 
-.env
-
 .clinic
 
 draft/

@@ -23,7 +23,7 @@ export default class implements PlayerButton {
       client,
       message,
       `${client.i18n.get(language, "button.music", "clear_msg", {
-        icon_clear: client.config.emojis.PLAYER.delete
+        icon_clear: client.config.emojis.PLAYER.delete,
       })}`
     );
 

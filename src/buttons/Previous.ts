@@ -24,7 +24,7 @@ export default class implements PlayerButton {
         client,
         message,
         `${client.i18n.get(language, "button.music", "previous_notfound", {
-          icon_warning: client.config.emojis.PLAYER.warning
+          icon_warning: client.config.emojis.PLAYER.warning,
         })}`
       );
 
@@ -36,7 +36,7 @@ export default class implements PlayerButton {
       client,
       message,
       `${client.i18n.get(language, "button.music", "previous_msg", {
-        icon_previous: client.config.emojis.PLAYER.previous
+        icon_previous: client.config.emojis.PLAYER.previous,
       })}`
     );
     return;

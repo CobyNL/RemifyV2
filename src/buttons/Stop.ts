@@ -24,7 +24,7 @@ export default class implements PlayerButton {
       client,
       message,
       `${client.i18n.get(language, "button.music", "stop_msg", {
-        icon_stop: client.config.emojis.PLAYER.stop
+        icon_stop: client.config.emojis.PLAYER.stop,
       })}`
     );
   }

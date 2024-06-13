@@ -23,7 +23,7 @@ export default class implements PlayerButton {
         client,
         message,
         `${client.i18n.get(language, "button.music", "skip_notfound", {
-          icon_warning: client.config.emojis.PLAYER.warning
+          icon_warning: client.config.emojis.PLAYER.warning,
         })}`
       );
 
@@ -33,7 +33,7 @@ export default class implements PlayerButton {
       client,
       message,
       `${client.i18n.get(language, "button.music", "skip_msg", {
-        icon_skip: client.config.emojis.PLAYER.skip
+        icon_skip: client.config.emojis.PLAYER.skip,
       })}`
     );
   }

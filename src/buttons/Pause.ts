@@ -43,7 +43,7 @@ export default class implements PlayerButton {
       message,
       `${client.i18n.get(language, "button.music", newPlayer.paused ? "pause_msg" : "resume_msg", {
         icon_pause: client.config.emojis.PLAYER.pause,
-        icon_resume: client.config.emojis.PLAYER.play
+        icon_resume: client.config.emojis.PLAYER.play,
       })}`
     );
   }

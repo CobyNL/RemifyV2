@@ -34,7 +34,7 @@ export default class implements PlayerButton {
           client,
           message,
           `${client.i18n.get(language, "button.music", "loop_current", {
-            icon_loop: client.config.emojis.PLAYER.loop
+            icon_loop: client.config.emojis.PLAYER.loop,
           })}`
         );
 
@@ -55,7 +55,7 @@ export default class implements PlayerButton {
           client,
           message,
           `${client.i18n.get(language, "button.music", "loop_all", {
-            icon_loop: client.config.emojis.PLAYER.loop
+            icon_loop: client.config.emojis.PLAYER.loop,
           })}`
         );
 
@@ -76,7 +76,7 @@ export default class implements PlayerButton {
           client,
           message,
           `${client.i18n.get(language, "button.music", "unloop_all", {
-            icon_warning: client.config.emojis.PLAYER.warning
+            icon_warning: client.config.emojis.PLAYER.warning,
           })}`
         );
 

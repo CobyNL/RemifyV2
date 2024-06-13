@@ -26,5 +26,5 @@ export const SafeModeIcons = {
   warning: "⚠️",
   vink: "✔️",
   song: "🎵",
-  home: "🏠"
+  home: "🏠",
 };

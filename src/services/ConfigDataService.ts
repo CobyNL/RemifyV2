@@ -169,6 +169,8 @@ export class ConfigDataService {
           enabled: "<:on1:1244562476721373265><:on2:1244562474997387265>",
           warning: "<:warning:1248219584939692092>",
           vink: "<:vink:1248232808074317894>",
+          song: "<:song:1250620299758796810>",
+          home: "<:home:1250623063263936613>",
           arrow_previous: "⬅",
           arrow_next: "➡",
         },

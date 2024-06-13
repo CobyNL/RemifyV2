@@ -178,7 +178,7 @@ export class PlayerUpdateLoader {
           name: `${client.i18n.get(language, "event.setup", "setup_playembed_author", {
             author: "Remify",
           })}`,
-          iconURL: `https://cdn.discordapp.com/avatars/1041773236603596861/63fa890b6e1aa51ff0334083dfeafa37.webp?size=80`,
+          iconURL: `https://cdn.discordapp.com/avatars/${this.client.user!.id}/${this.client.user!.avatar}.jpeg?size=300`,
         })
         .setImage(`https://share.creavite.co/7sIbbA5ASiomNQkE.gif`)
         .setDescription(

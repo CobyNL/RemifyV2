@@ -37,7 +37,8 @@ filter_already: "%{icon_warning} | %{name} filter is already **enabled**!"
 reset_on: "%{icon_filterr} | Filter has been **Reset**!"
 reset_already: "%{icon_warning} | Filter has already been **Reset**!"
 # Mute
-mute_msg: "%{icon_mute} | **Player** is now `${state}`!"
+mute_enable: "%{icon_mute} | **Mute** is now **Enabled**!"
+mute_disable: "%{icon_mute} | **Mute** is now **Disabled**!"
 # Save
 no_current_track: "%{icon_warning} | There is no **track** playing!"
 save_track: "`💾` | Where do you want to save the **track**?"

@@ -28,9 +28,11 @@ export class ButtonMute {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_in_voice", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_in_voice", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
@@ -42,9 +44,11 @@ export class ButtonMute {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_same_voice", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_same_voice", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
@@ -53,9 +57,11 @@ export class ButtonMute {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_player", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_player", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
@@ -68,19 +74,25 @@ export class ButtonMute {
         ? this.player.mute
           ? this.player.volume
           : 100
-        : this.client.config.player.DEFAULT_VOLUME || 50;
+        : this.client.config.player.DEFAULT_VOLUME || 100;
 
       await this.player.setVolume(volume);
 
-      const stateString = this.player.mute ? "Muted" : "Unmuted";
-      const muteEmoji = this.client.config.emojis.PLAYER.mute;
-      const description = this.client.i18n.get(this.language, "button.music", "mute_msg", {
-        state: stateString,
-        icon_mute: muteEmoji,
-      });
-
       await this.interaction.reply({
-        embeds: [new EmbedBuilder().setDescription(description).setColor(this.client.color)],
+        embeds: [
+          new EmbedBuilder()
+            .setDescription(
+              `${this.client.i18n.get(
+                this.language,
+                "button.music",
+                newMuteState ? "mute_enable" : "mute_disable",
+                {
+                  icon_mute: this.client.config.emojis.PLAYER.mute,
+                }
+              )}`
+            )
+            .setColor(this.client.color),
+        ],
       });
     }
   }

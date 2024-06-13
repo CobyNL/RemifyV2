@@ -71,7 +71,12 @@ export class SongRequesterCleanSetup {
     return await playMsg
       .edit({
         embeds: [queueEmbed, playEmbed],
-        components: [this.client.filterSwitchDisabled, this.client.diSwitch, this.client.diSwitch2, this.client.diSwitch3],
+        components: [
+          this.client.filterSwitchDisabled,
+          this.client.diSwitch,
+          this.client.diSwitch2,
+          this.client.diSwitch3,
+        ],
       })
       .catch(() => {});
   }

@@ -37,7 +37,8 @@ filter_already: "%{icon_warning} | ¡El filtro %{name} ya está **activado**!"
 reset_on: "%{icon_filterr} | El filtro ha sido **Restablecido**!"
 reset_already: "%{icon_warning} | ¡El filtro ya ha sido **Restablecido**!"
 # Mute
-mute_msg: "%{icon_mute} | El **Reproductor** ahora está `${state}`!"
+mute_enable: "%{icon_mute} | **Silencio** está ahora **Activado**!"
+mute_disable: "%{icon_mute} | **Silencio** está ahora **Desactivado**!"
 # Save
 no_current_track: "%{icon_warning} | No se encontró ninguna canción para guardar!"
 save_track: "%{icon_save} | ¿Dónde quieres guardar la `canción`?"

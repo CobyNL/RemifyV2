@@ -38,7 +38,8 @@ reset_on: "%{icon_filterr} | Filter đã được **đặt lại**!"
 reset_already: "%{icon_warning} | Filter đã được **đặt lại** trước đó!"
 
 # Mute
-mute_msg: "%{icon_mute} | **Người chơi** hiện tại **`${state}`**!"
+mute_enable: "%{icon_mute} | **Tắt tiếng** hiện đã **Bật**!"
+mute_disable: "%{icon_mute} | **Tắt tiếng** hiện đã **Tắt**!"
 # Save
 no_current_track: "%{icon_warning} | Hiện không có bài hát nào đang phát!"
 save_track: "`💾` | Bạn muốn lưu **bài hát** ở đâu?"

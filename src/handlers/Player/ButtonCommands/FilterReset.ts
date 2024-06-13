@@ -29,9 +29,11 @@ export class ButtonFilterReset {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_in_voice", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_in_voice", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
@@ -43,9 +45,11 @@ export class ButtonFilterReset {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_same_voice", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_same_voice", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });
@@ -54,9 +58,11 @@ export class ButtonFilterReset {
       this.interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${this.client.i18n.get(this.language, "error", "no_player", {
-              icon_warning: this.client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${this.client.i18n.get(this.language, "error", "no_player", {
+                icon_warning: this.client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(this.client.color),
         ],
       });

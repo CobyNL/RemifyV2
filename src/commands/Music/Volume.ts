@@ -34,9 +34,11 @@ export default class implements Command {
       return handler.editReply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(handler.language, "error", "number_invalid", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${client.i18n.get(handler.language, "error", "number_invalid", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(client.color),
         ],
       });
@@ -47,9 +49,11 @@ export default class implements Command {
       return handler.editReply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(handler.language, "error", "number_invalid", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${client.i18n.get(handler.language, "error", "number_invalid", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(client.color),
         ],
       });

@@ -76,9 +76,11 @@ export default class implements Command {
         return handler.editReply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(handler.language, "error", "no_in_voice", {
-                icon_warning: client.config.emojis.PLAYER.warning
-              })}`)
+              .setDescription(
+                `${client.i18n.get(handler.language, "error", "no_in_voice", {
+                  icon_warning: client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(client.color),
           ],
         });
@@ -117,7 +119,7 @@ export default class implements Command {
         .setDescription(
           `${client.i18n.get(handler.language, "error", "arg_error", {
             text: "**enable** or **disable**!",
-            icon_warning: client.config.emojis.PLAYER.warning
+            icon_warning: client.config.emojis.PLAYER.warning,
           })}`
         )
         .setColor(client.color);

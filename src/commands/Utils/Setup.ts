@@ -46,7 +46,7 @@ export default class implements Command {
             .setDescription(
               `${client.i18n.get(handler.language, "error", "arg_error", {
                 text: "**create** or **delete**!",
-                icon_warning: client.config.emojis.PLAYER.warning
+                icon_warning: client.config.emojis.PLAYER.warning,
               })}`
             )
             .setColor(client.color),
@@ -77,7 +77,9 @@ export default class implements Command {
 
       const queueEmbed = new EmbedBuilder()
         .setColor(client.color)
-        .setDescription(`${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`)
+        .setDescription(
+          `${client.i18n.get(handler.language, "event.setup", "setup_content_emptylist")}`
+        )
         .setTitle(
           `${client.i18n.get(handler.language, "event.setup", "setup_content", { songs: "0" })}`
         );
@@ -105,7 +107,12 @@ export default class implements Command {
 
       const channel_msg = await textChannel.send({
         embeds: [queueEmbed, playEmbed],
-        components: [client.filterSwitchDisabled, client.diSwitch, client.diSwitch2, client.diSwitch3],
+        components: [
+          client.filterSwitchDisabled,
+          client.diSwitch,
+          client.diSwitch2,
+          client.diSwitch3,
+        ],
       });
 
       const new_data = {

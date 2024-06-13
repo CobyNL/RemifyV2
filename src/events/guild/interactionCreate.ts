@@ -160,7 +160,9 @@ export default class {
         embeds: [
           new EmbedBuilder()
             .setDescription(
-              `${client.i18n.get(language, "error", "no_perms", { perm: "ManageGuild", icon_warning: client.config.emojis.PLAYER.warning
+              `${client.i18n.get(language, "error", "no_perms", {
+                perm: "ManageGuild",
+                icon_warning: client.config.emojis.PLAYER.warning,
               })}`
             )
             .setColor(client.color),
@@ -178,9 +180,11 @@ export default class {
         return interaction.reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(language, "error", "no_player", {
-                icon_warning: client.config.emojis.PLAYER.warning
-              })}`)
+              .setDescription(
+                `${client.i18n.get(language, "error", "no_player", {
+                  icon_warning: client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(client.color),
           ],
         });
@@ -196,9 +200,11 @@ export default class {
         return (interaction as NoAutoInteraction).reply({
           embeds: [
             new EmbedBuilder()
-              .setDescription(`${client.i18n.get(language, "error", "no_voice", {
-                icon_warning: client.config.emojis.PLAYER.warning
-              })}`)
+              .setDescription(
+                `${client.i18n.get(language, "error", "no_voice", {
+                  icon_warning: client.config.emojis.PLAYER.warning,
+                })}`
+              )
               .setColor(client.color),
           ],
         });
@@ -208,9 +214,11 @@ export default class {
       return interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(language, "error", "no_node", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${client.i18n.get(language, "error", "no_node", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(client.color),
         ],
       });
@@ -235,9 +243,11 @@ export default class {
       return interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(language, "error", "owner_only", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            })}`)
+            .setDescription(
+              `${client.i18n.get(language, "error", "owner_only", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })}`
+            )
             .setColor(client.color),
         ],
       });
@@ -247,7 +257,9 @@ export default class {
         embeds: [
           new EmbedBuilder()
             .setDescription(
-              `${client.i18n.get(language, "error", "no_perms", { perm: "dreamvast@admin", icon_warning: client.config.emojis.PLAYER.warning
+              `${client.i18n.get(language, "error", "no_perms", {
+                perm: "dreamvast@admin",
+                icon_warning: client.config.emojis.PLAYER.warning,
               })}`
             )
             .setColor(client.color),
@@ -258,13 +270,15 @@ export default class {
       const embed = new EmbedBuilder()
         .setAuthor({
           name: `${client.i18n.get(language, "error", "no_premium_author", {
-            icon_warning: client.config.emojis.PLAYER.warning
+            icon_warning: client.config.emojis.PLAYER.warning,
           })}`,
           iconURL: client.user!.displayAvatarURL(),
         })
-        .setDescription(`${client.i18n.get(language, "error", "no_premium_desc", {
-          icon_warning: client.config.emojis.PLAYER.warning
-        })}`)
+        .setDescription(
+          `${client.i18n.get(language, "error", "no_premium_desc", {
+            icon_warning: client.config.emojis.PLAYER.warning,
+          })}`
+        )
         .setColor(client.color)
         .setTimestamp();
       return interaction.reply({
@@ -277,13 +291,15 @@ export default class {
       const embed = new EmbedBuilder()
         .setAuthor({
           name: `${client.i18n.get(language, "error", "no_premium_author", {
-            icon_warning: client.config.emojis.PLAYER.warning
+            icon_warning: client.config.emojis.PLAYER.warning,
           })}`,
           iconURL: client.user!.displayAvatarURL(),
         })
-        .setDescription(`${client.i18n.get(language, "error", "no_guild_premium_desc", {
-          icon_warning: client.config.emojis.PLAYER.warning
-        })}`)
+        .setDescription(
+          `${client.i18n.get(language, "error", "no_guild_premium_desc", {
+            icon_warning: client.config.emojis.PLAYER.warning,
+          })}`
+        )
         .setColor(client.color)
         .setTimestamp();
       return interaction.reply({
@@ -300,12 +316,14 @@ export default class {
         const embed = new EmbedBuilder()
           .setAuthor({
             name: client.i18n.get(language, "error", "topgg_error_author", {
-              icon_warning: client.config.emojis.PLAYER.warning
+              icon_warning: client.config.emojis.PLAYER.warning,
             }),
           })
-          .setDescription(client.i18n.get(language, "error", "topgg_error_desc", {
-            icon_warning: client.config.emojis.PLAYER.warning
-          }))
+          .setDescription(
+            client.i18n.get(language, "error", "topgg_error_desc", {
+              icon_warning: client.config.emojis.PLAYER.warning,
+            })
+          )
           .setColor(client.color)
           .setTimestamp();
         return interaction.reply({ content: " ", embeds: [embed] });
@@ -315,19 +333,23 @@ export default class {
         const embed = new EmbedBuilder()
           .setAuthor({
             name: client.i18n.get(language, "error", "topgg_vote_author", {
-              icon_warning: client.config.emojis.PLAYER.warning
+              icon_warning: client.config.emojis.PLAYER.warning,
             }),
           })
-          .setDescription(client.i18n.get(language, "error", "topgg_vote_desc", {
-            icon_warning: client.config.emojis.PLAYER.warning
-          }))
+          .setDescription(
+            client.i18n.get(language, "error", "topgg_vote_desc", {
+              icon_warning: client.config.emojis.PLAYER.warning,
+            })
+          )
           .setColor(client.color)
           .setTimestamp();
         const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
           new ButtonBuilder()
-            .setLabel(client.i18n.get(language, "error", "topgg_vote_button", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            }))
+            .setLabel(
+              client.i18n.get(language, "error", "topgg_vote_button", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })
+            )
             .setStyle(ButtonStyle.Link)
             .setURL(`https://top.gg/bot/${client.user?.id}/vote`)
         );
@@ -393,9 +415,11 @@ export default class {
       interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`${client.i18n.get(language, "error", "unexpected_error", {
-              icon_warning: client.config.emojis.PLAYER.warning
-            })}\n ${error}`)
+            .setDescription(
+              `${client.i18n.get(language, "error", "unexpected_error", {
+                icon_warning: client.config.emojis.PLAYER.warning,
+              })}\n ${error}`
+            )
             .setColor(client.color),
         ],
       });
